@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
 		if(!wasGrounded && isGrounded)
 		{
-			Grounded();
+			Grounded?.Invoke();
 		}
 
 		if(isGrounded && Input.GetKey(KeyCode.Space))
