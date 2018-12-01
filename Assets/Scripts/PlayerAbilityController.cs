@@ -32,7 +32,7 @@ public class PlayerAbilityController : MonoBehaviour, IAbilityController
 		{
 			if(Input.GetKeyDown(ability.ActivateKey))
 			{
-				ability.Activate();
+				ability.OnActivate();
 			}
 		}
 	}
