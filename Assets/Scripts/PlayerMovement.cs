@@ -50,10 +50,10 @@ public class PlayerMovement : MonoBehaviour
 			Grounded?.Invoke();
 		}
 
-		if(isGrounded && Input.GetKey(KeyCode.Space))
-		{
-			willJump = true;
-		}
+		//if(isGrounded && Input.GetKey(KeyCode.Space))
+		//{
+		//	willJump = true;
+		//}
 
 		if(willJump)
 		{
