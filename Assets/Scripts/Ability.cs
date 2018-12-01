@@ -14,6 +14,7 @@ public abstract class AbilityBase
 	public abstract KeyCode ActivateKey { get; }
 
 	protected IAbilityController controller;
+
 	public IAbilityController Controller {
 		get
 		{
@@ -26,11 +27,10 @@ public abstract class AbilityBase
 		}
 	}
 
-	public abstract void Activate();
+	public abstract void OnActivate();
 
 	protected virtual void Initialize()
 	{
-
 	}
 
 }
@@ -48,13 +48,13 @@ public class MidAirJump : AbilityBase
 	{
 		base.Initialize();
 
-		controller.Activate += Activate;
+		controller.Activate += OnActivate;
 
 		movement = controller.GameObject.GetComponent<PlayerMovement>();
 		movement.Grounded += OnGrounded;
 	}
 
-	public override void Activate()
+	public override void OnActivate()
 	{
 		if(movement.IsGrounded() == false && jumpCount < NumJumps)
 		{
