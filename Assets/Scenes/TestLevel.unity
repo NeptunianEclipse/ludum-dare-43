@@ -245,11 +245,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114748819206450530, guid: a9dc3e1fcad6eb34ebbcaa7287437daf,
+    - target: {fileID: 61682872000146532, guid: a9dc3e1fcad6eb34ebbcaa7287437daf,
         type: 2}
-      propertyPath: JumpPower
-      value: 8
-      objectReference: {fileID: 0}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: d59427c10e0c2cf4cb9056e56cf17084, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9dc3e1fcad6eb34ebbcaa7287437daf, type: 2}
   m_IsPrefabAsset: 0
