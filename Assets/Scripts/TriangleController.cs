@@ -24,6 +24,7 @@ public class TriangleController : MonoBehaviour
 			var projectile = Instantiate<GameObject>(projectilePrefab, this.transform.position, Quaternion.identity);
 			var projectileShakeyMovement = projectile.GetComponent<ShakeyMovement>();
 			projectileShakeyMovement.myVelocity = playersDirection;
+			projectileShakeyMovement.transform.rotation = Quaternion.LookRotation(playersDirection);
 
 			projectileInstance = projectile;
 		}

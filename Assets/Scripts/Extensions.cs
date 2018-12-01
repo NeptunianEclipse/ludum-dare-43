@@ -66,5 +66,14 @@ namespace LudumDare43.Extensions
 		{
 			return UnityEngine.Random.value < probabailtyOfTrue;
 		}
+
+		/// <summary>
+		/// Returns a new vector with the result of calling Mathf.Abs on each of <paramref name="vector"/>'s x and y values.
+		/// </summary>
+		/// <param name="vector">The vector to use to set the x and y on the new vector, after calling Mathf.Abs on them though.</param>
+		public static Vector2 ElementwiseAbosolute(this Vector2 vector)
+		{
+			return new Vector2(Mathf.Abs(vector.x), Mathf.Abs(vector.y));
+		}
 	}
 }
