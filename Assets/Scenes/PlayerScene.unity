@@ -129,6 +129,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b15c53211ac9748a93249103527df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Abilities:
+  - {fileID: 11400000, guid: cbb56858e7e237842916c055bccf21da, type: 2}
+  - {fileID: 11400000, guid: 208ed2dd10cf1c44daae4ad8e6226ee7, type: 2}
+  - {fileID: 11400000, guid: cbb56858e7e237842916c055bccf21da, type: 2}
+  TestAbility: {fileID: 0}
 --- !u!1001 &1620124126
 Prefab:
   m_ObjectHideFlags: 0

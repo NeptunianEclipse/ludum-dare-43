@@ -9,7 +9,7 @@ public interface IAbilityController
 	event Action Activate;
 }
 
-public abstract class AbilityBase
+public abstract class AbilityBase : ScriptableObject
 {
 	public abstract KeyCode ActivateKey { get; }
 
@@ -35,6 +35,7 @@ public abstract class AbilityBase
 
 }
 
+[CreateAssetMenu]
 public class MidAirJump : AbilityBase
 {
 	public override KeyCode ActivateKey => KeyCode.F;

@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class PlayerAbilityController : MonoBehaviour, IAbilityController
 {
-
+	[Expandable]
 	public List<AbilityBase> Abilities = new List<AbilityBase>();
 
+	public AbilityBase TestAbility;
+
 	public GameObject GameObject => gameObject;
+
+
 
 	public event Action Activate;
 
