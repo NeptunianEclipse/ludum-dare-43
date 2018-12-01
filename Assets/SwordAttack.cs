@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SwordAttack : MonoBehaviour
 {
-	public float damage = 0f;
+	public float attackDamage = 0f;
 	public float timeBetweenAttacks = 0f;
 	public float attackDuration = 1f;
 	public float recoveryDuration = 1f;
@@ -13,9 +13,10 @@ public class SwordAttack : MonoBehaviour
 
 	public float attackImpact = 1f;
 
-	public LayerMask targetLayer;
+	//public LayerMask targetLayer;
 	public CameraShake cameraShake;
-	//public Animator playerAnimator;
+
+	public bool logEverything = false;
 
 	private Vector3 initialPosition;
 
@@ -26,12 +27,35 @@ public class SwordAttack : MonoBehaviour
 	private bool isAttacking = false;
 	private bool isRecovering = false;
 
+	private readonly ICollection<GameObject> damagedObjects = new List<GameObject>();
+
 	void Start()
 	{
 		timeUntilNextAttack = timeBetweenAttacks;
 		timeUntilAttackEnds = 0f;
 		timeUntilRecoveryEnds = 0f;
 		initialPosition = transform.localPosition;
+	}
+
+	void OnTriggerEnter2D(Collider2D collision)
+	{
+		Log($"This ({this.gameObject.name}) entred a {collision.gameObject.name}");
+	}
+
+	private void OnTriggerStay2D(Collider2D collision)
+	{
+		if (isAttacking)
+		{
+			GameObject other = collision.gameObject;
+
+			var damageable = other.GetComponent<Damageable>();
+
+			if (damageable != null && !damagedObjects.Contains(other))
+			{
+				damageable.InflictDamage(attackDamage);
+				damagedObjects.Add(other);
+			}
+		}
 	}
 
 	void Update()
@@ -100,6 +124,8 @@ public class SwordAttack : MonoBehaviour
 
 	private void EndAttack()
 	{
+		Log($"This ({this.gameObject.name}) has damaged {(damagedObjects.Count == 1 ? "an object" : $"{damagedObjects.Count} objects")}.");
+		damagedObjects.Clear();
 		isAttacking = false;
 		isRecovering = true;
 		timeUntilRecoveryEnds = recoveryDuration;
@@ -119,5 +145,13 @@ public class SwordAttack : MonoBehaviour
 		float magnitude = attackImpact;
 
 		StartCoroutine(cameraShake.Shake(duration, magnitude));
+	}
+
+	private void Log(string message)
+	{
+		if (logEverything)
+		{
+			Debug.Log(message);
+		}
 	}
 }
