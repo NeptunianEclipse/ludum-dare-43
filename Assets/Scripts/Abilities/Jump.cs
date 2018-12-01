@@ -7,8 +7,6 @@ public class Jump : AbilityBase
 {
 	public float JumpPower;
 
-	public override KeyCode ActivateKey => KeyCode.Space;
-
 	private PlayerMovement movement;
 
 	public override void OnActivate()

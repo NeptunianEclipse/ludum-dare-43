@@ -5,32 +5,41 @@ using UnityEngine;
 
 public class PlayerAbilityController : MonoBehaviour, IAbilityController
 {
-	[Expandable]
-	public List<AbilityBase> Abilities = new List<AbilityBase>();
+	public List<AbilitySlot> Abilities = new List<AbilitySlot>();
 
 	public GameObject GameObject => gameObject;
 
 	public event Action Activate;
+	public event Action Tick;
 
 	private void Awake()
 	{
-		Abilities.Add(new MidAirJump());
-
-		foreach(AbilityBase ability in Abilities)
+		foreach(AbilitySlot slot in Abilities)
 		{
-			ability.Controller = this;
+			slot.Ability.Controller = this;
 		}
 	}
 
 	private void Update()
 	{
-		foreach(AbilityBase ability in Abilities)
+		foreach(AbilitySlot slot in Abilities)
 		{
-			if(Input.GetKeyDown(ability.ActivateKey))
+			if(Input.GetKeyDown(slot.ActivateKey))
 			{
-				ability.OnActivate();
+				slot.Ability.OnActivate();
 			}
 		}
+
+		Tick?.Invoke();
 	}
 
+	
+
+}
+
+[System.Serializable]
+public class AbilitySlot
+{
+	public KeyCode ActivateKey;
+	public AbilityBase Ability;
 }

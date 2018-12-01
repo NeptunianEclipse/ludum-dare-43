@@ -5,8 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Ability/Mid-Air Jump")]
 public class MidAirJump : AbilityBase
 {
-	public override KeyCode ActivateKey => KeyCode.F;
-
 	public float JumpPower;
 	public int NumJumps = 1;
 

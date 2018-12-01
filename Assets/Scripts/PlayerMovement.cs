@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
 
 	public BoxCollider2D FeetArea;
 
+	public bool HorizontalMovementAllowed { get; set; } = true;
+
 	private Rigidbody2D rb2d;
 	private ContactFilter2D feetFilter;
 
@@ -30,14 +32,17 @@ public class PlayerMovement : MonoBehaviour
 	{
 		Vector2 velocity = rb2d.velocity;
 		bool isGrounded = IsGrounded();
-
-		if(Input.GetKey(KeyCode.D))
+		
+		if(HorizontalMovementAllowed)
 		{
-			velocity += Vector2.right * Acceleration;
-		}
-		if(Input.GetKey(KeyCode.A))
-		{
-			velocity -= Vector2.right * Acceleration;
+			if (Input.GetKey(KeyCode.D))
+			{
+				velocity += Vector2.right * Acceleration;
+			}
+			if (Input.GetKey(KeyCode.A))
+			{
+				velocity -= Vector2.right * Acceleration;
+			}
 		}
 
 		if(isGrounded)
@@ -49,11 +54,6 @@ public class PlayerMovement : MonoBehaviour
 		{
 			Grounded?.Invoke();
 		}
-
-		//if(isGrounded && Input.GetKey(KeyCode.Space))
-		//{
-		//	willJump = true;
-		//}
 
 		if(willJump)
 		{

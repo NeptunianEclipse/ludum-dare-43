@@ -7,12 +7,11 @@ public interface IAbilityController
 {
 	GameObject GameObject { get; }
 	event Action Activate;
+	event Action Tick;
 }
 
 public abstract class AbilityBase : ScriptableObject
 {
-	public abstract KeyCode ActivateKey { get; }
-
 	protected IAbilityController controller;
 
 	public IAbilityController Controller {
