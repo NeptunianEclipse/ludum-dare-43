@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4382880973293850}
   - component: {fileID: 212120823789926626}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 50190235909469986}
   - component: {fileID: 61682872000146532}
   - component: {fileID: 114748819206450530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4326528190277100}
   - component: {fileID: 61856159274012576}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ MonoBehaviour:
   Acceleration: 2
   MaxSpeed: 5
   GroundDrag: 1.5
-  JumpPower: 1
+  JumpPower: 20
   FeetArea: {fileID: 61856159274012576}
 --- !u!212 &212120823789926626
 SpriteRenderer:

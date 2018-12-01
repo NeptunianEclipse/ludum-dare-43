@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		rb2d = GetComponent<Rigidbody2D>();
 		feetFilter = new ContactFilter2D();
-		feetFilter.SetLayerMask(~LayerMask.GetMask("Player"));
+		//feetFilter./*SetLayerMask*/();
 	}
 
 	private void FixedUpdate()
@@ -54,10 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
 	private bool Grounded()
 	{
-		RaycastHit2D[] hits = new RaycastHit2D[1];
-		int numHits = Physics2D.BoxCast(FeetArea.offset + (Vector2)FeetArea.transform.position, FeetArea.size / 2, 0, Vector2.down, feetFilter, hits);
-		Debug.Log(numHits);
-		return numHits > 0;
+		return Physics2D.OverlapBox(FeetArea.offset + (Vector2)FeetArea.transform.position, FeetArea.size / 2, 0, ~LayerMask.GetMask("Player"));
 	}
 
 	
