@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Ability/Dash")]
-public class Dash : AbilityBase
+public class Dash : AbilityBase, IRecoverable
 {
 	public override string Name => "Dash";
 
@@ -18,6 +18,8 @@ public class Dash : AbilityBase
 
 	private float dashStartTime;
 	private float lastDashEndTime;
+
+	public float RecoveryPercent => dashing ? 0 : Mathf.Clamp01(Mathf.InverseLerp(lastDashEndTime, lastDashEndTime + TimeBetweenDashes, Time.time));
 
 	protected override void Initialize()
 	{

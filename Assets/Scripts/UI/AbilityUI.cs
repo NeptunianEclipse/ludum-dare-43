@@ -8,6 +8,7 @@ public class AbilityUI : MonoBehaviour
 	public AbilitySlot AbilitySlot;
 	public Text KeyText;
 	public Text NameText;
+	public RectTransform IconMask;
 	public Image IconImage;
 
 	public void RefreshUI()
@@ -22,6 +23,14 @@ public class AbilityUI : MonoBehaviour
 		{
 			NameText.text = "-";
 			IconImage.sprite = null;
+		}
+	}
+
+	private void Update()
+	{
+		if(AbilitySlot.Ability is IRecoverable)
+		{
+			IconMask.sizeDelta = new Vector2(IconMask.sizeDelta.x, (1 - ((IRecoverable)AbilitySlot.Ability).RecoveryPercent) * IconImage.rectTransform.sizeDelta.y);
 		}
 	}
 
