@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordAttack : MonoBehaviour
+public class MeleeAttack : MonoBehaviour
 {
 	public float attackDamage = 0f;
 	public float timeBetweenAttacks = 0f;
