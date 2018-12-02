@@ -13,7 +13,14 @@ public class AbilityUI : MonoBehaviour
 
 	public void RefreshUI()
 	{
-		KeyText.text = AbilitySlot.ActivateKey.ToString();
+		if(AbilitySlot is ActivableAbilitySlot)
+		{
+			KeyText.text = ((ActivableAbilitySlot)AbilitySlot).ActivateKey.ToString();
+		} else
+		{
+			KeyText.text = "";
+		}
+		
 		if(AbilitySlot.Ability != null)
 		{
 			NameText.text = AbilitySlot.Ability.Name;
@@ -30,7 +37,9 @@ public class AbilityUI : MonoBehaviour
 	{
 		if(AbilitySlot.Ability is IRecoverable)
 		{
-			IconMask.sizeDelta = new Vector2(IconMask.sizeDelta.x, (1 - ((IRecoverable)AbilitySlot.Ability).RecoveryPercent) * IconImage.rectTransform.sizeDelta.y);
+			IRecoverable recoverable = (IRecoverable)AbilitySlot.Ability;
+			float y = (1 - recoverable.RecoveryPercent) * IconImage.rectTransform.sizeDelta.y;
+			IconMask.sizeDelta = new Vector2(IconMask.sizeDelta.x, y);
 		}
 	}
 

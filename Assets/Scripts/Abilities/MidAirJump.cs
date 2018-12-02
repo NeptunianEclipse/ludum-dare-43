@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Ability/Mid-Air Jump")]
 public class MidAirJump : AbilityBase
 {
 	public override string Name => "Mid-Air Jump";
@@ -13,12 +12,18 @@ public class MidAirJump : AbilityBase
 	private int jumpCount;
 	private PlayerMovement movement;
 
-	protected override void Initialize()
+	protected override void OnEquip()
 	{
-		base.Initialize();
+		base.OnEquip();
 
-		movement = controller.GameObject.GetComponent<PlayerMovement>();
+		movement = Controller.GameObject.GetComponent<PlayerMovement>();
 		movement.Grounded += OnGrounded;
+	}
+
+	protected override void OnUnequip()
+	{
+		movement.Grounded -= OnGrounded;
+		base.OnUnequip();
 	}
 
 	public override void Activate()

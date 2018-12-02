@@ -75,5 +75,10 @@ namespace LudumDare43.Extensions
 		{
 			return new Vector2(Mathf.Abs(vector.x), Mathf.Abs(vector.y));
 		}
+
+		public static Vector2 Project(this Vector2 vector, Vector2 onto)
+		{
+			return (Vector2.Dot(vector, onto) / onto.sqrMagnitude) * onto;
+		}
 	}
 }

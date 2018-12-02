@@ -2,27 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Ability/Melee Attack")]
-public class MeleeAttack : AbilityBase, IRecoverable
+public class MeleeAttack : AbilityBase
 {
 	public override string Name => "Melee Attack";
 
-	public float RecoveryPercent => weapon.RecoveryPercent;
+	public GameObject WeaponPrefab;
 
-	public MeleeWeaponController WeaponPrefab;
+	private MeleeWeaponController weaponController;
 
-	private MeleeWeaponController weapon;
+	protected override void OnEquip()
+	{
+		base.OnEquip();
+
+		weaponController = Instantiate(WeaponPrefab, Controller.GameObject.transform).GetComponent<MeleeWeaponController>();
+	}
+
+	protected override void OnUnequip()
+	{
+		base.OnUnequip();
+		Destroy(weaponController.gameObject);
+	}
 
 	public override void Activate()
 	{
-		weapon.TryAttack();
-	}
-
-	protected override void Initialize()
-	{
-		base.Initialize();
-
-		weapon = Instantiate(WeaponPrefab.gameObject, controller.GameObject.transform).GetComponent<MeleeWeaponController>();
+		weaponController.TryAttack();
 	}
 
 }

@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-	public float Acceleration;
-	public float MaxSpeed;
 	public float GroundDrag;
 	public float AirHorizontalDrag;
 	public float JumpPower;
+	public float MaxSpeed;
 
 	public GameObject Feet;
 
@@ -47,20 +46,20 @@ public class PlayerMovement : MonoBehaviour
 	{
 		Vector2 velocity = Rigidbody2d.velocity;
 		bool isGrounded = IsGrounded();
-		
-		if(HorizontalMovementAllowed)
+
+		if (HorizontalMovementAllowed)
 		{
-			if (Input.GetKey(KeyCode.D))
-			{
-				velocity += Vector2.right * Acceleration;
-			}
-			if (Input.GetKey(KeyCode.A))
-			{
-				velocity -= Vector2.right * Acceleration;
-			}
+			//if (Input.GetKey(KeyCode.D))
+			//{
+			//	velocity += Vector2.right * Acceleration;
+			//}
+			//if (Input.GetKey(KeyCode.A))
+			//{
+			//	velocity -= Vector2.right * Acceleration;
+			//}
 		}
 
-		if(isGrounded)
+		if (isGrounded)
 		{
 			velocity.x /= GroundDrag;
 		}
@@ -69,12 +68,12 @@ public class PlayerMovement : MonoBehaviour
 			velocity.x /= AirHorizontalDrag;
 		}
 
-		if(!wasGrounded && isGrounded)
+		if (!wasGrounded && isGrounded)
 		{
 			Grounded?.Invoke();
 		}
 
-		if(willJump)
+		if (willJump)
 		{
 			velocity += Vector2.up * JumpPower;
 			willJump = false;
@@ -105,5 +104,5 @@ public class PlayerMovement : MonoBehaviour
 		FeetTriggerEnter?.Invoke(collision);
 	}
 
-	
+
 }

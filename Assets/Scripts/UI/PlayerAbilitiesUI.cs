@@ -41,7 +41,7 @@ public class PlayerAbilitiesUI : MonoBehaviour
 			Destroy(abilityUI.gameObject);
 		}
 
-		foreach (AbilitySlot slot in playerAbilityController.Abilities)
+		foreach(AbilitySlot slot in playerAbilityController.AllAbilitySlots)
 		{
 			AbilityUI abilityUI = Instantiate(AbilityUIPrefab, transform).GetComponent<AbilityUI>();
 			abilityUI.AbilitySlot = slot;
