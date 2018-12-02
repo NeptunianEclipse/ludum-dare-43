@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4417397469722796}
   - component: {fileID: 212770475882198026}
   - component: {fileID: 95929097450647692}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FhroomSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 50875761611994736}
   - component: {fileID: 114368888710578344}
   - component: {fileID: 114774471470741208}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fhroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568632273182426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.01, y: 0.98, z: -0.21875}
+  m_LocalPosition: {x: -3.46, y: 5.46, z: -0.21875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4417397469722796}
@@ -177,11 +177,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9b796d6c4ba2b44986c413062f7749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  turnDuration: 0.5
-  downDistance: 1
-  rightDistance: 0.1
-  moveDirection: {x: 1, y: 0}
+  MoveSpeed: 3
+  TurnDuration: 1
+  DownDistance: 1
+  RightDistance: 0.1
+  MoveDirection: {x: 1, y: 0}
+  Notices:
+    serializedVersion: 2
+    m_Bits: 2560
 --- !u!212 &212770475882198026
 SpriteRenderer:
   m_ObjectHideFlags: 1

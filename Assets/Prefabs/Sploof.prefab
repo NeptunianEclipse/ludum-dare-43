@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4729808822187998}
   - component: {fileID: 212831452288410698}
+  - component: {fileID: 95310412537276412}
   m_Layer: 9
   m_Name: SploofSprite
   m_TagString: Untagged
@@ -130,6 +131,24 @@ PolygonCollider2D:
       - {x: 0.4044857, y: -0.026312351}
       - {x: 0.606514, y: 0.34490985}
       - {x: 0.6107507, y: 0.5864844}
+--- !u!95 &95310412537276412
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1095202815103538}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f47c9d50c240fa14580436e3402cd73f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114733767210545184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,6 +172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 15
+  DamageTextPrefab: {fileID: 0}
+  DamageTextCanvas: {fileID: 0}
 --- !u!114 &114893541597364008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -164,11 +185,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9b796d6c4ba2b44986c413062f7749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  turnDuration: 0.8
-  downDistance: 1
-  rightDistance: 0.1
-  moveDirection: {x: 1, y: 0}
+  MoveSpeed: 2
+  TurnDuration: 1
+  DownDistance: 1
+  RightDistance: 0.1
+  MoveDirection: {x: 1, y: 0}
+  Notices:
+    serializedVersion: 2
+    m_Bits: 6144
 --- !u!212 &212831452288410698
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -204,7 +228,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 038ae1d9e34f44144b342dc908ac2a63, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 692dfeb80733c7f488e73af97adec1ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

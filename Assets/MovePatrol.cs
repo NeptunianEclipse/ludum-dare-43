@@ -7,13 +7,15 @@ public class MovePatrol : MonoBehaviour
 {
 	private const int bigNumber = 200;
 
-	public float moveSpeed;
-	public float turnDuration = 1f;
+	public float MoveSpeed = 0f;
+	public float TurnDuration = 1f;
 
-	public float downDistance = 1f;
-	public float rightDistance = 1f;
+	public float DownDistance = 1f;
+	public float RightDistance = 0.1f;
 
-	public Vector2 moveDirection;
+	public Vector2 MoveDirection;
+
+	public LayerMask Notices;
 
 	private bool turning = false;
 
@@ -22,13 +24,16 @@ public class MovePatrol : MonoBehaviour
 	void Awake()
 	{
 		myCollider = GetComponent<Collider2D>();
+
+		if (Notices == default(LayerMask)) Debug.LogWarning($"A {gameObject.name} has no layer mask set.");
+		
 	}
 
 	void Update()
 	{
 		if (!turning)
 		{
-			transform.Translate(moveDirection.normalized * moveSpeed * Time.deltaTime);
+			transform.Translate(MoveDirection.normalized * MoveSpeed * Time.deltaTime);
 
 			Bounds bounds = myCollider.bounds;
 
@@ -38,16 +43,16 @@ public class MovePatrol : MonoBehaviour
 
 			Vector2 BottomRightCorner = new Vector2(rightEdge.x, bottomEdge.y);
 
-			RaycastHit2D groundInFrontOfMe = Physics2D.Raycast(BottomRightCorner, Vector2.down, downDistance);
+			RaycastHit2D groundInFrontOfMe = Physics2D.Raycast(BottomRightCorner, Vector2.down, DownDistance, Notices.value);
 			if (groundInFrontOfMe.collider == false)
 			{
 				StartTurning();
 			}
 
-			Vector2 boxCentre = rightEdge.NewWithChange(deltaX: rightDistance / 2);
-			Vector2 boxSize = new Vector2(rightDistance / 2, topEdge.y - bottomEdge.y - 0.2f);
+			Vector2 boxCentre = rightEdge.NewWithChange(deltaX: RightDistance / 2);
+			Vector2 boxSize = new Vector2(RightDistance / 2, topEdge.y - bottomEdge.y - 0.2f);
 
-			Collider2D somethingInFrontOfMe = Physics2D.OverlapBox(boxCentre, boxSize, 0, LayerMask.GetMask("Ground"));
+			Collider2D somethingInFrontOfMe = Physics2D.OverlapBox(boxCentre, boxSize, 0, Notices.value);
 			if (somethingInFrontOfMe == true)
 			{
 				StartTurning();
@@ -58,7 +63,7 @@ public class MovePatrol : MonoBehaviour
 	private void StartTurning()
 	{
 		turning = true;
-		StartCoroutine(Turn(180, turnDuration));
+		StartCoroutine(Turn(180, TurnDuration));
 		Debug.Log($"{gameObject.name} started turning.");
 	}
 
