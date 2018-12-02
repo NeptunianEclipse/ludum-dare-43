@@ -14,7 +14,8 @@ public class PlayerAbilitiesUI : MonoBehaviour
 	{
 		if(playerAbilityController == null)
 		{
-			playerAbilityController = GameObject.FindGameObjectWithTag(Tags.Player).GetComponent<PlayerAbilityController>();
+			GameObject playerGameObject = GameObject.FindGameObjectWithTag(Tags.Player);
+			playerAbilityController = playerGameObject.GetComponent<PlayerAbilityController>();
 		}
 	}
 

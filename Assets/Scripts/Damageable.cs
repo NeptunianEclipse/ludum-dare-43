@@ -7,7 +7,6 @@ public class Damageable : MonoBehaviour
 	public float MaxHealth = 100f;
 
 	public FloatingTextUI DamageTextPrefab;
-	public Transform DamageTextCanvas;
 
 	public bool DestroyOnZeroHealth = false;
 

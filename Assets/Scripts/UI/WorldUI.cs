@@ -11,11 +11,11 @@ public class WorldUI : Singleton<WorldUI>
 	public Gradient DamageTextGradient;
 	public GameObject DamageTextPrefab;
 
-	private Canvas canvas;
+	public Canvas Canvas { get; private set; }
 
 	private void Awake()
 	{
-		canvas = GetComponent<Canvas>();
+		Canvas = GetComponent<Canvas>();
 	}
 
 	public void SpawnDamageText(float amount, Vector2 position)
