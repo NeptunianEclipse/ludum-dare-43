@@ -29,12 +29,9 @@ public abstract class AbilityBase : ScriptableObject
 	public abstract string Name { get; }
 	public Sprite Sprite;
 
-	public abstract void OnActivate();
+	public virtual void OnActivate() { }
 
-	protected virtual void Initialize()
-	{
-
-	}
+	protected virtual void Initialize() { }
 
 }
 
