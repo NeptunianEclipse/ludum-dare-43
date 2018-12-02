@@ -51,6 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab0b057741ffd2049b4ed5bc2975906e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 2421f1d009d476a43b6aec5ccea54e54, type: 3}
   MoveSettings: {fileID: 11400000, guid: c33855686d85e8f469ae85dac2ed1817, type: 2}
   Direction: 1
