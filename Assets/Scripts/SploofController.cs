@@ -8,17 +8,17 @@ public class SploofController : MonoBehaviour
 {
 	private Damageable damageable;
 
-	private void Awake()
+	void Awake()
 	{
 		damageable = gameObject.GetComponent<Damageable>();
 	}
 
-	private void OnEnable()
+	void OnEnable()
 	{
 		damageable.Destroyed += Damageable_Destroyed;
 	}
 
-	private void OnDisable()
+	void OnDisable()
 	{
 		damageable.Destroyed -= Damageable_Destroyed;
 	}

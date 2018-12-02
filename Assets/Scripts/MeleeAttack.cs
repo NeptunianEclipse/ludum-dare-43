@@ -29,7 +29,7 @@ public class MeleeAttack : MonoBehaviour
 
 	private readonly ICollection<GameObject> damagedObjects = new List<GameObject>();
 
-	void Start()
+	void Awake()
 	{
 		timeUntilNextAttack = timeBetweenAttacks;
 		timeUntilAttackEnds = 0f;
@@ -42,7 +42,7 @@ public class MeleeAttack : MonoBehaviour
 		Log($"This ({gameObject.name}) entred a {collision.gameObject.name}");
 	}
 
-	private void OnTriggerStay2D(Collider2D collision)
+	void OnTriggerStay2D(Collider2D collision)
 	{
 		if (isAttacking)
 		{

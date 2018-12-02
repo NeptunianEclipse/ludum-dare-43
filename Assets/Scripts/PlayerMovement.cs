@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 	private bool willJump;
 	private bool wasGrounded;
 
-	private void Start()
+	private void Awake()
 	{
 		rb2d = GetComponent<Rigidbody2D>();
 		feetFilter = new ContactFilter2D();
