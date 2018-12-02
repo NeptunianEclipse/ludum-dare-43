@@ -7,13 +7,24 @@ public class AbilityUI : MonoBehaviour
 {
 	public AbilitySlot AbilitySlot;
 	public Text KeyText;
+	public CanvasGroup KeyGroup;
 	public Text NameText;
 	public RectTransform IconMask;
 	public Image IconImage;
+	public Sprite NoIconImage;
 
 	public void RefreshUI()
 	{
-		KeyText.text = AbilitySlot.ActivateKey.ToString();
+		if(AbilitySlot is ActivableAbilitySlot)
+		{
+			KeyText.text = ((ActivableAbilitySlot)AbilitySlot).ActivateKey.ToString();
+			KeyGroup.alpha = 1;
+		} else
+		{
+			KeyText.text = "";
+			KeyGroup.alpha = 0;
+		}
+		
 		if(AbilitySlot.Ability != null)
 		{
 			NameText.text = AbilitySlot.Ability.Name;
@@ -22,16 +33,21 @@ public class AbilityUI : MonoBehaviour
 		else
 		{
 			NameText.text = "-";
-			IconImage.sprite = null;
+			IconImage.sprite = NoIconImage;
 		}
 	}
 
 	private void Update()
 	{
-		if(AbilitySlot.Ability is IRecoverable)
+		if (AbilitySlot.Ability is IRecoverable)
 		{
-			IconMask.sizeDelta = new Vector2(IconMask.sizeDelta.x, (1 - ((IRecoverable)AbilitySlot.Ability).RecoveryPercent) * IconImage.rectTransform.sizeDelta.y);
+			IRecoverable recoverable = (IRecoverable)AbilitySlot.Ability;
+			float y = (1 - recoverable.RecoveryPercent) * IconImage.rectTransform.sizeDelta.y;
+			IconMask.sizeDelta = new Vector2(IconMask.sizeDelta.x, y);
+		}
+		else
+		{
+			IconMask.sizeDelta = Vector2.zero;
 		}
 	}
-
 }

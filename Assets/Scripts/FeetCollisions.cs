@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class FeetCollisions : MonoBehaviour 
 {
-
 	public event Action<Collider2D> TriggerEnter;
 
 	private void OnTriggerEnter2D(Collider2D collision)

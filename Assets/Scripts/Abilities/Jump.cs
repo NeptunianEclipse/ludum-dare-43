@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Ability/Jump")]
 public class Jump : AbilityBase
 {
 	public override string Name => "Jump";
@@ -19,11 +18,11 @@ public class Jump : AbilityBase
 		}
 	}
 
-	protected override void Initialize()
+	protected override void OnEquip()
 	{
-		base.Initialize();
+		base.OnEquip();
 
-		movement = controller.GameObject.GetComponent<PlayerMovement>();
+		movement = Controller.GameObject.GetComponent<PlayerMovement>();
 	}
 
 

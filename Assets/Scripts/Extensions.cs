@@ -83,7 +83,7 @@ namespace LudumDare43.Extensions
 		/// <param name="rigidbody"></param>
 		/// <param name="forcePerUpdate"></param>
 		/// <param name="duration"></param>
-		public  static IEnumerator<WaitForFixedUpdate> ApplyForce(this Rigidbody2D rigidbody, Vector2 forcePerUpdate, float duration)
+		public static IEnumerator<WaitForFixedUpdate> ApplyForce(this Rigidbody2D rigidbody, Vector2 forcePerUpdate, float duration)
 		{
 			float totalTime = 0f;
 			while (totalTime <= duration)
@@ -92,6 +92,11 @@ namespace LudumDare43.Extensions
 				totalTime += Time.deltaTime;
 				yield return new WaitForFixedUpdate();
 			}
+		}
+
+		public static Vector2 Project(this Vector2 vector, Vector2 onto)
+		{
+			return (Vector2.Dot(vector, onto) / onto.sqrMagnitude) * onto;
 		}
 	}
 }

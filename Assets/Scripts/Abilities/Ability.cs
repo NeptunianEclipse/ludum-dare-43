@@ -6,32 +6,74 @@ using UnityEngine;
 public interface IAbilityController
 {
 	GameObject GameObject { get; }
-	event Action Tick;
 }
 
-public abstract class AbilityBase : ScriptableObject
+public abstract class AbilityBase : MonoBehaviour
 {
-
-	protected IAbilityController controller;
-
-	public IAbilityController Controller {
-		get
-		{
-			return controller;
-		}
-		set
-		{
-			controller = value;
-			Initialize();
-		}
-	}
+	public IAbilityController Controller { get; protected set; }
 
 	public abstract string Name { get; }
 	public Sprite Sprite;
 
-	public virtual void Activate() { }
+	public float TotalUsageTime { get; protected set; } = 0;
+	public bool IsEquipped { get; private set; } = false;
+	public bool Activated { get; private set; } = false;
 
-	protected virtual void Initialize() { }
+	protected void Update()
+	{
+		if(IsEquipped)
+		{
+			TotalUsageTime += Time.deltaTime;
+			Tick();
+		}
+	}
+
+	protected void FixedUpdate()
+	{
+		if(IsEquipped)
+		{
+			FixedTick();
+		}
+	}
+
+	public virtual void Activate() {
+		Activated = true;
+	}
+	public virtual void Release() {
+		Activated = false;
+	}
+
+	public void Equip(IAbilityController newController)
+	{
+		Controller = newController;
+		IsEquipped = true;
+		OnEquip();
+	}
+
+	public void Unequip()
+	{
+		IsEquipped = false;
+		OnUnequip();
+	}
+
+
+	protected virtual void OnEquip() {
+		
+	}
+
+	protected virtual void OnUnequip() {
+		
+	}
+
+	protected virtual void Tick()
+	{
+
+	}
+
+	protected virtual void FixedTick()
+	{
+
+	}
 
 }
 

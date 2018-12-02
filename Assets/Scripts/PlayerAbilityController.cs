@@ -2,35 +2,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
+[RequireComponent(typeof(AbilityPool))]
 public class PlayerAbilityController : MonoBehaviour, IAbilityController
 {
-	public List<AbilitySlot> Abilities = new List<AbilitySlot>();
+	public Transform SlotsContainer;
 
 	public GameObject GameObject => gameObject;
 
-	public event Action Tick;
 	public event Action AbilitiesChanged;
+
+	public IList<AbilitySlot> AllAbilitySlots => passiveAbilitySlots.Concat(activableAbilitySlots).ToList();
+
+	private List<AbilitySlot> passiveAbilitySlots;
+	private List<ActivableAbilitySlot> activableAbilitySlots;
+
+	private AbilityPool abilityPool;
 
 	private void Awake()
 	{
-		foreach (AbilitySlot slot in Abilities)
-		{
-			slot.Ability.Controller = this;
-		}
+		abilityPool = GetComponent<AbilityPool>();
+		UpdateInternalData();
 	}
 
 	private void Update()
 	{
-		foreach(AbilitySlot slot in Abilities)
+		foreach(ActivableAbilitySlot slot in activableAbilitySlots)
 		{
-			if(Input.GetKeyDown(slot.ActivateKey))
+			if(Input.GetKeyDown(slot.ActivateKey) && slot.Ability != null)
 			{
 				slot.Ability.Activate();
 			}
+			if(Input.GetKeyUp(slot.ActivateKey) && slot.Ability != null)
+			{
+				slot.Ability.Release();
+			}
 		}
 
-		Tick?.Invoke();
+	}
+
+	public AbilityBase EquipAbility(AbilityBase ability, AbilitySlot slot)
+	{
+		AbilityBase oldAbility = slot.SwapInAbility(ability);
+		if(oldAbility != null)
+		{
+			abilityPool.AddAbility(oldAbility);
+		}
+		ChangedAbilities();
+
+		return oldAbility;
 	}
 
 	public void ChangedAbilities()
@@ -38,11 +59,30 @@ public class PlayerAbilityController : MonoBehaviour, IAbilityController
 		AbilitiesChanged?.Invoke();
 	}
 
-}
+	public void UpdateInternalData()
+	{
+		passiveAbilitySlots = new List<AbilitySlot>();
+		activableAbilitySlots = new List<ActivableAbilitySlot>();
 
-[System.Serializable]
-public class AbilitySlot
-{
-	public KeyCode ActivateKey;
-	public AbilityBase Ability;
+		foreach (Transform child in SlotsContainer)
+		{
+			AbilitySlot slot = child.GetComponent<AbilitySlot>();
+			if (slot is ActivableAbilitySlot)
+			{
+				var activableSlot = (ActivableAbilitySlot)slot;
+				activableAbilitySlots.Add(activableSlot);
+			}
+			else
+			{
+				passiveAbilitySlots.Add(slot);
+			}
+			slot.UpdateInternalData();
+
+			if (slot.Ability != null)
+			{
+				slot.Ability.Equip(this);
+			}
+		}
+	}
+
 }

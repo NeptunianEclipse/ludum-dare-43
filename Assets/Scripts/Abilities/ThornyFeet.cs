@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Ability/Thorny Feet")]
 public class ThornyFeet : AbilityBase
 {
 	public float DamageAmount = 1;
@@ -12,25 +11,32 @@ public class ThornyFeet : AbilityBase
 
 	private PlayerMovement playerMovement;
 
-	protected override void Initialize()
+	protected override void OnEquip()
 	{
-		base.Initialize();
+		base.OnEquip();
 
-		playerMovement = controller.GameObject.GetComponent<PlayerMovement>();
+		playerMovement = Controller.GameObject.GetComponent<PlayerMovement>();
 		playerMovement.FeetTriggerEnter += OnFeetTriggerEnter;
 	}
 
-	private void OnFeetTriggerEnter(Collider2D collision)
+	protected override void OnUnequip()
+	{
+		base.OnUnequip();
+
+		playerMovement.FeetTriggerEnter -= OnFeetTriggerEnter;
+	}
+
+	private void OnFeetTriggerEnter(Collider2D collider, Vector2 point)
 	{
 		if(playerMovement.Rigidbody2d.velocity.y > 0)
 		{
 			return;
 		}
 
-		var damageable = collision.gameObject.GetComponent<Damageable>();
+		var damageable = collider.gameObject.GetComponent<Damageable>();
 		if(damageable != null)
 		{
-			damageable.InflictDamage(DamageAmount);
+			damageable.InflictDamage(DamageAmount, point);
 		}
 	}
 

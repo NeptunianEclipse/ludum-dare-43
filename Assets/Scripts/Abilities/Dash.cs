@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Ability/Dash")]
 public class Dash : AbilityBase, IRecoverable
 {
 	public override string Name => "Dash";
@@ -21,14 +20,12 @@ public class Dash : AbilityBase, IRecoverable
 
 	public float RecoveryPercent => dashing ? 0 : Mathf.Clamp01(Mathf.InverseLerp(lastDashEndTime, lastDashEndTime + TimeBetweenDashes, Time.time));
 
-	protected override void Initialize()
+	protected override void OnEquip()
 	{
-		base.Initialize();
+		base.OnEquip();
 
-		controller.Tick += OnUpdate;
-
-		playerMovement = controller.GameObject.GetComponent<PlayerMovement>();
-		playerRigidbody = controller.GameObject.GetComponent<Rigidbody2D>();
+		playerMovement = Controller.GameObject.GetComponent<PlayerMovement>();
+		playerRigidbody = Controller.GameObject.GetComponent<Rigidbody2D>();
 
 		lastDashEndTime = Time.time - Duration;
 	}
@@ -41,7 +38,7 @@ public class Dash : AbilityBase, IRecoverable
 		}
 	}
 
-	private void OnUpdate()
+	protected override void Tick()
 	{
 		if(dashing == false)
 		{
