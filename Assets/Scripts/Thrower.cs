@@ -44,7 +44,6 @@ public class Thrower : MonoBehaviour
 		}
 		
 		projectilesThrowable.Expired += ThrowableComponent_Expired;
-		projectilesThrowable.parent = this;
 		
 		projectileInstances.Add(newProjectile);
 	}

@@ -60,8 +60,6 @@ public class ShakeyMovement : MonoBehaviour
 	{
 		Vector2 perpendicularToVelocity = myVelocity.Perpendicular().ElementwiseAbosolute();
 
-		var proportionOfMaxVarianceCovered = Mathf.Min(maxVariance / cumulativeXShake, 1);
-
 		var probOfPositiveXDelta = Mathf.Clamp01(Mathf.InverseLerp(maxVariance, -maxVariance, cumulativeXShake));
 		var probOfPositiveYDelta = Mathf.Clamp01(Mathf.InverseLerp(maxVariance, -maxVariance, cumulativeYShake));
 

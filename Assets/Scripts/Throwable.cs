@@ -10,7 +10,7 @@ public class Throwable : MonoBehaviour
 
 	public float MaxTimeAlive = 10f;
 
-	private Collider2D myCollider;
+	//private Collider2D myCollider;
 
 	private float timeAlive = 0f;
 
@@ -24,11 +24,9 @@ public class Throwable : MonoBehaviour
 	/// </summary>
 	public event System.EventHandler Collided;
 
-	internal Thrower parent;
-
 	void Awake()
 	{
-		myCollider = GetComponent<Collider2D>();
+		//myCollider = GetComponent<Collider2D>();
 
 		if (CollidesWith == default(LayerMask)) Debug.LogWarning($"A {gameObject.name} has no layer mask set.");
 
@@ -36,15 +34,7 @@ public class Throwable : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		//// Don't collide with our parent
-		//if (parent != null && collision.gameObject == parent.gameObject)
-		//{
-		//	Physics2D.IgnoreCollision(myCollider, collision.collider);
-		//}
-		//else
-		//{
-		//	OnCollided(new System.EventArgs());
-		//}
+		OnCollided(new System.EventArgs());
 	}
 
 	void Update()
