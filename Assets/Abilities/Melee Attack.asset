@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2230f65ab20ac49845d89ddd51be93, type: 3}
+  m_Name: Melee Attack
+  m_EditorClassIdentifier: 
+  Sprite: {fileID: 0}
+  WeaponPrefab: {fileID: 114523085714341024, guid: 9a0cbbddd3ae7e845a53beec9eb7d149,
+    type: 2}

@@ -21,7 +21,7 @@ public class MidAirJump : AbilityBase
 		movement.Grounded += OnGrounded;
 	}
 
-	public override void OnActivate()
+	public override void Activate()
 	{
 		if (movement.IsGrounded() == false && jumpCount < NumJumps)
 		{

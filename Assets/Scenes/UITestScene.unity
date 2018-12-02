@@ -453,6 +453,23 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224760247661600976, guid: 3618c66ebc552d645ab35ac8e9e3a6d5,
     type: 2}
   m_PrefabInternal: {fileID: 483219878}
+--- !u!1 &531892400 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1223626300076362, guid: a61992594d1f36f4ea596bf3340d90ee,
+    type: 2}
+  m_PrefabInternal: {fileID: 616260834}
+--- !u!114 &531892407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 531892400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1725d7f042812e14c8a24b5faf2aa295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageAmount: 0
 --- !u!1001 &616260834
 Prefab:
   m_ObjectHideFlags: 0
@@ -534,9 +551,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1211913782736138, guid: 9a0cbbddd3ae7e845a53beec9eb7d149, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a0cbbddd3ae7e845a53beec9eb7d149, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1314229763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1355616746824374, guid: a9dc3e1fcad6eb34ebbcaa7287437daf,
+    type: 2}
+  m_PrefabInternal: {fileID: 2097993397}
+--- !u!114 &1314229767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1314229763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 333b3e4465c0a434cbedc828f1cc6c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
 --- !u!1 &1452699335
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,7 +856,7 @@ Prefab:
     - target: {fileID: 114671053775571300, guid: a9dc3e1fcad6eb34ebbcaa7287437daf,
         type: 2}
       propertyPath: Abilities.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4310199989624448, guid: a9dc3e1fcad6eb34ebbcaa7287437daf, type: 2}
       propertyPath: m_LocalPosition.x
@@ -872,6 +910,17 @@ Prefab:
         type: 2}
       propertyPath: AirHorizontalDrag
       value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 114671053775571300, guid: a9dc3e1fcad6eb34ebbcaa7287437daf,
+        type: 2}
+      propertyPath: Abilities.Array.data[4].Ability
+      value: 
+      objectReference: {fileID: 11400000, guid: 083de664075de4a44adc4bd9aab67b20,
+        type: 2}
+    - target: {fileID: 114671053775571300, guid: a9dc3e1fcad6eb34ebbcaa7287437daf,
+        type: 2}
+      propertyPath: Abilities.Array.data[4].ActivateKey
+      value: 113
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9dc3e1fcad6eb34ebbcaa7287437daf, type: 2}

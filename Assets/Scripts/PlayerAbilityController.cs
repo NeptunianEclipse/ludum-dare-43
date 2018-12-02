@@ -26,7 +26,7 @@ public class PlayerAbilityController : MonoBehaviour, IAbilityController
 		{
 			if(Input.GetKeyDown(slot.ActivateKey))
 			{
-				slot.Ability.OnActivate();
+				slot.Ability.Activate();
 			}
 		}
 

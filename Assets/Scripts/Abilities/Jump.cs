@@ -11,7 +11,7 @@ public class Jump : AbilityBase
 
 	private PlayerMovement movement;
 
-	public override void OnActivate()
+	public override void Activate()
 	{
 		if(movement.IsGrounded())
 		{

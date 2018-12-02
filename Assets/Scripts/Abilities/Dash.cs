@@ -33,7 +33,7 @@ public class Dash : AbilityBase, IRecoverable
 		lastDashEndTime = Time.time - Duration;
 	}
 
-	public override void OnActivate()
+	public override void Activate()
 	{
 		if(Time.time >= lastDashEndTime + TimeBetweenDashes && dashing == false)
 		{ 
