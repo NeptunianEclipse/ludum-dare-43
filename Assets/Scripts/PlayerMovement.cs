@@ -101,7 +101,6 @@ public class PlayerMovement : MonoBehaviour
 
 	private void OnFeetTriggerEnter(Collider2D collider)
 	{
-		var collision = new Collision2D();
 		FeetTriggerEnter?.Invoke(collider, Feet.transform.position);
 	}
 
