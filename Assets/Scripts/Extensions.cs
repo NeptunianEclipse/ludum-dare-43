@@ -75,5 +75,23 @@ namespace LudumDare43.Extensions
 		{
 			return new Vector2(Mathf.Abs(vector.x), Mathf.Abs(vector.y));
 		}
+
+
+		/// <summary>
+		/// Apply a force to a rigid body over a duration. Call from StartCoroutine(rigidbody.ApplyForce(...)).
+		/// </summary>
+		/// <param name="rigidbody"></param>
+		/// <param name="forcePerUpdate"></param>
+		/// <param name="duration"></param>
+		public  static IEnumerator<WaitForFixedUpdate> ApplyForce(this Rigidbody2D rigidbody, Vector2 forcePerUpdate, float duration)
+		{
+			float totalTime = 0f;
+			while (totalTime <= duration)
+			{
+				rigidbody.AddForce(forcePerUpdate);
+				totalTime += Time.deltaTime;
+				yield return new WaitForFixedUpdate();
+			}
+		}
 	}
 }

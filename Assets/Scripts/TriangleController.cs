@@ -5,18 +5,18 @@ using UnityEngine;
 
 public class TriangleController : MonoBehaviour
 {
-	public GameObject projectilePrefab;
+	public GameObject ProjectilePrefab;
 
 	private GameObject projectileInstance = null;
 
 	void Update()
 	{
-		if (projectilePrefab == null) return;
+		if (ProjectilePrefab == null) return;
 		if (PlayerInRange() && projectileInstance == null)
 		{
 			Vector2 playersDirection = new Vector2(-3f, 0f);
 
-			var projectile = Instantiate<GameObject>(projectilePrefab, this.transform.position, Quaternion.identity);
+			var projectile = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
 			var projectileShakeyMovement = projectile.GetComponent<ShakeyMovement>();
 			projectileShakeyMovement.myVelocity = playersDirection;
 			projectileShakeyMovement.transform.rotation = Quaternion.LookRotation(playersDirection);

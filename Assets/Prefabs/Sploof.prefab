@@ -86,7 +86,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -185,11 +185,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9b796d6c4ba2b44986c413062f7749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 2
-  TurnDuration: 1
+  MaxSpeed: 3
+  TurnDuration: 0.7
   DownDistance: 1
   RightDistance: 0.1
-  MoveDirection: {x: 1, y: 0}
+  Acceleration: 8
   Notices:
     serializedVersion: 2
     m_Bits: 6144
