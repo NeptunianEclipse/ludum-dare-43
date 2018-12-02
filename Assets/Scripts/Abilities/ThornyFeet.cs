@@ -26,17 +26,17 @@ public class ThornyFeet : AbilityBase
 		playerMovement.FeetTriggerEnter -= OnFeetTriggerEnter;
 	}
 
-	private void OnFeetTriggerEnter(Collider2D collision)
+	private void OnFeetTriggerEnter(Collider2D collider, Vector2 point)
 	{
 		if(playerMovement.Rigidbody2d.velocity.y > 0)
 		{
 			return;
 		}
 
-		var damageable = collision.gameObject.GetComponent<Damageable>();
+		var damageable = collider.gameObject.GetComponent<Damageable>();
 		if(damageable != null)
 		{
-			damageable.InflictDamage(DamageAmount);
+			damageable.InflictDamage(DamageAmount, point);
 		}
 	}
 

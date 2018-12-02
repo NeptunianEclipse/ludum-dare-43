@@ -6,8 +6,10 @@ public class Damageable : MonoBehaviour
 {
 	public float MaxHealth = 100f;
 
-	public FloatingText DamageTextPrefab;
+	public FloatingTextUI DamageTextPrefab;
 	public Transform DamageTextCanvas;
+
+	public bool DestroyOnZeroHealth = false;
 
 	/// <summary>
 	/// Raised whenever this is dealt non-lethal damage.
@@ -26,25 +28,28 @@ public class Damageable : MonoBehaviour
 	private void Awake()
 	{
 		remainingHealth = MaxHealth;
+		
 	}
 
 	private void OnEnable()
 	{
 		Damaged += LogDamageTaken;
+		Destroyed += DestroyGameObject;
 	}
 
 	private void OnDisable()
 	{
 		Damaged -= LogDamageTaken;
+		Destroyed -= DestroyGameObject;
 	}
 
 	/// <summary>
 	/// Call this to damage the object.
 	/// </summary>
 	/// <param name="damage">The amount of damage to deal to this object.</param>
-	public void InflictDamage(float damage)
+	public void InflictDamage(float damage, Vector2? damageLocation = null)
 	{
-		SpawnDamageText(damage);
+		SpawnDamageText(damage, damageLocation ?? transform.position);
 
 		if (!destroyed)
 		{
@@ -71,13 +76,15 @@ public class Damageable : MonoBehaviour
 		Destroyed?.Invoke(sender, args);
 	}
 
-	private void SpawnDamageText(float amount)
+	private void SpawnDamageText(float amount, Vector2 damageLocation)
 	{
-		var floatingText = Instantiate(DamageTextPrefab, transform.position, Quaternion.identity, DamageTextCanvas).GetComponent<FloatingText>();
-		floatingText.Text = amount.ToString();
+		var adjustedDamageLocation = damageLocation + (damageLocation - (Vector2)transform.position).normalized * 0.2f;
+
+		WorldUI.Instance.SpawnDamageText(amount, adjustedDamageLocation);
 	}
 
-
 	private System.EventHandler LogDamageTaken => (sender, e) => Debug.Log($"This ({gameObject.name}) took damage.");
+
+	private void DestroyGameObject(object sender, System.EventArgs e) => Destroy(gameObject);
 
 }

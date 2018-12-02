@@ -5,9 +5,10 @@ using UnityEngine;
 
 public enum AttackState
 {
-	Inactive,
+	Ready,
 	Attacking,
-	Returning
+	Returning,
+	Recovering
 }
 
 public class MeleeWeaponController : MonoBehaviour
@@ -27,11 +28,11 @@ public class MeleeWeaponController : MonoBehaviour
 	public float RecoveryPercent {
 		get
 		{
-			if(AttackState == AttackState.Returning)
+			if(AttackState == AttackState.Recovering)
 			{
-				return Mathf.Clamp01(timeUntilReturnEnds / Mathf.Max(timeBetweenAttacks, 0.01f));
+				return 1 - Mathf.Clamp01(timeUntilNextAttack / Mathf.Max(timeBetweenAttacks, 0.01f));
 			}
-			else if(AttackState == AttackState.Attacking)
+			else if(AttackState == AttackState.Attacking || AttackState == AttackState.Returning)
 			{
 				return 0;
 			}
@@ -48,7 +49,7 @@ public class MeleeWeaponController : MonoBehaviour
 	private float timeUntilAttackEnds;
 	private float timeUntilReturnEnds;
 
-	private AttackState AttackState = AttackState.Inactive;
+	private AttackState AttackState = AttackState.Ready;
 	private bool willAttack = false;
 
 	private readonly ICollection<GameObject> damagedObjects = new List<GameObject>();
@@ -78,7 +79,7 @@ public class MeleeWeaponController : MonoBehaviour
 			{
 				cameraShake?.StartShaking(attackImpact);
 
-				damageable.InflictDamage(attackDamage);
+				damageable.InflictDamage(attackDamage, transform.position);
 				damagedObjects.Add(other);
 			}
 		}
@@ -88,9 +89,9 @@ public class MeleeWeaponController : MonoBehaviour
 	{
 		float deltaTime = Time.deltaTime;
 
-		if(AttackState == AttackState.Attacking)
+		if (AttackState == AttackState.Attacking)
 		{
-			if(timeUntilAttackEnds <= 0)
+			if (timeUntilAttackEnds <= 0)
 			{
 				EndAttack();
 			}
@@ -124,18 +125,23 @@ public class MeleeWeaponController : MonoBehaviour
 				timeUntilReturnEnds -= deltaTime;
 			}
 		}
-		else
+		else if (AttackState == AttackState.Recovering)
 		{
-			if(timeUntilNextAttack <= 0)
+			if (timeUntilNextAttack <= 0)
 			{
-				if(willAttack)
-				{
-					StartAttack();
-				}
+				AttackState = AttackState.Ready;
 			}
 			else
 			{
 				timeUntilNextAttack -= deltaTime;
+			}
+			
+		}
+		else
+		{
+			if (willAttack)
+			{
+				StartAttack();
 			}
 		}
 	}
@@ -143,7 +149,7 @@ public class MeleeWeaponController : MonoBehaviour
 	public void TryAttack()
 	{
 		Debug.Log("try attack");
-		willAttack = AttackState == AttackState.Inactive;
+		willAttack = AttackState == AttackState.Ready;
 		Debug.Log(willAttack);
 	}
 
@@ -164,7 +170,7 @@ public class MeleeWeaponController : MonoBehaviour
 	private void EndReturn()
 	{
 		transform.localPosition = initialPosition; // To deal with slight differences in the exact amount moved per frame, ie. if the duration of frames didn't exactly sum to the attack's duration.
-		AttackState = AttackState.Inactive;
+		AttackState = AttackState.Recovering;
 		timeUntilNextAttack = timeBetweenAttacks;
 		willAttack = false;
 	}

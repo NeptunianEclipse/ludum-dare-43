@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 	public bool HorizontalMovementAllowed { get; set; } = true;
 
 	public event Action Grounded;
-	public event Action<Collider2D> FeetTriggerEnter;
+	public event Action<Collider2D, Vector2> FeetTriggerEnter;
 
 	public Rigidbody2D Rigidbody2d { get; private set; }
 
@@ -99,9 +99,10 @@ public class PlayerMovement : MonoBehaviour
 		return (int)Mathf.Sign(Rigidbody2d.velocity.x);
 	}
 
-	private void OnFeetTriggerEnter(Collider2D collision)
+	private void OnFeetTriggerEnter(Collider2D collider)
 	{
-		FeetTriggerEnter?.Invoke(collision);
+		var collision = new Collision2D();
+		FeetTriggerEnter?.Invoke(collider, Feet.transform.position);
 	}
 
 

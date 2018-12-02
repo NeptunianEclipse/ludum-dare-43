@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class FloatingText : MonoBehaviour 
+public class FloatingTextUI : MonoBehaviour 
 {
 	public Text TextObject;
 	public Vector2 MaxVelocity;

@@ -11,7 +11,7 @@ public class ContactDamage : MonoBehaviour
 		var damageable = collision.gameObject.GetComponent<Damageable>();
 		if (damageable != null)
 		{
-			damageable.InflictDamage(DamageAmount);
+			damageable.InflictDamage(DamageAmount, collision.GetContact(0).point);
 		}
 	}
 }
