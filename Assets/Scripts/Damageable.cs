@@ -6,6 +6,9 @@ public class Damageable : MonoBehaviour
 {
 	public float MaxHealth = 100f;
 
+	public FloatingText DamageTextPrefab;
+	public Transform DamageTextCanvas;
+
 	/// <summary>
 	/// Raised whenever this is dealt non-lethal damage.
 	/// </summary>
@@ -41,6 +44,8 @@ public class Damageable : MonoBehaviour
 	/// <param name="damage">The amount of damage to deal to this object.</param>
 	public void InflictDamage(float damage)
 	{
+		SpawnDamageText(damage);
+
 		if (!destroyed)
 		{
 			remainingHealth -= damage;
@@ -64,6 +69,12 @@ public class Damageable : MonoBehaviour
 	public void OnDestroyed(object sender, System.EventArgs args)
 	{
 		Destroyed?.Invoke(sender, args);
+	}
+
+	private void SpawnDamageText(float amount)
+	{
+		var floatingText = Instantiate(DamageTextPrefab, transform.position, Quaternion.identity, DamageTextCanvas).GetComponent<FloatingText>();
+		floatingText.Text = amount.ToString();
 	}
 
 
