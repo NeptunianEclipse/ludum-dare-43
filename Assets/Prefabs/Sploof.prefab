@@ -38,6 +38,8 @@ GameObject:
   - component: {fileID: 60376905591426162}
   - component: {fileID: 50318803285502422}
   - component: {fileID: 114814139128454302}
+  - component: {fileID: 114893541597364008}
+  - component: {fileID: 114733767210545184}
   m_Layer: 9
   m_Name: Sploof
   m_TagString: Untagged
@@ -91,7 +93,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &60376905591426162
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -128,6 +130,17 @@ PolygonCollider2D:
       - {x: 0.4044857, y: -0.026312351}
       - {x: 0.606514, y: 0.34490985}
       - {x: 0.6107507, y: 0.5864844}
+--- !u!114 &114733767210545184
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1223626300076362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb2b38dd6433ae448b72bbdb4f37df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114814139128454302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,6 +152,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 333b3e4465c0a434cbedc828f1cc6c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHealth: 15
+--- !u!114 &114893541597364008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1223626300076362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc9b796d6c4ba2b44986c413062f7749, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  detector: {fileID: 0}
 --- !u!212 &212831452288410698
 SpriteRenderer:
   m_ObjectHideFlags: 1
