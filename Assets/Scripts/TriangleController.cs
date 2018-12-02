@@ -9,11 +9,6 @@ public class TriangleController : MonoBehaviour
 
 	private GameObject projectileInstance = null;
 
-	void Start()
-	{
-
-	}
-
 	void Update()
 	{
 		if (projectilePrefab == null) return;
@@ -29,8 +24,7 @@ public class TriangleController : MonoBehaviour
 			projectileInstance = projectile;
 		}
 	}
-
-
+	
 
 	public bool PlayerInRange()
 	{

@@ -137,9 +137,9 @@ MonoBehaviour:
   attackDuration: 0.15
   recoveryDuration: 0.2
   attackLength: {x: 0.3, y: 0.1}
-  attackImpact: 0.2
+  attackImpact: 0.1
   cameraShake: {fileID: 0}
-  announceCollisions: 0
+  logEverything: 0
 --- !u!212 &212817967331277708
 SpriteRenderer:
   m_ObjectHideFlags: 1

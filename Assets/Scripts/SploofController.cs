@@ -3,13 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// [Requires a damageable component]
+[RequireComponent(typeof(Damageable))]
 public class SploofController : MonoBehaviour
 {
-	void Start()
+	private Damageable damageable;
+
+	void Awake()
 	{
-		var damageable = gameObject.GetComponent<Damageable>();
+		damageable = gameObject.GetComponent<Damageable>();
+	}
+
+	void OnEnable()
+	{
 		damageable.Destroyed += Damageable_Destroyed;
+	}
+
+	void OnDisable()
+	{
+		damageable.Destroyed -= Damageable_Destroyed;
 	}
 
 	private void Damageable_Destroyed(object sender, System.EventArgs e)

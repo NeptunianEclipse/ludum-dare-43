@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordAttack : MonoBehaviour
+public class MeleeAttack : MonoBehaviour
 {
 	public float attackDamage = 0f;
 	public float timeBetweenAttacks = 0f;
@@ -29,7 +29,7 @@ public class SwordAttack : MonoBehaviour
 
 	private readonly ICollection<GameObject> damagedObjects = new List<GameObject>();
 
-	void Start()
+	void Awake()
 	{
 		timeUntilNextAttack = timeBetweenAttacks;
 		timeUntilAttackEnds = 0f;
@@ -39,10 +39,10 @@ public class SwordAttack : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D collision)
 	{
-		Log($"This ({this.gameObject.name}) entred a {collision.gameObject.name}");
+		Log($"This ({gameObject.name}) entred a {collision.gameObject.name}");
 	}
 
-	private void OnTriggerStay2D(Collider2D collision)
+	void OnTriggerStay2D(Collider2D collision)
 	{
 		if (isAttacking)
 		{
@@ -52,6 +52,8 @@ public class SwordAttack : MonoBehaviour
 
 			if (damageable != null && !damagedObjects.Contains(other))
 			{
+				cameraShake.StartShaking(attackImpact);
+
 				damageable.InflictDamage(attackDamage);
 				damagedObjects.Add(other);
 			}
@@ -136,15 +138,6 @@ public class SwordAttack : MonoBehaviour
 		transform.localPosition = initialPosition; // To deal with slight differences in the exact amount moved per frame, ie. if the duration of frames didn't exactly sum to the attack's duration.
 		isRecovering = false;
 		timeUntilNextAttack = timeBetweenAttacks;
-	}
-
-	// Currently not yet called from anywhere, need to set up collisions first.
-	private void WhenHittingSomething()
-	{
-		float duration = attackImpact / 2;
-		float magnitude = attackImpact;
-
-		StartCoroutine(cameraShake.Shake(duration, magnitude));
 	}
 
 	private void Log(string message)
