@@ -565,42 +565,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 4035269953478974, guid: a61992594d1f36f4ea596bf3340d90ee, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114893541597364008, guid: a61992594d1f36f4ea596bf3340d90ee,
-        type: 2}
-      propertyPath: detector
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114893541597364008, guid: a61992594d1f36f4ea596bf3340d90ee,
-        type: 2}
-      propertyPath: moveSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114893541597364008, guid: a61992594d1f36f4ea596bf3340d90ee,
-        type: 2}
-      propertyPath: moveDirection.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114893541597364008, guid: a61992594d1f36f4ea596bf3340d90ee,
-        type: 2}
-      propertyPath: turnDuration
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114893541597364008, guid: a61992594d1f36f4ea596bf3340d90ee,
-        type: 2}
-      propertyPath: rightDistance
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114893541597364008, guid: a61992594d1f36f4ea596bf3340d90ee,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 212297750638024386, guid: a61992594d1f36f4ea596bf3340d90ee, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a61992594d1f36f4ea596bf3340d90ee, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &2096798874
