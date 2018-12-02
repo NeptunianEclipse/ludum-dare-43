@@ -39,7 +39,7 @@ public class MeleeAttack : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D collision)
 	{
-		Log($"This ({this.gameObject.name}) entred a {collision.gameObject.name}");
+		Log($"This ({gameObject.name}) entred a {collision.gameObject.name}");
 	}
 
 	private void OnTriggerStay2D(Collider2D collision)
@@ -52,6 +52,8 @@ public class MeleeAttack : MonoBehaviour
 
 			if (damageable != null && !damagedObjects.Contains(other))
 			{
+				cameraShake.StartShaking(attackImpact);
+
 				damageable.InflictDamage(attackDamage);
 				damagedObjects.Add(other);
 			}
@@ -136,15 +138,6 @@ public class MeleeAttack : MonoBehaviour
 		transform.localPosition = initialPosition; // To deal with slight differences in the exact amount moved per frame, ie. if the duration of frames didn't exactly sum to the attack's duration.
 		isRecovering = false;
 		timeUntilNextAttack = timeBetweenAttacks;
-	}
-
-	// Currently not yet called from anywhere, need to set up collisions first.
-	private void WhenHittingSomething()
-	{
-		float duration = attackImpact / 2;
-		float magnitude = attackImpact;
-
-		StartCoroutine(cameraShake.Shake(duration, magnitude));
 	}
 
 	private void Log(string message)

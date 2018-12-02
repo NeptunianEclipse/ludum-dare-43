@@ -20,10 +20,19 @@ public class Damageable : MonoBehaviour
 
 	private bool destroyed = false;
 
-	private void Start()
+	private void Awake()
 	{
 		remainingHealth = MaxHealth;
-		Damaged += (sender, e) => Debug.Log($"This ({gameObject.name}) took damage.");
+	}
+
+	private void OnEnable()
+	{
+		Damaged += LogDamageTaken;
+	}
+
+	private void OnDisable()
+	{
+		Damaged -= LogDamageTaken;
 	}
 
 	/// <summary>
@@ -56,4 +65,8 @@ public class Damageable : MonoBehaviour
 	{
 		Destroyed?.Invoke(sender, args);
 	}
+
+
+	private System.EventHandler LogDamageTaken => (sender, e) => Debug.Log($"This ({gameObject.name}) took damage.");
+
 }
