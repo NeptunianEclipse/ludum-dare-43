@@ -11,6 +11,8 @@ public class ShakeyMovement : MonoBehaviour
 
 	public float maxVariance = 1f;
 
+	public float distanceBeforeDisposing = 100f;
+
 	private float cumulativeXShake = 0f;
 	private float cumulativeYShake = 0f;
 
@@ -19,9 +21,12 @@ public class ShakeyMovement : MonoBehaviour
 
 	private int fixedUpdateCounter = 0;
 
+	private float cumulativeDistance = 0f;
+
 	void Update()
 	{
 		Vector3 position = transform.position;
+		float deltaTime = Time.deltaTime;
 
 		float deltaX = myVelocity.x;
 		float deltaY = myVelocity.y;
@@ -29,18 +34,26 @@ public class ShakeyMovement : MonoBehaviour
 		deltaX += xShake;
 		deltaY += yShake;
 
-		cumulativeXShake += (xShake * Time.deltaTime);
-		cumulativeYShake += (yShake * Time.deltaTime);
+		cumulativeXShake += (xShake * deltaTime);
+		cumulativeYShake += (yShake * deltaTime);
 
-		deltaX *= Time.deltaTime;
-		deltaY *= Time.deltaTime;
+		deltaX *= deltaTime;
+		deltaY *= deltaTime;
 
 		transform.position = position.NewWithChange(deltaX, deltaY);
+
+		cumulativeDistance += myVelocity.magnitude * deltaTime;
+
+		if (cumulativeDistance >= distanceBeforeDisposing) Destroy(gameObject);
 	}
 
 	private void FixedUpdate()
 	{
-		if (++fixedUpdateCounter % shakeyUpdateFrequency == 0) CalculateShakeyness();
+		if (++fixedUpdateCounter >= shakeyUpdateFrequency)
+		{
+			fixedUpdateCounter = 0;
+			CalculateShakeyness();
+		}
 	}
 
 	private void CalculateShakeyness()
@@ -55,7 +68,7 @@ public class ShakeyMovement : MonoBehaviour
 		xShake = (Extensions.RandomBit(probOfPositiveXDelta) ? 1f : -1f) * shakeyness * perpendicularToVelocity.x;
 		yShake = (Extensions.RandomBit(probOfPositiveYDelta) ? 1f : -1f) * shakeyness * perpendicularToVelocity.y;
 
-		// Currently unused, should we bias the randomness based on how much we've already shaken?
+		// Should we bias the randomness based on how much we've already shaken?
 		// Only in the long run, so if we've shaken more than a certain amount we start to bias?
 		// Once we start to correct we would want to keep the correction going for a while.
 		// Maybe we want a different way about this where we generate a noise graph and then follow that?

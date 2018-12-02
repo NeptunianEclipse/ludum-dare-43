@@ -111,6 +111,7 @@ MonoBehaviour:
   shakeyUpdateFrequency: 7
   myVelocity: {x: 0, y: 0}
   maxVariance: 2
+  distanceBeforeDisposing: 25
 --- !u!212 &212165977632774590
 SpriteRenderer:
   m_ObjectHideFlags: 1
