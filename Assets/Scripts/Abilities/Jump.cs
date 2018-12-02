@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Ability/Jump")]
 public class Jump : AbilityBase
 {
+	public override string Name => "Jump";
+
 	public float JumpPower;
 
 	private PlayerMovement movement;
@@ -20,8 +22,6 @@ public class Jump : AbilityBase
 	protected override void Initialize()
 	{
 		base.Initialize();
-
-		controller.Activate += OnActivate;
 
 		movement = controller.GameObject.GetComponent<PlayerMovement>();
 	}

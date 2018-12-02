@@ -6,12 +6,12 @@ using UnityEngine;
 public interface IAbilityController
 {
 	GameObject GameObject { get; }
-	event Action Activate;
 	event Action Tick;
 }
 
 public abstract class AbilityBase : ScriptableObject
 {
+
 	protected IAbilityController controller;
 
 	public IAbilityController Controller {
@@ -26,10 +26,14 @@ public abstract class AbilityBase : ScriptableObject
 		}
 	}
 
+	public abstract string Name { get; }
+	public Sprite Sprite;
+
 	public abstract void OnActivate();
 
 	protected virtual void Initialize()
 	{
+
 	}
 
 }

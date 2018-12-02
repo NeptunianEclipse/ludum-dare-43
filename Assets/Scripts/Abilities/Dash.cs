@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Ability/Dash")]
 public class Dash : AbilityBase
 {
+	public override string Name => "Dash";
+
 	public float Duration;
 	public float Speed;
 
