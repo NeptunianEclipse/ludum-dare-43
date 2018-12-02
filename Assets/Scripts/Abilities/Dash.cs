@@ -8,9 +8,14 @@ public class Dash : AbilityBase
 	public float Duration;
 	public float Speed;
 
+	public float TimeBetweenDashes;
+
 	private PlayerMovement playerMovement;
+	private Rigidbody2D playerRigidbody;
 	private bool dashing;
+
 	private float dashStartTime;
+	private float lastDashEndTime;
 
 	protected override void Initialize()
 	{
@@ -19,13 +24,17 @@ public class Dash : AbilityBase
 		controller.Tick += OnUpdate;
 
 		playerMovement = controller.GameObject.GetComponent<PlayerMovement>();
+		playerRigidbody = controller.GameObject.GetComponent<Rigidbody2D>();
+
+		lastDashEndTime = Time.time - Duration;
 	}
 
 	public override void OnActivate()
 	{
-		playerMovement.HorizontalMovementAllowed = false;
-		dashStartTime = Time.time;
-		dashing = true;
+		if(Time.time >= lastDashEndTime + TimeBetweenDashes && dashing == false)
+		{ 
+			StartDash();
+		}
 	}
 
 	private void OnUpdate()
@@ -35,13 +44,27 @@ public class Dash : AbilityBase
 			return;
 		}
 
-		if(Time.time > dashStartTime + Duration)
+		if(Time.time >= dashStartTime + Duration)
 		{
-			dashing = false;
-			playerMovement.HorizontalMovementAllowed = true;
+			EndDash();
 		}
 
-		playerMovement.transform.position += Vector3.right * Speed;
+		playerMovement.transform.position += Vector3.right * playerMovement.MovingDirection() * Speed;
+	}
+
+	private void StartDash()
+	{
+		playerMovement.HorizontalMovementAllowed = false;
+		playerRigidbody.velocity = Vector2.right * playerMovement.MovingDirection();
+		dashStartTime = Time.time;
+		dashing = true;
+	}
+
+	private void EndDash()
+	{
+		playerMovement.HorizontalMovementAllowed = true;
+		lastDashEndTime = Time.time;
+		dashing = false;
 	}
 
 	
