@@ -237,6 +237,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &243986326 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1223626300076362, guid: a61992594d1f36f4ea596bf3340d90ee,
+    type: 2}
+  m_PrefabInternal: {fileID: 2079347907}
+--- !u!114 &243986330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 243986326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb2b38dd6433ae448b72bbdb4f37df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &371463283 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4310199989624448, guid: a9dc3e1fcad6eb34ebbcaa7287437daf,
@@ -286,14 +302,6 @@ Prefab:
       propertyPath: cameraShake
       value: 
       objectReference: {fileID: 4818356}
-    - target: {fileID: 1211913782736138, guid: 9a0cbbddd3ae7e845a53beec9eb7d149, type: 2}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1287080039063396, guid: 9a0cbbddd3ae7e845a53beec9eb7d149, type: 2}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a0cbbddd3ae7e845a53beec9eb7d149, type: 2}
   m_IsPrefabAsset: 0
@@ -4530,6 +4538,11 @@ Prefab:
     - target: {fileID: 4035269953478974, guid: a61992594d1f36f4ea596bf3340d90ee, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114814139128454302, guid: a61992594d1f36f4ea596bf3340d90ee,
+        type: 2}
+      propertyPath: MaxHealth
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a61992594d1f36f4ea596bf3340d90ee, type: 2}
