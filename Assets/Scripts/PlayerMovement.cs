@@ -76,5 +76,10 @@ public class PlayerMovement : MonoBehaviour
 		return Physics2D.OverlapBox(FeetArea.offset + (Vector2)FeetArea.transform.position, FeetArea.size / 2, 0, ~LayerMask.GetMask("Player"));
 	}
 
+	public int MovingDirection()
+	{
+		return (int)Mathf.Sign(rb2d.velocity.x);
+	}
+
 	
 }
