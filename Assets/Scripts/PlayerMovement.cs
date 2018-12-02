@@ -8,29 +8,44 @@ public class PlayerMovement : MonoBehaviour
 	public float Acceleration;
 	public float MaxSpeed;
 	public float GroundDrag;
+	public float AirHorizontalDrag;
 	public float JumpPower;
 
-	public BoxCollider2D FeetArea;
+	public GameObject Feet;
 
 	public bool HorizontalMovementAllowed { get; set; } = true;
 
-	private Rigidbody2D rb2d;
-	private ContactFilter2D feetFilter;
-
 	public event Action Grounded;
+	public event Action<Collider2D> FeetTriggerEnter;
+
+	public Rigidbody2D Rigidbody2d { get; private set; }
+
+	private BoxCollider2D feetArea;
+	private FeetCollisions feetCollisions;
 
 	private bool willJump;
 	private bool wasGrounded;
 
 	private void Awake()
 	{
-		rb2d = GetComponent<Rigidbody2D>();
-		feetFilter = new ContactFilter2D();
+		Rigidbody2d = GetComponent<Rigidbody2D>();
+		feetCollisions = Feet.GetComponent<FeetCollisions>();
+		feetArea = Feet.GetComponent<BoxCollider2D>();
+	}
+
+	private void OnEnable()
+	{
+		feetCollisions.TriggerEnter += OnFeetTriggerEnter;
+	}
+
+	private void OnDisable()
+	{
+		feetCollisions.TriggerEnter -= OnFeetTriggerEnter;
 	}
 
 	private void FixedUpdate()
 	{
-		Vector2 velocity = rb2d.velocity;
+		Vector2 velocity = Rigidbody2d.velocity;
 		bool isGrounded = IsGrounded();
 		
 		if(HorizontalMovementAllowed)
@@ -49,6 +64,10 @@ public class PlayerMovement : MonoBehaviour
 		{
 			velocity.x /= GroundDrag;
 		}
+		else
+		{
+			velocity.x /= AirHorizontalDrag;
+		}
 
 		if(!wasGrounded && isGrounded)
 		{
@@ -61,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
 			willJump = false;
 		}
 
-		rb2d.velocity = new Vector2(Mathf.Clamp(velocity.x, -MaxSpeed, MaxSpeed), velocity.y);
+		Rigidbody2d.velocity = new Vector2(Mathf.Clamp(velocity.x, -MaxSpeed, MaxSpeed), velocity.y);
 
 		wasGrounded = isGrounded;
 	}
@@ -73,12 +92,17 @@ public class PlayerMovement : MonoBehaviour
 
 	public bool IsGrounded()
 	{
-		return Physics2D.OverlapBox(FeetArea.offset + (Vector2)FeetArea.transform.position, FeetArea.size / 2, 0, ~LayerMask.GetMask("Player"));
+		return Physics2D.OverlapBox(feetArea.offset + (Vector2)feetArea.transform.position, feetArea.size / 2, 0, ~LayerMask.GetMask("Player"));
 	}
 
 	public int MovingDirection()
 	{
-		return (int)Mathf.Sign(rb2d.velocity.x);
+		return (int)Mathf.Sign(Rigidbody2d.velocity.x);
+	}
+
+	private void OnFeetTriggerEnter(Collider2D collision)
+	{
+		FeetTriggerEnter?.Invoke(collision);
 	}
 
 	

@@ -8,8 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8faba0692c432ac4facd6006ab1c8d77, type: 3}
-  m_Name: Jump
+  m_Script: {fileID: 11500000, guid: bb2230f65ab20ac49845d89ddd51be93, type: 3}
+  m_Name: Melee Attack
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: 5e4eade6d245ba4498f7c749dd086f80, type: 3}
-  JumpPower: 5
+  Sprite: {fileID: 0}
+  WeaponPrefab: {fileID: 114523085714341024, guid: 9a0cbbddd3ae7e845a53beec9eb7d149,
+    type: 2}

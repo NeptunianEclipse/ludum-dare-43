@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Ability/Mid-Air Jump")]
 public class MidAirJump : AbilityBase
 {
+	public override string Name => "Mid-Air Jump";
+
 	public float JumpPower;
 	public int NumJumps = 1;
 
@@ -15,13 +17,11 @@ public class MidAirJump : AbilityBase
 	{
 		base.Initialize();
 
-		controller.Activate += OnActivate;
-
 		movement = controller.GameObject.GetComponent<PlayerMovement>();
 		movement.Grounded += OnGrounded;
 	}
 
-	public override void OnActivate()
+	public override void Activate()
 	{
 		if (movement.IsGrounded() == false && jumpCount < NumJumps)
 		{

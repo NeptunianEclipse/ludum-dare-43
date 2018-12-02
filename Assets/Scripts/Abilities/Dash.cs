@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Ability/Dash")]
-public class Dash : AbilityBase
+public class Dash : AbilityBase, IRecoverable
 {
+	public override string Name => "Dash";
+
 	public float Duration;
 	public float Speed;
 
@@ -16,6 +18,8 @@ public class Dash : AbilityBase
 
 	private float dashStartTime;
 	private float lastDashEndTime;
+
+	public float RecoveryPercent => dashing ? 0 : Mathf.Clamp01(Mathf.InverseLerp(lastDashEndTime, lastDashEndTime + TimeBetweenDashes, Time.time));
 
 	protected override void Initialize()
 	{
@@ -29,7 +33,7 @@ public class Dash : AbilityBase
 		lastDashEndTime = Time.time - Duration;
 	}
 
-	public override void OnActivate()
+	public override void Activate()
 	{
 		if(Time.time >= lastDashEndTime + TimeBetweenDashes && dashing == false)
 		{ 

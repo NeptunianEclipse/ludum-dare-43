@@ -9,12 +9,12 @@ public class PlayerAbilityController : MonoBehaviour, IAbilityController
 
 	public GameObject GameObject => gameObject;
 
-	public event Action Activate;
 	public event Action Tick;
+	public event Action AbilitiesChanged;
 
 	private void Awake()
 	{
-		foreach(AbilitySlot slot in Abilities)
+		foreach (AbilitySlot slot in Abilities)
 		{
 			slot.Ability.Controller = this;
 		}
@@ -26,14 +26,17 @@ public class PlayerAbilityController : MonoBehaviour, IAbilityController
 		{
 			if(Input.GetKeyDown(slot.ActivateKey))
 			{
-				slot.Ability.OnActivate();
+				slot.Ability.Activate();
 			}
 		}
 
 		Tick?.Invoke();
 	}
 
-	
+	public void ChangedAbilities()
+	{
+		AbilitiesChanged?.Invoke();
+	}
 
 }
 
