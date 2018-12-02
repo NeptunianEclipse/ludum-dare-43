@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4417397469722796}
   - component: {fileID: 212770475882198026}
   - component: {fileID: 95929097450647692}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FhroomSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 50875761611994736}
   - component: {fileID: 114368888710578344}
   - component: {fileID: 114774471470741208}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fhroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568632273182426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.01, y: 0.98, z: -0.21875}
+  m_LocalPosition: {x: -3.46, y: 5.46, z: -0.21875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4417397469722796}
@@ -81,7 +81,7 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568632273182426}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -118,26 +118,22 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.34946537, y: -0.5138234}
-      - {x: 0.5167055, y: 0.08788681}
-      - {x: 0.737628, y: 0.56770635}
-      - {x: 0.66015434, y: 0.63020635}
-      - {x: 0.44540215, y: 0.6013918}
-      - {x: 0.42498875, y: 0.7977326}
-      - {x: 0.30902576, y: 0.8489566}
-      - {x: 0.18761444, y: 0.77926993}
-      - {x: 0.117835045, y: 0.850258}
-      - {x: 0.017577171, y: 0.84027505}
-      - {x: -0.11111164, y: 0.80902505}
-      - {x: -0.2085514, y: 0.9101546}
-      - {x: -0.31141376, y: 0.8899741}
-      - {x: -0.3563366, y: 0.55012894}
-      - {x: -0.747612, y: 0.08506882}
-      - {x: -0.7660427, y: -0.33216602}
-      - {x: -0.50303364, y: -0.70443267}
-      - {x: -0.6013441, y: -0.9750433}
-      - {x: 0.098864555, y: -0.98052883}
-      - {x: 0.042749405, y: -0.7354557}
+    - - {x: 0.7494345, y: -0.3459118}
+      - {x: 0.74523735, y: 0.070307374}
+      - {x: 0.33915997, y: 0.5940757}
+      - {x: 0.23075294, y: 0.9544538}
+      - {x: 0.091753006, y: 0.8411598}
+      - {x: -0.09375763, y: 0.9018029}
+      - {x: -0.2341671, y: 0.8178147}
+      - {x: -0.4322996, y: 0.82290065}
+      - {x: -0.49737263, y: 0.65181255}
+      - {x: -0.73151016, y: 0.6337228}
+      - {x: -0.5688877, y: 0.172966}
+      - {x: -0.336936, y: -0.53421474}
+      - {x: -0.04029751, y: -0.76008046}
+      - {x: -0.09153652, y: -0.98348415}
+      - {x: 0.613163, y: -0.9871223}
+      - {x: 0.4746542, y: -0.71172464}
 --- !u!95 &95929097450647692
 Animator:
   serializedVersion: 3
@@ -168,6 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 22
+  DamageTextPrefab: {fileID: 0}
+  DamageTextCanvas: {fileID: 0}
 --- !u!114 &114774471470741208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,11 +177,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9b796d6c4ba2b44986c413062f7749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  turnDuration: 0.5
-  downDistance: 1
-  rightDistance: 0.1
-  moveDirection: {x: 1, y: 0}
+  MoveSpeed: 3
+  TurnDuration: 1
+  DownDistance: 1
+  RightDistance: 0.1
+  MoveDirection: {x: 1, y: 0}
+  Notices:
+    serializedVersion: 2
+    m_Bits: 2560
 --- !u!212 &212770475882198026
 SpriteRenderer:
   m_ObjectHideFlags: 1
