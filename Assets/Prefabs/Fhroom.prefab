@@ -37,6 +37,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4287466705148670}
   - component: {fileID: 60101890558763740}
+  - component: {fileID: 58019940273114708}
+  - component: {fileID: 58173659221416878}
   - component: {fileID: 50875761611994736}
   - component: {fileID: 114368888710578344}
   - component: {fileID: 114228600243403734}
@@ -95,6 +97,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &58019940273114708
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568632273182426}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.05096436, y: -0.95}
+  serializedVersion: 2
+  m_Radius: 0.03
+--- !u!58 &58173659221416878
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568632273182426}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.5269356, y: -0.95}
+  serializedVersion: 2
+  m_Radius: 0.03
 --- !u!60 &60101890558763740
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -132,8 +164,9 @@ PolygonCollider2D:
       - {x: -0.5688877, y: 0.172966}
       - {x: -0.336936, y: -0.53421474}
       - {x: -0.04029751, y: -0.76008046}
-      - {x: -0.09153652, y: -0.98348415}
-      - {x: 0.613163, y: -0.9871223}
+      - {x: -0.050964355, y: -0.95}
+      - {x: 0.23307419, y: -0.8718989}
+      - {x: 0.5269356, y: -0.95}
       - {x: 0.4746542, y: -0.71172464}
 --- !u!95 &95929097450647692
 Animator:
@@ -198,6 +231,7 @@ MonoBehaviour:
   RightDistance: 0.1
   Acceleration: 15
   Decelleration: 10
+  Debug_LogTurning: 0
   Debug_DrawDetectionBox: 0
   Notices:
     serializedVersion: 2

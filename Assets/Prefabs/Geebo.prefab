@@ -37,6 +37,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4861857264711228}
   - component: {fileID: 60943690717841524}
+  - component: {fileID: 58613816010263456}
+  - component: {fileID: 58322651066809582}
   - component: {fileID: 50036384595526542}
   - component: {fileID: 114046794492508894}
   - component: {fileID: 114333802740437410}
@@ -97,6 +99,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &58322651066809582
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1910174121694888}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.581531, y: -1.293657}
+  serializedVersion: 2
+  m_Radius: 0.05
+--- !u!58 &58613816010263456
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1910174121694888}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.395, y: -1.311491}
+  serializedVersion: 2
+  m_Radius: 0.05
 --- !u!60 &60943690717841524
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -127,10 +159,11 @@ PolygonCollider2D:
       - {x: -0.57606846, y: 1.0018874}
       - {x: -0.6034144, y: -0.6925195}
       - {x: -0.31043696, y: -0.7537358}
-      - {x: -0.45741588, y: -1.3917407}
-      - {x: 0.6617811, y: -1.3917403}
-      - {x: 0.53382826, y: -0.67949665}
-      - {x: 0.7012558, y: -0.6057333}
+      - {x: -0.39499998, y: -1.311491}
+      - {x: 0.10976696, y: -1.0161265}
+      - {x: 0.58153105, y: -1.2936574}
+      - {x: 0.48924494, y: -0.6884132}
+      - {x: 0.6834221, y: -0.63248324}
 --- !u!95 &95979311080276614
 Animator:
   serializedVersion: 3
@@ -177,7 +210,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PatrolActive: 1
   MaxSpeed: 4
-  TurnDuration: 0.6
   DownDistance: 1
   RightDistance: 0.1
   Acceleration: 10
