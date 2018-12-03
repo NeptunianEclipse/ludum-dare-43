@@ -1,42 +1,157 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
+
+public enum GameState
+{
+	MainMenu,
+	IntroCutscene,
+	Levels,
+	EndCutscene,
+	Paused
+}
 
 public class GameManager : Singleton<GameManager> 
 {
-	public Scene MainMenuScene;
+	public SceneReference MainMenuSceneReference; 
+	public SceneReference PlayerSceneReference;
 
-	public Scene InitialLevelComponent;
-	public Scene SacrificeChamber;
-	public List<Scene> LevelScenes;
+	public SceneReference InitialLevelComponentReference;
+	public SceneReference SacrificeChamberReference;
+	public List<SceneReference> LevelSceneReferences;
 	public float LoadDistance;
+	public int LevelsInbetweenChambers;
 
-	private List<Level> LoadedLevels;
+	public bool DoGameSequence;
+
+	[Header("Editor only")]
+	public List<SceneReference> LoadOnStart;
+
+	public Scene MainMenuScene { get; private set; }
+	public Scene PlayerScene { get; private set; }
+
+	private GameState gameState;
+	public GameState GameState {
+		get { return gameState; }
+		set
+		{
+			gameState = value;
+			GameStateChanged?.Invoke(gameState);
+		}
+	}
+
+	public event Action<GameState> GameStateChanged;
+
+	private List<Level> LoadedLevels = new List<Level>();
+	private Transform rightmostConnector;
+	private int levelsUntilNextChamber;
 
 	private void Awake()
 	{
-		
+		SceneManager.sceneLoaded += OnSceneLoaded;
+		SceneManager.sceneUnloaded += OnSceneUnloaded;
 	}
 
 	private void Start()
 	{
-		SceneManager.LoadScene(MainMenuScene.name, LoadSceneMode.Additive);
+		foreach(SceneReference reference in LoadOnStart)
+		{
+			SceneManager.LoadScene(reference.ScenePath, LoadSceneMode.Additive);
+		}
+
+		if(DoGameSequence)
+		{
+			GameState = GameState.MainMenu;
+			SceneManager.LoadScene(MainMenuSceneReference.ScenePath, LoadSceneMode.Additive);
+		}
+		else
+		{
+			GameState = GameState.Levels;
+		}
+	}
+
+	private void Update()
+	{
+		// We're in game, load levels ahead of us and remove them behind us
+		if(GameState == GameState.Levels)
+		{
+			if(Vector3.Distance(Player.Instance.transform.position, rightmostConnector?.position ?? Vector3.zero) <= LoadDistance)
+			{
+				SceneReference nextLevel = NextLevelSceneToLoad();
+				LoadLevelScene(nextLevel);
+				levelsUntilNextChamber--;
+			}
+		}
 	}
 
 	public void StartNewGame()
 	{
+		SceneManager.LoadScene(InitialLevelComponentReference.ScenePath, LoadSceneMode.Additive);
+		SceneManager.LoadScene(PlayerSceneReference.ScenePath, LoadSceneMode.Additive);
 
+		GameState = GameState.Levels;
+
+		levelsUntilNextChamber = LevelsInbetweenChambers;
 	}
 
-	public void LoadLevelScene(Scene scene)
+	public SceneReference NextLevelSceneToLoad()
 	{
-		SceneManager.LoadScene(scene.name, LoadSceneMode.Additive);
+		if(levelsUntilNextChamber == 0)
+		{
+			return SacrificeChamberReference;
+		}
+		else
+		{
+			return LevelSceneReferences[UnityEngine.Random.Range(0, LevelSceneReferences.Count - 1)];
+		}
 	}
 
-	public void LevelFinishedLoading(Level level)
+	public void LoadLevelScene(SceneReference scene)
+	{
+		SceneManager.LoadScene(scene.ScenePath, LoadSceneMode.Additive);
+	}
+
+	public void LevelLoaded(Level level)
 	{
 		LoadedLevels.Add(level);
+
+		Level rightmostLevel = LoadedLevels.Last();
+		rightmostConnector = rightmostLevel.RightConnector;
+		level.transform.position = level.transform.position + (rightmostLevel.RightConnector.position - level.LeftConnector.position);
+	}
+
+	private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+	{
+		if(scene.path == MainMenuSceneReference.ScenePath)
+		{
+			MainMenuScene = scene;
+		}
+		else if(scene.path == PlayerSceneReference.ScenePath)
+		{
+			PlayerScene = scene;
+		}
+		else
+		{
+			GameObject[] rootGameObjects = scene.GetRootGameObjects();
+			foreach (GameObject gameObject in rootGameObjects)
+			{
+				var level = gameObject.GetComponent<Level>();
+				if (level != null && level.Editing == false)
+				{
+					LevelLoaded(level);
+				}
+			}
+		}
+
+		
+	}
+
+	private void OnSceneUnloaded(Scene scene)
+	{
+		
 	}
 
 	

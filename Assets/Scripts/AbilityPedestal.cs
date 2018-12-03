@@ -194,13 +194,11 @@ public class AbilityPedestal : MonoBehaviour
 
 	private IEnumerator FlyToPedestal()
 	{
-		Debug.Log("FlyToPedestal");
 		yield return FlyTo(InactivePosition.position, OtherFlyingRate);
 	}
 
 	private IEnumerator Sacrifice()
 	{
-		Debug.Log("Sacrifice");
 		State = AbilityPedestalState.Animating;
 		yield return FlyTo(OffscreenPosition.position, OtherFlyingRate);
 		State = AbilityPedestalState.Inactive;
@@ -209,7 +207,6 @@ public class AbilityPedestal : MonoBehaviour
 
 	private IEnumerator ReturnToPlayer()
 	{
-		Debug.Log("ReturnToPlayer");
 		State = AbilityPedestalState.Animating;
 		yield return FlyToPlayer();
 		State = AbilityPedestalState.Inactive;
@@ -225,13 +222,11 @@ public class AbilityPedestal : MonoBehaviour
 
 	private IEnumerator FlyToPlayer()
 	{
-		Debug.Log("FlyToPlayer");
 		yield return FlyTo(PlayerAbilityController.transform, OtherFlyingRate);
 	}
 
 	private IEnumerator FlyTo(Vector3 position, float rate)
 	{
-		Debug.Log("FlyTo v3");
 		while (Vector3.Distance(position, Floater.position) >= AnimationFinishDistance)
 		{
 			Floater.position = Vector3.Lerp(Floater.position, position, rate * Time.deltaTime);
@@ -241,7 +236,6 @@ public class AbilityPedestal : MonoBehaviour
 
 	private IEnumerator FlyTo(Transform targetTransform, float rate)
 	{
-		Debug.Log("FlyTo t");
 		while (Vector3.Distance(Floater.position, targetTransform.position) > AnimationFinishDistance)
 		{
 			Floater.position = Vector3.Lerp(Floater.position, targetTransform.position, rate * Time.deltaTime);

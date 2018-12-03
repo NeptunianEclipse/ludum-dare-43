@@ -7,8 +7,14 @@ public class Level : MonoBehaviour
 	public Transform LeftConnector;
 	public Transform RightConnector;
 
-	private void Awake()
+	public bool Editing;
+
+	private void Start()
 	{
-		GameManager.Instance.LevelFinishedLoading(this);
+		if(Editing == false)
+		{
+			GameManager.Instance.LevelLoaded(this);
+		}
+		
 	}
 }

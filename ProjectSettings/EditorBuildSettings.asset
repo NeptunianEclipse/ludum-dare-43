@@ -6,6 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/GameCore.unity
+    guid: e1c081b3685a9c343b5e6514d1191b1f
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 44e3fa818f9e23c45ad9388020134e93
+  - enabled: 1
+    path: Assets/Scenes/PlayerScene.unity
+    guid: 543dc2a4f0b00fd40ad9d1b7f82345be
+  - enabled: 1
+    path: Assets/Scenes/LevelComponents/InitialLevel.unity
+    guid: 00216591cbe7fd7489e31abbe7681f97
+  - enabled: 1
+    path: Assets/Scenes/LevelComponents/SacrificialChamber.unity
+    guid: 53332b98f7c7b4b489bef9dbda232da3
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/LevelComponents/Easy/Basic1.unity
+    guid: 1fbfc37e576a3084db9f993e8b40fa29
+  - enabled: 1
+    path: Assets/Scenes/LevelComponents/Easy/Basic2.unity
+    guid: 6c75b8f3776ee6242866cfbf46d8ee5a
   m_configObjects: {}
