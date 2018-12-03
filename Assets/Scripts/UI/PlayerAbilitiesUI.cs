@@ -11,15 +11,6 @@ public class PlayerAbilitiesUI : MonoBehaviour
 
 	private Dictionary<AbilitySlot, AbilityUI> abilityUIMap;
 
-	private void Awake()
-	{
-		if(playerAbilityController == null)
-		{
-			GameObject playerGameObject = GameObject.FindGameObjectWithTag(Tags.Player);
-			playerAbilityController = playerGameObject.GetComponent<PlayerAbilityController>();
-		}
-	}
-
 	private void Start()
 	{
 		RefreshUI();
@@ -27,11 +18,28 @@ public class PlayerAbilitiesUI : MonoBehaviour
 
 	private void OnEnable()
 	{
+		if (Player.Instance == null)
+		{
+			enabled = false;
+			return;
+		}
+
+		if (playerAbilityController == null)
+		{
+			playerAbilityController = Player.Instance.GetComponent<PlayerAbilityController>();
+		}
+
 		playerAbilityController.AbilitiesChanged += RefreshUI;
 	}
 
 	private void OnDisable()
 	{
+		if(Player.Instance == null)
+		{
+			enabled = false;
+			return;
+		}
+
 		playerAbilityController.AbilitiesChanged -= RefreshUI;
 	}
 

@@ -10,8 +10,12 @@ public class Follow : MonoBehaviour
 
 	private Vector3 targetPosition;
 
-	private void Update()
+	protected virtual void Update()
 	{
+		if (FollowObject == null) {
+			return;
+		}
+
 		Deadzone.center = FollowObject.position;
 
 		if(Deadzone.Contains(transform.position) == false)
