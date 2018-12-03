@@ -8,7 +8,6 @@ public class AbilityUI : MonoBehaviour
 	public AbilitySlot AbilitySlot;
 	public Text KeyText;
 	public CanvasGroup KeyGroup;
-	public Text NameText;
 	public RectTransform IconMask;
 	public Image IconImage;
 	public Sprite NoIconImage;
@@ -27,19 +26,17 @@ public class AbilityUI : MonoBehaviour
 		
 		if(AbilitySlot.Ability != null)
 		{
-			NameText.text = AbilitySlot.Ability.Name;
 			IconImage.sprite = AbilitySlot.Ability.Sprite;
 		}
 		else
 		{
-			NameText.text = "-";
 			IconImage.sprite = NoIconImage;
 		}
 	}
 
 	private void Update()
 	{
-		if (AbilitySlot.Ability is IRecoverable)
+		if (AbilitySlot.Ability != null && AbilitySlot.Ability is IRecoverable)
 		{
 			IRecoverable recoverable = (IRecoverable)AbilitySlot.Ability;
 			float y = (1 - recoverable.RecoveryPercent) * IconImage.rectTransform.sizeDelta.y;

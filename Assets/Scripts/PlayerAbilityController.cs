@@ -18,11 +18,15 @@ public class PlayerAbilityController : MonoBehaviour, IAbilityController
 	private List<AbilitySlot> passiveAbilitySlots;
 	private List<ActivableAbilitySlot> activableAbilitySlots;
 
-	private AbilityPool abilityPool;
+	public AbilityPool AbilityPool;
 
 	private void Awake()
 	{
-		abilityPool = GetComponent<AbilityPool>();
+		AbilityPool = GetComponent<AbilityPool>();
+	}
+
+	private void Start()
+	{
 		UpdateInternalData();
 	}
 
@@ -47,11 +51,78 @@ public class PlayerAbilityController : MonoBehaviour, IAbilityController
 		AbilityBase oldAbility = slot.SwapInAbility(ability);
 		if(oldAbility != null)
 		{
-			abilityPool.AddAbility(oldAbility);
+			AbilityPool.AddAbility(oldAbility);
+			oldAbility.Unequip();
 		}
 		ChangedAbilities();
+		ability.Equip(this);
 
 		return oldAbility;
+	}
+
+	public AbilityBase UnequipAbility(AbilitySlot slot)
+	{
+		AbilityBase ability = slot.Ability;
+		slot.Ability.Unequip();
+		slot.AbilityWasRemoved();
+		ChangedAbilities();
+		return ability;
+	}
+
+	public int GetNumberOfFullSlots()
+	{
+		int n = 0;
+
+		foreach(AbilitySlot slot in AllAbilitySlots)
+		{
+			if(slot.Ability != null)
+			{
+				n++;
+			}
+		}
+
+		return n;
+	}
+
+	public AbilitySlot GetRandomFullSlot()
+	{
+		List<AbilitySlot> allSlots = AllAbilitySlots.ToList();
+		float probabilitySum = allSlots.Sum(s => s.Ability == null ? 0 : AbilityPool.AbilityPickProbability(s.Ability));
+		float rand = UnityEngine.Random.value * probabilitySum;
+		float currentValue = 0;
+		foreach (AbilitySlot slot in allSlots)
+		{
+			currentValue += AbilityPool.AbilityPickProbability(slot.Ability);
+			if (currentValue >= rand)
+			{
+				return slot;
+			}
+		}
+		return null;
+	}
+
+	public List<AbilitySlot> GetRandomFullSlots(int num)
+	{
+		int n = Mathf.Min(num, GetNumberOfFullSlots());
+		if(n < num)
+		{
+			Debug.LogWarning($"Attempting to get {num} full slots when there are only {n}!");
+		}
+
+		var slots = new List<AbilitySlot>();
+		for(int i = 0; i < n; i++)
+		{
+			while(true)
+			{
+				AbilitySlot slot = GetRandomFullSlot();
+				if (slots.Contains(slot) == false)
+				{
+					slots.Add(slot);
+					break;
+				}
+			}
+		}
+		return slots;
 	}
 
 	public void ChangedAbilities()

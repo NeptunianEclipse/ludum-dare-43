@@ -8,6 +8,12 @@ public interface IAbilityController
 	GameObject GameObject { get; }
 }
 
+public enum AbilityMode
+{
+	Active,
+	Passive
+}
+
 public abstract class AbilityBase : MonoBehaviour
 {
 	public IAbilityController Controller { get; protected set; }
@@ -18,6 +24,8 @@ public abstract class AbilityBase : MonoBehaviour
 	public float TotalUsageTime { get; protected set; } = 0;
 	public bool IsEquipped { get; private set; } = false;
 	public bool Activated { get; private set; } = false;
+
+	public AbilityMode Mode;
 
 	protected void Update()
 	{
@@ -36,13 +44,6 @@ public abstract class AbilityBase : MonoBehaviour
 		}
 	}
 
-	public virtual void Activate() {
-		Activated = true;
-	}
-	public virtual void Release() {
-		Activated = false;
-	}
-
 	public void Equip(IAbilityController newController)
 	{
 		Controller = newController;
@@ -54,6 +55,16 @@ public abstract class AbilityBase : MonoBehaviour
 	{
 		IsEquipped = false;
 		OnUnequip();
+	}
+
+	public virtual void Activate()
+	{
+		Activated = true;
+	}
+
+	public virtual void Release()
+	{
+		Activated = false;
 	}
 
 
@@ -76,4 +87,3 @@ public abstract class AbilityBase : MonoBehaviour
 	}
 
 }
-

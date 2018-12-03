@@ -6,6 +6,9 @@ public class Follow : MonoBehaviour
 {
 	public Transform FollowObject;
 	public Bounds Deadzone;
+	public float Stiffness;
+
+	private Vector3 targetPosition;
 
 	private void Update()
 	{
@@ -14,7 +17,14 @@ public class Follow : MonoBehaviour
 		if(Deadzone.Contains(transform.position) == false)
 		{
 			Vector3 closestPoint = Deadzone.ClosestPoint(transform.position);
-			transform.position = new Vector3(closestPoint.x, closestPoint.y, transform.position.z);
+			targetPosition = new Vector3(closestPoint.x, closestPoint.y, transform.position.z);
+
 		}
+		else
+		{
+			targetPosition = transform.position;
+		}
+
+		transform.position = Vector3.Lerp(transform.position, targetPosition, Stiffness);
 	}
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAbilitiesUI : MonoBehaviour
 {
 	public GameObject AbilityUIPrefab;
+	public GameObject Tooltip;
 
 	public PlayerAbilityController playerAbilityController;
 
@@ -35,14 +36,19 @@ public class PlayerAbilitiesUI : MonoBehaviour
 	}
 
 	public void RefreshUI()
-	{
-		abilityUIMap = new Dictionary<AbilitySlot, AbilityUI>();
-		foreach(AbilityUI abilityUI in abilityUIMap.Values)
+	{	
+		if(abilityUIMap != null)
 		{
-			Destroy(abilityUI.gameObject);
+			foreach (AbilityUI abilityUI in abilityUIMap.Values)
+			{
+				Destroy(abilityUI.gameObject);
+			}
 		}
+		
 
-		foreach(AbilitySlot slot in playerAbilityController.AllAbilitySlots)
+		abilityUIMap = new Dictionary<AbilitySlot, AbilityUI>();
+
+		foreach (AbilitySlot slot in playerAbilityController.AllAbilitySlots)
 		{
 			AbilityUI abilityUI = Instantiate(AbilityUIPrefab, transform).GetComponent<AbilityUI>();
 			abilityUI.AbilitySlot = slot;

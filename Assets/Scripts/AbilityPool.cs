@@ -53,7 +53,7 @@ public class AbilityPool : MonoBehaviour
 
 	public float AbilityPickProbability(AbilityBase ability)
 	{
-		return 1 / Mathf.Max(ability.TotalUsageTime, 1);
+		return ability == null ? 0 : 1 / Mathf.Max(ability.TotalUsageTime, 1);
 	}
 
 	private void UpdateInternalData()

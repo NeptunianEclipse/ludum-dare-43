@@ -11,4 +11,11 @@ public class ActivableAbilitySlot : AbilitySlot
 		base.UpdateInternalData();
 		gameObject.name = $"Slot [{ActivateKey.ToString()}]";
 	}
+
+	public override AbilityBase SwapInAbility(AbilityBase newAbility)
+	{
+		AbilityBase oldAbility = base.SwapInAbility(newAbility);
+		newAbility.Mode = AbilityMode.Active;
+		return oldAbility;
+	}
 }

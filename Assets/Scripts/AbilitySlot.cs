@@ -12,19 +12,20 @@ public class AbilitySlot : MonoBehaviour
 		Ability = null;
 	}
 
-	public AbilityBase SwapInAbility(AbilityBase newAbility)
+	public virtual AbilityBase SwapInAbility(AbilityBase newAbility)
 	{
+		newAbility.transform.SetParent(transform);
+		newAbility.Mode = AbilityMode.Passive;
+
 		if(Ability == null)
 		{
 			Ability = newAbility;
-			Ability.transform.SetParent(transform);
 			return null;
 		}
 		else
 		{
 			AbilityBase oldAbility = Ability;
 			Ability = newAbility;
-			Ability.transform.SetParent(transform);
 			return oldAbility;
 		}
 	}
