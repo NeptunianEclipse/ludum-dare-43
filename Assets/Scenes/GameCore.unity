@@ -791,11 +791,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4339143393011870, guid: ccb28c9489ccac74ab01b3bb32b90fdf, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -15.61
       objectReference: {fileID: 0}
     - target: {fileID: 4339143393011870, guid: ccb28c9489ccac74ab01b3bb32b90fdf, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 4339143393011870, guid: ccb28c9489ccac74ab01b3bb32b90fdf, type: 2}
       propertyPath: m_LocalPosition.z
@@ -950,8 +950,8 @@ MonoBehaviour:
     sceneAsset: {fileID: 102900000, guid: 543dc2a4f0b00fd40ad9d1b7f82345be, type: 3}
     scenePath: Assets/Scenes/PlayerScene.unity
   InitialLevelComponentReference:
-    sceneAsset: {fileID: 102900000, guid: 1fbfc37e576a3084db9f993e8b40fa29, type: 3}
-    scenePath: Assets/Scenes/LevelComponents/Easy/Basic1.unity
+    sceneAsset: {fileID: 102900000, guid: 00216591cbe7fd7489e31abbe7681f97, type: 3}
+    scenePath: Assets/Scenes/LevelComponents/InitialLevel.unity
   SacrificeChamberReference:
     sceneAsset: {fileID: 102900000, guid: 53332b98f7c7b4b489bef9dbda232da3, type: 3}
     scenePath: Assets/Scenes/LevelComponents/SacrificialChamber.unity
