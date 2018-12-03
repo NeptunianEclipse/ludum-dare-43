@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1047064670539128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.7818823, y: 5.7491307, z: 0}
+  m_LocalPosition: {x: -7.7818823, y: 6.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4695422008376816}
@@ -141,6 +141,8 @@ MonoBehaviour:
   HeightToAdd: 0.5
   FhroomPrefab: {fileID: 1568632273182426, guid: e406ce2c593b07541a0dfcc807c1779e,
     type: 2}
+  startScale: {x: 0.001, y: 0.001}
+  endScale: {x: 1.5, y: 1.5}
 --- !u!114 &114294487386120712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,7 +157,7 @@ MonoBehaviour:
   ImpactsWith:
     serializedVersion: 2
     m_Bits: 768
-  MaxTimeAlive: 2
+  MaxTimeAlive: 3
 --- !u!212 &212963795062031468
 SpriteRenderer:
   m_ObjectHideFlags: 1
