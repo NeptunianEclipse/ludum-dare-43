@@ -335,6 +335,7 @@ GameObject:
   - component: {fileID: 114958425771967992}
   - component: {fileID: 114217209905546958}
   - component: {fileID: 114004458260235596}
+  - component: {fileID: 114626469235418262}
   m_Layer: 8
   m_Name: KnightPlayer
   m_TagString: Player
@@ -1000,6 +1001,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActivateKey: 97
+--- !u!114 &114626469235418262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972990378464232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec7c1b7d60e42244a8bf6d89467a8821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 95399788669502098}
 --- !u!114 &114660158054800114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1022,11 +1035,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39bebd7ab42fb248865917a845cf775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GroundDrag: 1.5
+  GroundDrag: 1.1
   AirHorizontalDrag: 1.05
   JumpPower: 8
-  MaxSpeed: 5
-  Feet: {fileID: 0}
+  MaxSpeed: 6
+  Feet: {fileID: 1831987028069032}
 --- !u!114 &114839022664265426
 MonoBehaviour:
   m_ObjectHideFlags: 1
