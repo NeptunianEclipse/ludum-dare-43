@@ -21,9 +21,14 @@ public class Turnable : MonoBehaviour, ITurnable
 
 	public void StartTurning()
 	{
+		StartTurning(180);
+	}
+
+	public void StartTurning(float degrees)
+	{
 		myRigidbody.velocity = new Vector2(0, myRigidbody.velocity.y);
 		IsTurning = true;
-		StartCoroutine(Turn(180, TurnDuration));
+		StartCoroutine(Turn(degrees, TurnDuration));
 		if (Debug_LogTurning) Debug.Log($"A {gameObject.name} started turning.");
 	}
 
