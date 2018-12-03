@@ -23,6 +23,7 @@ public class GameManager : Singleton<GameManager>
 	public SceneReference SacrificeChamberReference;
 	public List<SceneReference> LevelSceneReferences;
 	public float LoadDistance;
+	public int LevelsInbetweenChambers;
 
 	public bool DoGameSequence;
 
@@ -46,6 +47,7 @@ public class GameManager : Singleton<GameManager>
 
 	private List<Level> LoadedLevels = new List<Level>();
 	private Transform rightmostConnector;
+	private int levelsUntilNextChamber;
 
 	private void Awake()
 	{
@@ -76,7 +78,12 @@ public class GameManager : Singleton<GameManager>
 		// We're in game, load levels ahead of us and remove them behind us
 		if(GameState == GameState.Levels)
 		{
-
+			if(Vector3.Distance(Player.Instance.transform.position, rightmostConnector?.position ?? Vector3.zero) <= LoadDistance)
+			{
+				SceneReference nextLevel = NextLevelSceneToLoad();
+				LoadLevelScene(nextLevel);
+				levelsUntilNextChamber--;
+			}
 		}
 	}
 
@@ -84,11 +91,22 @@ public class GameManager : Singleton<GameManager>
 	{
 		SceneManager.LoadScene(InitialLevelComponentReference.ScenePath, LoadSceneMode.Additive);
 		SceneManager.LoadScene(PlayerSceneReference.ScenePath, LoadSceneMode.Additive);
+
+		GameState = GameState.Levels;
+
+		levelsUntilNextChamber = LevelsInbetweenChambers;
 	}
 
 	public SceneReference NextLevelSceneToLoad()
 	{
-		return LevelSceneReferences[UnityEngine.Random.Range(0, LevelSceneReferences.Count - 1)];
+		if(levelsUntilNextChamber == 0)
+		{
+			return SacrificeChamberReference;
+		}
+		else
+		{
+			return LevelSceneReferences[UnityEngine.Random.Range(0, LevelSceneReferences.Count - 1)];
+		}
 	}
 
 	public void LoadLevelScene(SceneReference scene)
@@ -101,12 +119,9 @@ public class GameManager : Singleton<GameManager>
 		LoadedLevels.Add(level);
 
 		Level rightmostLevel = LoadedLevels.Last();
+		rightmostConnector = rightmostLevel.RightConnector;
 		level.transform.position = level.transform.position + (rightmostLevel.RightConnector.position - level.LeftConnector.position);
 	}
-
-
-
-
 
 	private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 	{

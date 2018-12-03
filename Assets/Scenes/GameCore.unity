@@ -950,8 +950,8 @@ MonoBehaviour:
     sceneAsset: {fileID: 102900000, guid: 543dc2a4f0b00fd40ad9d1b7f82345be, type: 3}
     scenePath: Assets/Scenes/PlayerScene.unity
   InitialLevelComponentReference:
-    sceneAsset: {fileID: 102900000, guid: 00216591cbe7fd7489e31abbe7681f97, type: 3}
-    scenePath: Assets/Scenes/LevelComponents/InitialLevel.unity
+    sceneAsset: {fileID: 102900000, guid: 1fbfc37e576a3084db9f993e8b40fa29, type: 3}
+    scenePath: Assets/Scenes/LevelComponents/Easy/Basic1.unity
   SacrificeChamberReference:
     sceneAsset: {fileID: 102900000, guid: 53332b98f7c7b4b489bef9dbda232da3, type: 3}
     scenePath: Assets/Scenes/LevelComponents/SacrificialChamber.unity
@@ -961,12 +961,9 @@ MonoBehaviour:
   - sceneAsset: {fileID: 102900000, guid: 6c75b8f3776ee6242866cfbf46d8ee5a, type: 3}
     scenePath: Assets/Scenes/LevelComponents/Easy/Basic2.unity
   LoadDistance: 5
-  DoGameSequence: 0
-  LoadOnStart:
-  - sceneAsset: {fileID: 102900000, guid: 543dc2a4f0b00fd40ad9d1b7f82345be, type: 3}
-    scenePath: Assets/Scenes/PlayerScene.unity
-  - sceneAsset: {fileID: 102900000, guid: 53332b98f7c7b4b489bef9dbda232da3, type: 3}
-    scenePath: Assets/Scenes/LevelComponents/SacrificialChamber.unity
+  LevelsInbetweenChambers: 5
+  DoGameSequence: 1
+  LoadOnStart: []
 --- !u!4 &1900830557
 Transform:
   m_ObjectHideFlags: 0
