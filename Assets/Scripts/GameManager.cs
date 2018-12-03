@@ -45,6 +45,7 @@ public class GameManager : Singleton<GameManager>
 	public event Action<GameState> GameStateChanged;
 
 	private List<Level> LoadedLevels = new List<Level>();
+	private Transform rightmostConnector;
 
 	private void Awake()
 	{
@@ -67,6 +68,15 @@ public class GameManager : Singleton<GameManager>
 		else
 		{
 			GameState = GameState.Levels;
+		}
+	}
+
+	private void Update()
+	{
+		// We're in game, load levels ahead of us and remove them behind us
+		if(GameState == GameState.Levels)
+		{
+
 		}
 	}
 
