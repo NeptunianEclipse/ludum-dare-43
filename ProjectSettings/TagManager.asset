@@ -51,14 +51,14 @@ TagManager:
   - name: Projectiles
     uniqueID: 3196714089
     locked: 0
+  - name: Environment
+    uniqueID: 3637578305
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Foreground
     uniqueID: 262056737
-    locked: 0
-  - name: Environment
-    uniqueID: 3637578305
     locked: 0
   - name: Forward Environment
     uniqueID: 479180327
