@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Throwable : MonoBehaviour
 {
-	public LayerMask CollidesWith;
+	public LayerMask ImpactsWith;
 
 	public float MaxTimeAlive = 10f;
 
@@ -22,19 +22,19 @@ public class Throwable : MonoBehaviour
 	/// <summary>
 	/// Raised when this collides with a valid object.
 	/// </summary>
-	public event System.EventHandler Collided;
+	public event System.EventHandler Impacted;
 
 	void Awake()
 	{
 		//myCollider = GetComponent<Collider2D>();
 
-		if (CollidesWith == default(LayerMask)) Debug.LogWarning($"A {gameObject.name} has no layer mask set.");
+		if (ImpactsWith == default(LayerMask)) Debug.LogWarning($"A {gameObject.name} has no layer mask set in the {nameof(Throwable)} component.");
 
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
+	void OnCollisionEnter2D(Collision2D collision)
 	{
-		OnCollided(new System.EventArgs());
+		if (collision.collider.IsTouchingLayers(ImpactsWith.value)) OnImpacted(new System.EventArgs());
 	}
 
 	void Update()
@@ -51,9 +51,9 @@ public class Throwable : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	private void OnCollided(System.EventArgs eventArgs)
+	private void OnImpacted(System.EventArgs eventArgs)
 	{
-		Collided?.Invoke(this, eventArgs);
+		Impacted?.Invoke(this, eventArgs);
 	}
 
 	private void OnExpired(System.EventArgs e)
