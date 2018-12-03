@@ -11,12 +11,14 @@ public class Turnable : MonoBehaviour, ITurnable
 	public bool Debug_LogTurning = false;
 
 	private Rigidbody2D myRigidbody;
+	private IGrounded maybeGrounded;
 
 	public bool IsTurning { get; private set; }
 
 	void Awake()
 	{
 		myRigidbody = GetComponent<Rigidbody2D>();
+		maybeGrounded = GetComponent<IGrounded>();
 	}
 
 	public void StartTurning()
@@ -26,7 +28,11 @@ public class Turnable : MonoBehaviour, ITurnable
 
 	public void StartTurning(float degrees)
 	{
-		myRigidbody.velocity = new Vector2(0, myRigidbody.velocity.y);
+		// reset our x velocity, if we have a grounded component only if we're
+		if (maybeGrounded == null || maybeGrounded.IsGrounded())
+		{
+			myRigidbody.velocity = new Vector2(0, myRigidbody.velocity.y);
+		}
 		IsTurning = true;
 		StartCoroutine(Turn(degrees, TurnDuration));
 		if (Debug_LogTurning) Debug.Log($"A {gameObject.name} started turning.");
