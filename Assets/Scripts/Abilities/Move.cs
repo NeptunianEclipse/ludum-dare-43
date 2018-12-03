@@ -28,14 +28,6 @@ public class Move : AbilityBase
 		{
 			Debug.LogWarning($"No {nameof(ITurnable)} component on a {Controller.GameObject.name}");
 		}
-		else
-		{
-			var turnable = maybeTurnable as Turnable;
-			if (turnable != null && turnable.TurnDuration > 0.2f)
-			{
-				Debug.LogWarning($"High turn duration set on a {Controller.GameObject.name}, this will look strange as the {Controller.GameObject.name} will continue to move while turning.");
-			}
-		}
 	}
 
 	protected override void FixedTick()

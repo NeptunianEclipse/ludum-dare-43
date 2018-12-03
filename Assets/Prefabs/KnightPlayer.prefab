@@ -337,7 +337,6 @@ GameObject:
   - component: {fileID: 114280584086929570}
   - component: {fileID: 114004458260235596}
   - component: {fileID: 114626469235418262}
-  - component: {fileID: 114783827865576260}
   - component: {fileID: 114611117041665162}
   m_Layer: 8
   m_Name: KnightPlayer
@@ -1071,21 +1070,6 @@ MonoBehaviour:
   JumpPower: 8
   MaxSpeed: 6
   Feet: {fileID: 1831987028069032}
---- !u!114 &114783827865576260
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1972990378464232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2af07be9da5f33244a3b3b6904d5998e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AlwaysDestroy: 0
-  HeightToDamageIfBelow: -10
-  DamageAmount: 10
-  DamagePeriod: 1
 --- !u!114 &114839022664265426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1173,7 +1157,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1394597935
-  m_SortingLayer: -2
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a6d88809f13045245805375aef2870e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

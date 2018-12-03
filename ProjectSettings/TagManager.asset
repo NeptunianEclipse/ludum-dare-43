@@ -19,7 +19,7 @@ TagManager:
   - Sword
   - Ground
   - Fhroom
-  - 
+  - BouncePad
   - 
   - 
   - 
@@ -44,6 +44,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 3315752309
+    locked: 0
+  - name: Back Environment
+    uniqueID: 387995837
     locked: 0
   - name: Units
     uniqueID: 1394597935

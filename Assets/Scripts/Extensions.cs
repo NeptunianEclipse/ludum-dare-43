@@ -98,5 +98,29 @@ namespace LudumDare43.Extensions
 		{
 			return (Vector2.Dot(vector, onto) / onto.sqrMagnitude) * onto;
 		}
+
+		/// <summary>
+		/// Adds an item to the list if the list doesn't already contain that item.
+		/// </summary>
+		/// <typeparam name="T">The type of list to operate on.</typeparam>
+		/// <param name="list">The list to add the item to if it's missing</param>
+		/// <param name="@object">The object to add to the list</param>
+		/// <returns>True if an item was added, false if the list already contained the item.</returns>
+		public static bool AddIfMissing<T>(this List<T> list, T @object)
+		{
+			if (!list.Contains(@object))
+			{
+				list.Add(@object);
+				return true;
+			}
+			return false;
+		}
+
+
+		public static IEnumerator<WaitForSeconds> InvokeAfter(Action action, float seconds)
+		{
+			yield return new WaitForSeconds(seconds);
+			action();
+		}
 	}
 }

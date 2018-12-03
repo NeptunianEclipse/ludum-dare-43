@@ -962,8 +962,10 @@ MonoBehaviour:
     scenePath: Assets/Scenes/LevelComponents/Easy/Basic2.unity
   LoadDistance: 5
   LevelsInbetweenChambers: 5
-  DoGameSequence: 1
-  LoadOnStart: []
+  DoGameSequence: 0
+  LoadOnStart:
+  - sceneAsset: {fileID: 102900000, guid: 31b91e9fd746a8741892cf5b273e1008, type: 3}
+    scenePath: Assets/Scenes/LevelComponents/Easy/Something.unity
 --- !u!4 &1900830557
 Transform:
   m_ObjectHideFlags: 0
