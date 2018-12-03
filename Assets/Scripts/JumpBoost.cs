@@ -9,6 +9,8 @@ public class JumpBoost : MonoBehaviour
 	public Vector2 BoostDirection = Vector2.up;
 	public float BoostTimeout = 1f;
 
+	public bool BoostAllMassesTheSame = true;
+
 	private readonly List<Rigidbody2D> boostItems = new List<Rigidbody2D>();
 	private readonly List<Rigidbody2D> recentlyBoosted = new List<Rigidbody2D>();
 
@@ -16,7 +18,8 @@ public class JumpBoost : MonoBehaviour
 	{
 		boostItems.ForEach((rigidbody) =>
 		{
-			rigidbody.AddForce(BoostDirection * BoostMagnitude, ForceMode2D.Impulse);
+			var force = BoostDirection * BoostMagnitude * (BoostAllMassesTheSame ? rigidbody.mass : 5f);
+			rigidbody.AddForce(force, ForceMode2D.Impulse);
 			recentlyBoosted.Add(rigidbody);
 			StartCoroutine(Extensions.InvokeAfter(() => recentlyBoosted.Remove(rigidbody), BoostTimeout));
 		});

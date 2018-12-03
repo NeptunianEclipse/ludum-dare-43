@@ -16,6 +16,7 @@ public class MovePatrol : MonoBehaviour
 
 	public float DownDistance = 1.5f;
 	public float RightDistance = 0.1f;
+	public float RightBoxToleranceReduction = 0.5f;
 
 	public float Acceleration = 10f;
 	public float Decelleration = 10f;
@@ -31,6 +32,7 @@ public class MovePatrol : MonoBehaviour
 	private Collider2D myCollider;
 	private Rigidbody2D myRigidbody;
 	private ITurnable myTurnable;
+	private IGrounded maybeGrounded;
 
 	private bool shouldCheckToTurn = true;
 
@@ -39,6 +41,7 @@ public class MovePatrol : MonoBehaviour
 		myCollider = GetComponent<Collider2D>();
 		myRigidbody = GetComponent<Rigidbody2D>();
 		myTurnable = GetComponent<ITurnable>();
+		maybeGrounded = GetComponent<IGrounded>();
 
 		if (Notices == default(LayerMask)) Debug.LogWarning($"A {gameObject.name} has no layer mask set on the {nameof(MovePatrol)} component.");
 	}
@@ -117,7 +120,7 @@ public class MovePatrol : MonoBehaviour
 			{
 				// Remeber to multiply the adjustment (RightDistance) by the direction we're heading to check
 				Vector2 boxCentre = rightEdge.NewWithChange(deltaX: (RightDistance / 2) * Mathf.Sign(myRigidbody.velocity.x));
-				Vector2 boxSize = new Vector2(RightDistance / 2, topEdge.y - bottomEdge.y - 0.2f);
+				Vector2 boxSize = new Vector2(RightDistance / 2, topEdge.y - bottomEdge.y - 0.5f);
 
 				if (Debug_DrawDetectionBox) DrawBox(boxCentre, boxSize);
 
