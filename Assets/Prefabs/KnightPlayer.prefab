@@ -838,7 +838,7 @@ MonoBehaviour:
   PoolContainer: {fileID: 4529372730260162}
 --- !u!114 &114014408979925618
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1972990378464232}
@@ -1141,8 +1141,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1394597935
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a6d88809f13045245805375aef2870e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

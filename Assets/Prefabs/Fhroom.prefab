@@ -37,9 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4287466705148670}
   - component: {fileID: 58325957160679936}
-  - component: {fileID: 60101890558763740}
   - component: {fileID: 58019940273114708}
-  - component: {fileID: 58173659221416878}
   - component: {fileID: 50875761611994736}
   - component: {fileID: 114368888710578344}
   - component: {fileID: 114228600243403734}
@@ -111,24 +109,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05096436, y: -0.95}
+  m_Offset: {x: 0.2, y: -0.5}
   serializedVersion: 2
-  m_Radius: 0.03
---- !u!58 &58173659221416878
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1568632273182426}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.5269356, y: -0.95}
-  serializedVersion: 2
-  m_Radius: 0.03
+  m_Radius: 0.5
 --- !u!58 &58325957160679936
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -144,35 +127,6 @@ CircleCollider2D:
   m_Offset: {x: 0.12, y: -0.04}
   serializedVersion: 2
   m_Radius: 0.6789408
---- !u!60 &60101890558763740
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1568632273182426}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.6716385, y: -0.3986534}
-      - {x: -0.23000336, y: -0.5868417}
-      - {x: -0.050964355, y: -0.95}
-      - {x: 0.23307419, y: -0.8285192}
-      - {x: 0.5269356, y: -0.95}
 --- !u!95 &95929097450647692
 Animator:
   serializedVersion: 3
@@ -251,7 +205,7 @@ MonoBehaviour:
   Acceleration: 15
   Decelleration: 10
   Debug_LogTurning: 0
-  Debug_DrawDetectionBox: 0
+  Debug_DrawDetectionBox: 1
   Notices:
     serializedVersion: 2
     m_Bits: 6912
@@ -288,7 +242,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1394597935
-  m_SortingLayer: -2
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 54f866c3f8067b949bbc560a1bbbdd5f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
