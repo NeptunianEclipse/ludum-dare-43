@@ -855,43 +855,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114015879424359560, guid: ccb28c9489ccac74ab01b3bb32b90fdf,
-        type: 2}
-      propertyPath: FollowObject
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114015879424359560, guid: ccb28c9489ccac74ab01b3bb32b90fdf,
-        type: 2}
-      propertyPath: Stiffness
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114015879424359560, guid: ccb28c9489ccac74ab01b3bb32b90fdf,
-        type: 2}
-      propertyPath: Deadzone.m_Center.x
-      value: 2.2930517
-      objectReference: {fileID: 0}
-    - target: {fileID: 114015879424359560, guid: ccb28c9489ccac74ab01b3bb32b90fdf,
-        type: 2}
-      propertyPath: Deadzone.m_Center.y
-      value: -0.985427
-      objectReference: {fileID: 0}
-    - target: {fileID: 114015879424359560, guid: ccb28c9489ccac74ab01b3bb32b90fdf,
-        type: 2}
-      propertyPath: Deadzone.m_Extent.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114015879424359560, guid: ccb28c9489ccac74ab01b3bb32b90fdf,
-        type: 2}
-      propertyPath: Deadzone.m_Extent.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114015879424359560, guid: ccb28c9489ccac74ab01b3bb32b90fdf,
-        type: 2}
-      propertyPath: Deadzone.m_Extent.z
-      value: 1.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114015879424359560, guid: ccb28c9489ccac74ab01b3bb32b90fdf, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccb28c9489ccac74ab01b3bb32b90fdf, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1841078695
@@ -995,7 +959,7 @@ MonoBehaviour:
   - sceneAsset: {fileID: 102900000, guid: 6c75b8f3776ee6242866cfbf46d8ee5a, type: 3}
     scenePath: Assets/Scenes/LevelComponents/Easy/Basic2.unity
   LoadDistance: 10
-  LevelsInbetweenChambers: 5
+  LevelsInbetweenChambers: 2
   DoGameSequence: 1
   LoadOnStart: []
 --- !u!4 &1900830557
@@ -1239,24 +1203,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224929517120860086, guid: 3618c66ebc552d645ab35ac8e9e3a6d5,
     type: 2}
   m_PrefabInternal: {fileID: 2083506711}
---- !u!1 &2088246587 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1742204538037500, guid: ccb28c9489ccac74ab01b3bb32b90fdf,
-    type: 2}
-  m_PrefabInternal: {fileID: 1801006742}
---- !u!114 &2088246588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2088246587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ffb40e2691a96a4a9a3942312018dcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FollowObject: {fileID: 0}
-  Deadzone:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 2, y: 2, z: 2}
-  Stiffness: 2

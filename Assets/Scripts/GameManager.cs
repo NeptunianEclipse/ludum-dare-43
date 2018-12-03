@@ -117,7 +117,7 @@ public class GameManager : Singleton<GameManager>
 		}
 		else
 		{
-			return LevelSceneReferences[UnityEngine.Random.Range(0, LevelSceneReferences.Count - 1)];
+			return LevelSceneReferences[UnityEngine.Random.Range(0, LevelSceneReferences.Count)];
 		}
 	}
 
