@@ -78,17 +78,25 @@ public class GameManager : Singleton<GameManager>
 		// We're in game, load levels ahead of us and remove them behind us
 		if(GameState == GameState.Levels)
 		{
-			if(Vector3.Distance(Player.Instance.transform.position, rightmostConnector?.position ?? Vector3.zero) <= LoadDistance)
+			if(Player.Instance != null)
 			{
-				SceneReference nextLevel = NextLevelSceneToLoad();
-				LoadLevelScene(nextLevel);
-				levelsUntilNextChamber--;
+				if (Vector3.Distance(Player.Instance.transform.position, rightmostConnector?.position ?? Vector3.zero) <= LoadDistance)
+				{
+					SceneReference nextLevel = NextLevelSceneToLoad();
+					LoadLevelScene(nextLevel);
+					levelsUntilNextChamber--;
+				}
 			}
 		}
 	}
 
 	public void StartNewGame()
 	{
+		if(MainMenuScene != null)
+		{
+			SceneManager.UnloadSceneAsync(MainMenuScene);
+		}
+
 		SceneManager.LoadScene(InitialLevelComponentReference.ScenePath, LoadSceneMode.Additive);
 		SceneManager.LoadScene(PlayerSceneReference.ScenePath, LoadSceneMode.Additive);
 
@@ -116,11 +124,14 @@ public class GameManager : Singleton<GameManager>
 
 	public void LevelLoaded(Level level)
 	{
-		LoadedLevels.Add(level);
+		Level rightmostLevel = LoadedLevels.LastOrDefault();
+		rightmostConnector = rightmostLevel?.RightConnector;
+		Vector3 rightmostConnectorPosition = rightmostConnector?.position ?? Vector3.zero;
 
-		Level rightmostLevel = LoadedLevels.Last();
-		rightmostConnector = rightmostLevel.RightConnector;
-		level.transform.position = level.transform.position + (rightmostLevel.RightConnector.position - level.LeftConnector.position);
+		Vector3 leftConnectorRelativeToNewLevelsOrigin = level.LeftConnector.position - level.transform.position;
+		level.transform.position = rightmostConnectorPosition - leftConnectorRelativeToNewLevelsOrigin;
+
+		LoadedLevels.Add(level);
 	}
 
 	private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

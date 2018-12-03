@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
-{
+{ 
 	private static T instance;
 
 	public static T Instance {
@@ -14,7 +14,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 				instance = FindObjectOfType<T>();
 				if (instance == null)
 				{
-					Debug.LogWarning($"No instance of singleton {typeof(T).Name}");
+					//Debug.LogWarning($"No instance of singleton {typeof(T).Name}");
 				}
 			}
 			return instance;

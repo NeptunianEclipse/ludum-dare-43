@@ -11,10 +11,7 @@ public class Level : MonoBehaviour
 
 	private void Start()
 	{
-		if(Editing == false)
-		{
-			GameManager.Instance.LevelLoaded(this);
-		}
+		
 		
 	}
 }
