@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 58921730314593220}
   - component: {fileID: 50318803285502422}
   - component: {fileID: 114814139128454302}
+  - component: {fileID: 114804320336033926}
   - component: {fileID: 114679216611027744}
   - component: {fileID: 114893541597364008}
   - component: {fileID: 114733767210545184}
@@ -206,6 +207,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb2b38dd6433ae448b72bbdb4f37df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114804320336033926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1223626300076362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af07be9da5f33244a3b3b6904d5998e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AlwaysDestroy: 0
+  HeightToDamageIfBelow: -10
+  DamageAmount: 10
+  DamagePeriod: 1
 --- !u!114 &114814139128454302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,7 +235,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 15
   DamageTextPrefab: {fileID: 0}
-  DamageTextCanvas: {fileID: 0}
   DestroyOnZeroHealth: 0
 --- !u!114 &114893541597364008
 MonoBehaviour:
@@ -234,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PatrolActive: 1
   MaxSpeed: 3
-  DownDistance: 1
+  DownDistance: 0.75
   RightDistance: 0.1
   Acceleration: 8
   Decelleration: 10

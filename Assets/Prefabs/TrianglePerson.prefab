@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61350799936883146}
   - component: {fileID: 50476328542982322}
   - component: {fileID: 114259906180365046}
+  - component: {fileID: 114591581482249908}
   m_Layer: 0
   m_Name: TrianglePerson
   m_TagString: Untagged
@@ -99,8 +100,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09858316bc6967544a984ed79b5b3362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 1130227783469904, guid: c391eed9d9e0f434c84c2aae32ec94a2,
+  ProjectilePrefab: {fileID: 1130227783469904, guid: c391eed9d9e0f434c84c2aae32ec94a2,
     type: 2}
+--- !u!114 &114591581482249908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961933696123906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af07be9da5f33244a3b3b6904d5998e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AlwaysDestroy: 0
+  HeightToDamageIfBelow: -10
+  DamageAmount: 10
+  DamagePeriod: 1
 --- !u!212 &212914545452551384
 SpriteRenderer:
   m_ObjectHideFlags: 1

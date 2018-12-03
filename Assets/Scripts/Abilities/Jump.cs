@@ -10,12 +10,39 @@ public class Jump : AbilityBase
 
 	private PlayerMovement movement;
 
-	public override void Activate()
+	private bool didJump;
+
+	private int calls = 0;
+
+	public override void During()
 	{
-		if(movement.IsGrounded())
+		base.During();
+
+		calls++;
+
+		if (calls > 100)
 		{
-			movement.Jump();
+			//Debug.Log($"didJump: {didJump}");
+			var x = "put a breakpoint here";
+			calls = 0;
 		}
+
+		if(didJump == false && movement.IsGrounded())
+		{
+			Debug.Log($"Jumped");
+			movement.Jump();
+			didJump = true;
+		}
+	}
+
+	public override void Release()
+	{
+		base.Release();
+
+		// Ok, so this isn't perfect because it means user can release and then press again very quickly, which calls movement.Jump twice but since they gotta be /real/ quick I can't be bothered fixing it.
+		didJump = false;
+
+		Debug.Log($"Release, didJump: {didJump}");
 	}
 
 	protected override void OnEquip()

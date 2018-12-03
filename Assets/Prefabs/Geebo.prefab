@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 58322651066809582}
   - component: {fileID: 50036384595526542}
   - component: {fileID: 114046794492508894}
+  - component: {fileID: 114576292641998998}
   - component: {fileID: 114333802740437410}
   - component: {fileID: 114244559839673382}
   - component: {fileID: 114462808338873186}
@@ -195,7 +196,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 40
   DamageTextPrefab: {fileID: 0}
-  DamageTextCanvas: {fileID: 0}
   DestroyOnZeroHealth: 0
 --- !u!114 &114244559839673382
 MonoBehaviour:
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PatrolActive: 1
   MaxSpeed: 4
-  DownDistance: 1
+  DownDistance: 1.5
   RightDistance: 0.1
   Acceleration: 10
   Decelleration: 10
@@ -245,6 +245,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 1156714421201252, guid: d875c11338c23cf4aba4e4dc30a0bbd6,
     type: 2}
+--- !u!114 &114576292641998998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1910174121694888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af07be9da5f33244a3b3b6904d5998e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AlwaysDestroy: 0
+  HeightToDamageIfBelow: -10
+  DamageAmount: 10
+  DamagePeriod: 1
 --- !u!114 &114629972554614774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,8 +307,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1394597935
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f1c2e119eed5cb64a923e7b542a7f415, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

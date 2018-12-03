@@ -12,8 +12,6 @@ public class PlayerMovement : MonoBehaviour
 
 	public GameObject Feet;
 
-	public bool HorizontalMovementAllowed { get; set; } = true;
-
 	public event Action Grounded;
 	public event Action<Collider2D, Vector2> FeetTriggerEnter;
 
@@ -42,22 +40,14 @@ public class PlayerMovement : MonoBehaviour
 		feetCollisions.TriggerEnter -= OnFeetTriggerEnter;
 	}
 
+	private static readonly KeyCode[] developerSecretKeys = new KeyCode[] { KeyCode.Z, KeyCode.B };
+
 	private void FixedUpdate()
 	{
+		if (Input.GetKeyDown(developerSecretKeys[0]) && Input.GetKey(developerSecretKeys[1])) Jump();
+
 		Vector2 velocity = Rigidbody2d.velocity;
 		bool isGrounded = IsGrounded();
-
-		if (HorizontalMovementAllowed)
-		{
-			//if (Input.GetKey(KeyCode.D))
-			//{
-			//	velocity += Vector2.right * Acceleration;
-			//}
-			//if (Input.GetKey(KeyCode.A))
-			//{
-			//	velocity -= Vector2.right * Acceleration;
-			//}
-		}
 
 		if (isGrounded)
 		{
@@ -75,11 +65,14 @@ public class PlayerMovement : MonoBehaviour
 
 		if (willJump)
 		{
+			if (velocity.y < 0) velocity.y = 0;
+
 			velocity += Vector2.up * JumpPower;
 			willJump = false;
 		}
 
 		Rigidbody2d.velocity = new Vector2(Mathf.Clamp(velocity.x, -MaxSpeed, MaxSpeed), velocity.y);
+
 
 		wasGrounded = isGrounded;
 	}
