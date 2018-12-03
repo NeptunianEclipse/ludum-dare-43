@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 58458195280860224}
   - component: {fileID: 50014671145927126}
   - component: {fileID: 114294487386120712}
+  - component: {fileID: 114821012182540826}
   - component: {fileID: 114034624437426240}
   m_Layer: 0
   m_Name: Floop
@@ -141,8 +142,6 @@ MonoBehaviour:
   HeightToAdd: 0.5
   FhroomPrefab: {fileID: 1568632273182426, guid: e406ce2c593b07541a0dfcc807c1779e,
     type: 2}
-  startScale: {x: 0.001, y: 0.001}
-  endScale: {x: 1.5, y: 1.5}
 --- !u!114 &114294487386120712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,6 +157,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 768
   MaxTimeAlive: 3
+--- !u!114 &114821012182540826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1047064670539128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffba451099965d047a7069f180b9ec1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startScale: {x: 0.01, y: 0.01}
+  endScale: {x: 1, y: 1}
 --- !u!212 &212963795062031468
 SpriteRenderer:
   m_ObjectHideFlags: 1
