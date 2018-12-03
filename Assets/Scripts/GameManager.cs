@@ -30,8 +30,8 @@ public class GameManager : Singleton<GameManager>
 	[Header("Editor only")]
 	public List<SceneReference> LoadOnStart;
 
-	public Scene MainMenuScene { get; private set; }
-	public Scene PlayerScene { get; private set; }
+	public Scene? MainMenuScene { get; private set; }
+	public Scene? PlayerScene { get; private set; }
 
 	private GameState gameState;
 	public GameState GameState {
@@ -46,6 +46,7 @@ public class GameManager : Singleton<GameManager>
 	public event Action<GameState> GameStateChanged;
 
 	private List<Level> LoadedLevels = new List<Level>();
+	private Dictionary<string, Level> ScenePathLoadedLevels = new Dictionary<string, Level>(); 
 	private Transform rightmostConnector;
 	private int levelsUntilNextChamber;
 
@@ -80,7 +81,10 @@ public class GameManager : Singleton<GameManager>
 		{
 			if(Player.Instance != null)
 			{
-				if (Vector3.Distance(Player.Instance.transform.position, rightmostConnector?.position ?? Vector3.zero) <= LoadDistance)
+				var playerPosition = Player.Instance.transform.position;
+				var rightmostConnectorPosition = rightmostConnector?.position ?? Vector3.zero;
+				var distance = rightmostConnectorPosition.x - playerPosition.x;
+				if (distance <= LoadDistance)
 				{
 					SceneReference nextLevel = NextLevelSceneToLoad();
 					LoadLevelScene(nextLevel);
@@ -92,9 +96,9 @@ public class GameManager : Singleton<GameManager>
 
 	public void StartNewGame()
 	{
-		if(MainMenuScene != null)
+		if(MainMenuScene.HasValue)
 		{
-			SceneManager.UnloadSceneAsync(MainMenuScene);
+			SceneManager.UnloadSceneAsync(MainMenuScene.Value);
 		}
 
 		SceneManager.LoadScene(InitialLevelComponentReference.ScenePath, LoadSceneMode.Additive);
@@ -132,6 +136,9 @@ public class GameManager : Singleton<GameManager>
 		level.transform.position = rightmostConnectorPosition - leftConnectorRelativeToNewLevelsOrigin;
 
 		LoadedLevels.Add(level);
+		ScenePathLoadedLevels[level.gameObject.scene.path] = level;
+
+		rightmostConnector = level.RightConnector;
 	}
 
 	private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -162,7 +169,23 @@ public class GameManager : Singleton<GameManager>
 
 	private void OnSceneUnloaded(Scene scene)
 	{
-		
+		if (scene.path == MainMenuSceneReference.ScenePath)
+		{
+			MainMenuScene = null;
+		}
+		else if (scene.path == PlayerSceneReference.ScenePath)
+		{
+			PlayerScene = null;
+		}
+		else
+		{
+			if(ScenePathLoadedLevels.ContainsKey(scene.path))
+			{
+				Level unloadedLevel = ScenePathLoadedLevels[scene.path];
+				LoadedLevels.Remove(unloadedLevel);
+				ScenePathLoadedLevels.Remove(scene.path);
+			}
+		}
 	}
 
 	
