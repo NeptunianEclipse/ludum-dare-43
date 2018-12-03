@@ -16,6 +16,9 @@ public class WorldUI : Singleton<WorldUI>
 	private void Awake()
 	{
 		Canvas = GetComponent<Canvas>();
+
+		if (DamageTextGradient == null) Debug.LogError($"A {gameObject.name} does not have a {nameof(DamageTextGradient)} set on it's {nameof(WorldUI)} component.");
+		if (DamageTextPrefab == null) Debug.LogError($"A {gameObject.name} does not have a {nameof(DamageTextPrefab)} set on it's {nameof(WorldUI)} component.");
 	}
 
 	public void SpawnDamageText(float amount, Vector2 position)

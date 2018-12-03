@@ -34,13 +34,17 @@ public class PlayerAbilityController : MonoBehaviour, IAbilityController
 	{
 		foreach(ActivableAbilitySlot slot in activableAbilitySlots)
 		{
-			if(Input.GetKeyDown(slot.ActivateKey) && slot.Ability != null)
+			if(Input.GetKeyDown(slot.ActivateKey))
 			{
-				slot.Ability.Activate();
+				slot.Ability?.Activate();
 			}
-			if(Input.GetKeyUp(slot.ActivateKey) && slot.Ability != null)
+			if (Input.GetKey(slot.ActivateKey))
 			{
-				slot.Ability.Release();
+				slot.Ability?.During();
+			}
+			if (Input.GetKeyUp(slot.ActivateKey))
+			{
+				slot.Ability?.Release();
 			}
 		}
 

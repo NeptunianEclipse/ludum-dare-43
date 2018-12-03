@@ -20,6 +20,8 @@ public class Damageable : MonoBehaviour
 	/// </summary>
 	public event System.EventHandler Destroyed;
 
+	public float CurrentHealth => remainingHealth;
+
 	private float remainingHealth;
 
 	private bool destroyed = false;

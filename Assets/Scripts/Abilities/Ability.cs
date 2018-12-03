@@ -62,6 +62,10 @@ public abstract class AbilityBase : MonoBehaviour
 		Activated = true;
 	}
 
+	public virtual void During()
+	{
+	}
+
 	public virtual void Release()
 	{
 		Activated = false;

@@ -81,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
 		Rigidbody2d.velocity = new Vector2(Mathf.Clamp(velocity.x, -MaxSpeed, MaxSpeed), velocity.y);
 
+
 		wasGrounded = isGrounded;
 	}
 

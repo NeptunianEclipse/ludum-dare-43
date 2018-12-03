@@ -334,8 +334,11 @@ GameObject:
   - component: {fileID: 114714429859427012}
   - component: {fileID: 114958425771967992}
   - component: {fileID: 114217209905546958}
+  - component: {fileID: 114280584086929570}
   - component: {fileID: 114004458260235596}
   - component: {fileID: 114626469235418262}
+  - component: {fileID: 114783827865576260}
+  - component: {fileID: 114611117041665162}
   m_Layer: 8
   m_Name: KnightPlayer
   m_TagString: Player
@@ -611,7 +614,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1972990378464232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 1.581, z: 0}
+  m_LocalPosition: {x: -12.978199, y: 2.4629817, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4065572005588878}
@@ -907,6 +910,21 @@ MonoBehaviour:
   DamageTextPrefab: {fileID: 114177939072772564, guid: bca188a8b90129d4eb4d5f86ceb9ca8e,
     type: 2}
   DestroyOnZeroHealth: 0
+--- !u!114 &114280584086929570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972990378464232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af07be9da5f33244a3b3b6904d5998e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AlwaysDestroy: 0
+  HeightToDamageIfBelow: -10
+  DamageAmount: 10
+  DamagePeriod: 1
 --- !u!114 &114302048352173152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1001,6 +1019,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActivateKey: 97
+--- !u!114 &114611117041665162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972990378464232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e017cfcfa413d940a98575590af1684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TurnDuration: 0.3
+  Debug_LogTurning: 0
 --- !u!114 &114626469235418262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1040,6 +1071,21 @@ MonoBehaviour:
   JumpPower: 8
   MaxSpeed: 6
   Feet: {fileID: 1831987028069032}
+--- !u!114 &114783827865576260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972990378464232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af07be9da5f33244a3b3b6904d5998e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AlwaysDestroy: 0
+  HeightToDamageIfBelow: -10
+  DamageAmount: 10
+  DamagePeriod: 1
 --- !u!114 &114839022664265426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1126,8 +1172,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1394597935
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a6d88809f13045245805375aef2870e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

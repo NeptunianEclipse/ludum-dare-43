@@ -16,17 +16,27 @@ public class MeleeAttack : AbilityBase, IRecoverable
 	{
 		base.OnEquip();
 
-		weaponController = Instantiate(WeaponPrefab, Controller.GameObject.transform).GetComponent<MeleeWeaponController>();
+		if (WeaponPrefab != null)
+		{
+			weaponController = Instantiate(WeaponPrefab, Controller.GameObject.transform).GetComponent<MeleeWeaponController>();
+		}
+		else
+		{
+			Debug.LogError($"A {Controller.GameObject.name} was given a {nameof(MeleeAttack)} ability but the ability doesn't have a {nameof(WeaponPrefab)} set.");
+		}
 	}
 
 	protected override void OnUnequip()
 	{
 		base.OnUnequip();
+
 		Destroy(weaponController.gameObject);
 	}
 
 	public override void Activate()
 	{
+		base.Activate();
+
 		weaponController.TryAttack();
 	}
 

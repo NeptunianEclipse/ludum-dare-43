@@ -32,6 +32,8 @@ public class Dash : AbilityBase, IRecoverable
 
 	public override void Activate()
 	{
+		base.Activate();
+
 		if(Time.time >= lastDashEndTime + TimeBetweenDashes && dashing == false)
 		{ 
 			StartDash();

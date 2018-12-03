@@ -28,6 +28,8 @@ public class MidAirJump : AbilityBase
 
 	public override void Activate()
 	{
+		base.Activate();
+
 		if (movement.IsGrounded() == false && jumpCount < NumJumps)
 		{
 			movement.Jump();
