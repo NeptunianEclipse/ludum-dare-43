@@ -22,7 +22,7 @@ public class Throwable : MonoBehaviour
 	/// <summary>
 	/// Raised when this collides with a valid object.
 	/// </summary>
-	public event System.EventHandler Collided;
+	public event System.EventHandler Impacted;
 
 	void Awake()
 	{
@@ -32,9 +32,9 @@ public class Throwable : MonoBehaviour
 
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
+	void OnCollisionEnter2D(Collision2D collision)
 	{
-		OnCollided(new System.EventArgs());
+		if (collision.collider.IsTouchingLayers(ImpactsWith.value)) OnImpacted(new System.EventArgs());
 	}
 
 	void Update()
@@ -51,9 +51,9 @@ public class Throwable : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	private void OnCollided(System.EventArgs eventArgs)
+	private void OnImpacted(System.EventArgs eventArgs)
 	{
-		Collided?.Invoke(this, eventArgs);
+		Impacted?.Invoke(this, eventArgs);
 	}
 
 	private void OnExpired(System.EventArgs e)

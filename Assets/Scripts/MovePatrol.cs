@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(ITurnable))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class MovePatrol : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class MovePatrol : MonoBehaviour
 	public bool PatrolActive = true;
 
 	public float MaxSpeed = 1f;
-	public float TurnDuration = 1f;
 
 	public float DownDistance = 1f;
 	public float RightDistance = 0.1f;
@@ -28,10 +28,9 @@ public class MovePatrol : MonoBehaviour
 
 	public LayerMask Notices;
 
-	private bool turning = false;
-
 	private Collider2D myCollider;
 	private Rigidbody2D myRigidbody;
+	private ITurnable myTurnable;
 
 	private bool shouldCheckToTurn = true;
 
@@ -39,31 +38,13 @@ public class MovePatrol : MonoBehaviour
 	{
 		myCollider = GetComponent<Collider2D>();
 		myRigidbody = GetComponent<Rigidbody2D>();
+		myTurnable = GetComponent<ITurnable>();
 
-		if (Notices == default(LayerMask)) Debug.LogWarning($"A {gameObject.name} has no layer mask set.");
-
+		if (Notices == default(LayerMask)) Debug.LogWarning($"A {gameObject.name} has no layer mask set on the {nameof(MovePatrol)} component.");
 	}
-
-	public bool Falsey { get; set; }
 
 	void FixedUpdate()
 	{
-		if (Falsey)
-		{
-			float mag = Falsey ? 12f : 10f;
-			var projs = this.GetComponent<Thrower>().CurrentProjectiles;
-
-			var force = new Vector2(-1, 0);
-			force *= mag;
-			force *= mag;
-			foreach (var proj in projs)
-			{
-				if (Falsey)
-				{
-					StartCoroutine(proj.GetComponent<Rigidbody2D>().ApplyForce(force, 0.05f));
-				}
-			}
-		}
 		if (PatrolActive) Move();
 		else SlowDown(Decelleration);
 	}
@@ -76,7 +57,7 @@ public class MovePatrol : MonoBehaviour
 
 	public void Move()
 	{
-		if (!turning)
+		if (!myTurnable.IsTurning)
 		{
 			//transform.Translate(MoveDirection.normalized * MoveSpeed * Time.deltaTime);
 			Vector2 maxVelocity = MoveDirection.normalized * MaxSpeed;
@@ -100,7 +81,7 @@ public class MovePatrol : MonoBehaviour
 
 	public void SlowDown(float decelleration)
 	{
-		if (!turning)
+		if (!myTurnable.IsTurning)
 		{
 			if (myRigidbody.velocity.x > 0.1f)
 			{
@@ -116,7 +97,7 @@ public class MovePatrol : MonoBehaviour
 
 	public void CheckToTurn()
 	{
-		if (!turning)
+		if (!myTurnable.IsTurning)
 		{
 			Bounds bounds = myCollider.bounds;
 
@@ -129,7 +110,8 @@ public class MovePatrol : MonoBehaviour
 			RaycastHit2D groundInFrontOfMe = Physics2D.Raycast(BottomRightCorner, Vector2.down, DownDistance, Notices.value);
 			if (groundInFrontOfMe.collider == false)
 			{
-				StartTurning();
+				myTurnable.StartTurning();
+				StopDrawing();
 			}
 			else
 			{
@@ -145,43 +127,11 @@ public class MovePatrol : MonoBehaviour
 
 				if (thingsInFrontOfMe.Any(collider => collider.gameObject != gameObject))
 				{
-					StartTurning();
+					myTurnable.StartTurning();
+					StopDrawing();
 				}
 			}
 		}
-	}
-
-	private void StartTurning()
-	{
-		myRigidbody.velocity = new Vector2(0, myRigidbody.velocity.y);
-		turning = true;
-		StartCoroutine(Turn(180, TurnDuration));
-		if (Debug_LogTurning) Debug.Log($"A {gameObject.name} started turning.");
-		if (Debug_DrawDetectionBox) StopDrawing();
-	}
-
-	private IEnumerator Turn(float YRotation, float duration)
-	{
-		Vector3 startingLocalEulerAngles = transform.localEulerAngles;
-
-		float totalRotation = 0f;
-
-		while (totalRotation < YRotation)
-		{
-			float percentageOfRotationSinceLastFrame = Time.deltaTime / duration;
-			float rotation = YRotation * percentageOfRotationSinceLastFrame;
-
-			transform.localEulerAngles = transform.localEulerAngles.NewWithChange(deltaY: rotation);
-
-			totalRotation += rotation;
-
-			yield return null;
-		}
-
-		// Tidy up the turn to be exactly correct, so that we don't end up with minor rounding erros if the total rotation grows to be more than the intended YRotation.
-		transform.localEulerAngles = startingLocalEulerAngles.NewWithChange(deltaY: YRotation);
-
-		turning = false;
 	}
 
 

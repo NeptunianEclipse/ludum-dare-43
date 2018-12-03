@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 60101890558763740}
   - component: {fileID: 50875761611994736}
   - component: {fileID: 114368888710578344}
-  - component: {fileID: 114010702018418644}
+  - component: {fileID: 114228600243403734}
   - component: {fileID: 114774471470741208}
   m_Layer: 12
   m_Name: Fhroom
@@ -153,7 +153,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114010702018418644
+--- !u!114 &114228600243403734
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,9 +161,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1568632273182426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6451372dbacd74f4095291ae6d6163d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e017cfcfa413d940a98575590af1684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TurnDuration: 0.4
+  Debug_LogTurning: 0
 --- !u!114 &114368888710578344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,12 +194,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PatrolActive: 1
   MaxSpeed: 5
-  TurnDuration: 0.4
   DownDistance: 1
   RightDistance: 0.1
   Acceleration: 15
   Decelleration: 10
-  Debug_LogTurning: 0
   Debug_DrawDetectionBox: 0
   Notices:
     serializedVersion: 2
