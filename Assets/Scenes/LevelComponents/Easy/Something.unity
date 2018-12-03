@@ -2092,6 +2092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftConnector: {fileID: 2084374713}
   RightConnector: {fileID: 49969647}
+  Editing: 0
 --- !u!4 &1483562440
 Transform:
   m_ObjectHideFlags: 0
@@ -2210,7 +2211,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4384911845200952, guid: 0b33aae4886d6a045bbac8b730dbca40, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.47
+      value: 3.364
       objectReference: {fileID: 0}
     - target: {fileID: 4384911845200952, guid: 0b33aae4886d6a045bbac8b730dbca40, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2252,7 +2253,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4921420791065744, guid: 5677e5e428d501a4ca942031dcde3be0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.47
+      value: 3.357
       objectReference: {fileID: 0}
     - target: {fileID: 4921420791065744, guid: 5677e5e428d501a4ca942031dcde3be0, type: 2}
       propertyPath: m_LocalPosition.z
