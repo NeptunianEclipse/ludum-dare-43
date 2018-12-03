@@ -80,7 +80,10 @@ public class GameManager : Singleton<GameManager>
 		{
 			if(Player.Instance != null)
 			{
-				if (Vector3.Distance(Player.Instance.transform.position, rightmostConnector?.position ?? Vector3.zero) <= LoadDistance)
+				var playerPosition = Player.Instance.transform.position;
+				var rightmostConnectorPosition = rightmostConnector?.position ?? Vector3.zero;
+				var distance = rightmostConnectorPosition.x - playerPosition.x;
+				if (distance <= LoadDistance)
 				{
 					SceneReference nextLevel = NextLevelSceneToLoad();
 					LoadLevelScene(nextLevel);
@@ -132,6 +135,8 @@ public class GameManager : Singleton<GameManager>
 		level.transform.position = rightmostConnectorPosition - leftConnectorRelativeToNewLevelsOrigin;
 
 		LoadedLevels.Add(level);
+
+		rightmostConnector = level.RightConnector;
 	}
 
 	private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
