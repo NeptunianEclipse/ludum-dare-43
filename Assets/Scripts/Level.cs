@@ -9,6 +9,6 @@ public class Level : MonoBehaviour
 
 	private void Awake()
 	{
-		
+		GameManager.Instance.LevelFinishedLoading(this);
 	}
 }
