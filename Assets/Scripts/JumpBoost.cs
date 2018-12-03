@@ -11,6 +11,8 @@ public class JumpBoost : MonoBehaviour
 
 	public bool BoostAllMassesTheSame = true;
 
+	public bool Debug_LogJumps = false;
+
 	private readonly List<Rigidbody2D> boostItems = new List<Rigidbody2D>();
 	private readonly List<Rigidbody2D> recentlyBoosted = new List<Rigidbody2D>();
 
@@ -40,9 +42,9 @@ public class JumpBoost : MonoBehaviour
 			if (!recentlyBoosted.Contains(rigidbody))
 			{
 				bool added = boostItems.AddIfMissing(rigidbody);
-				if (added)
+				if (added && Debug_LogJumps)
 				{
-					Debug.Log($"Added: {++collisions}");
+					Debug.Log($"Jumps boosted: {++collisions}");
 				};
 			}
 		}

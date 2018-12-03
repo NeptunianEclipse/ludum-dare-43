@@ -337,6 +337,8 @@ GameObject:
   - component: {fileID: 114217209905546958}
   - component: {fileID: 114004458260235596}
   - component: {fileID: 114014408979925618}
+  - component: {fileID: 114767768837219574}
+  - component: {fileID: 114169354872990572}
   m_Layer: 8
   m_Name: KnightPlayer
   m_TagString: Player
@@ -849,7 +851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AlwaysDestroy: 0
   HeightToDamageIfBelow: -10
-  DamageAmount: 10
+  DamageAmount: 20
   DamagePeriod: 1
 --- !u!114 &114019929472306842
 MonoBehaviour:
@@ -908,6 +910,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActivateKey: 115
+--- !u!114 &114169354872990572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972990378464232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec7c1b7d60e42244a8bf6d89467a8821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 95399788669502098}
 --- !u!114 &114217209905546958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1039,11 +1053,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39bebd7ab42fb248865917a845cf775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GroundDrag: 1.5
-  AirHorizontalDrag: 1.05
+  GroundDrag: 1.08
+  AirHorizontalDrag: 1.04
   JumpPower: 8
-  MaxSpeed: 5
+  MaxSpeed: 6
   Feet: {fileID: 1831987028069032}
+--- !u!114 &114767768837219574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972990378464232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e017cfcfa413d940a98575590af1684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TurnDuration: 0.3
+  Debug_LogTurning: 0
 --- !u!114 &114839022664265426
 MonoBehaviour:
   m_ObjectHideFlags: 1

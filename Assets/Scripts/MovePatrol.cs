@@ -41,7 +41,7 @@ public class MovePatrol : MonoBehaviour
 		myCollider = GetComponent<Collider2D>();
 		myRigidbody = GetComponent<Rigidbody2D>();
 		myTurnable = GetComponent<ITurnable>();
-		maybeGrounded = GetComponent<IGrounded>();
+		maybeGrounded = GetComponent<IGrounded>() ?? GetComponentInChildren<IGrounded>();
 
 		if (Notices == default(LayerMask)) Debug.LogWarning($"A {gameObject.name} has no layer mask set on the {nameof(MovePatrol)} component.");
 	}
@@ -55,12 +55,12 @@ public class MovePatrol : MonoBehaviour
 	void Update()
 	{
 		if (PatrolActive)
-		if (shouldCheckToTurn) CheckToTurn();
+			if (shouldCheckToTurn) CheckToTurn();
 	}
 
 	public void Move()
 	{
-		if (!myTurnable.IsTurning)
+		if (AllowedToChangeVelocity)
 		{
 			//transform.Translate(MoveDirection.normalized * MoveSpeed * Time.deltaTime);
 			Vector2 maxVelocity = MoveDirection.normalized * MaxSpeed;
@@ -84,7 +84,7 @@ public class MovePatrol : MonoBehaviour
 
 	public void SlowDown(float decelleration)
 	{
-		if (!myTurnable.IsTurning)
+		if (AllowedToChangeVelocity)
 		{
 			if (myRigidbody.velocity.x > 0.1f)
 			{
@@ -100,7 +100,7 @@ public class MovePatrol : MonoBehaviour
 
 	public void CheckToTurn()
 	{
-		if (!myTurnable.IsTurning)
+		if (AllowedToChangeVelocity)
 		{
 			Bounds bounds = myCollider.bounds;
 
@@ -137,6 +137,19 @@ public class MovePatrol : MonoBehaviour
 		}
 	}
 
+	private bool AllowedToChangeVelocity
+	{
+		get
+		{
+			// If we're not turning and grounded, feel free to change our velocity, still use AddForce() to do so though.
+			if (!myTurnable.IsTurning &&
+				(maybeGrounded == null || maybeGrounded.IsGrounded()))
+			{
+				return true;
+			}
+			return false;
+		}
+	}
 
 	#region BoxArtist
 
