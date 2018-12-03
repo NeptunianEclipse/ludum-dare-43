@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
 {
 	public Scene MainMenuScene;
 
+	public List<Scene> LevelComponents;
+
+	private List<Scene> LoadedLevelComponents;
+
 	private void Awake()
 	{
 		
@@ -16,4 +20,11 @@ public class GameManager : MonoBehaviour
 	{
 		SceneManager.LoadScene(MainMenuScene.name);
 	}
+
+	public void StartNewGame()
+	{
+
+	}
+
+	//public void 
 }
