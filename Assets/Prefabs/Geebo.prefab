@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 60943690717841524}
   - component: {fileID: 50036384595526542}
   - component: {fileID: 114046794492508894}
+  - component: {fileID: 114712010539953606}
   - component: {fileID: 114244559839673382}
   - component: {fileID: 114462808338873186}
   - component: {fileID: 114629972554614774}
@@ -162,6 +163,7 @@ MonoBehaviour:
   MaxHealth: 40
   DamageTextPrefab: {fileID: 0}
   DamageTextCanvas: {fileID: 0}
+  DestroyOnZeroHealth: 0
 --- !u!114 &114244559839673382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,11 +175,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9b796d6c4ba2b44986c413062f7749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PatrolActive: 1
   MaxSpeed: 4
   TurnDuration: 0.6
   DownDistance: 1
   RightDistance: 0.1
   Acceleration: 10
+  Decelleration: 10
+  Debug_LogTurning: 0
+  Debug_DrawDetectionBox: 0
   Notices:
     serializedVersion: 2
     m_Bits: 2048
@@ -209,6 +215,17 @@ MonoBehaviour:
   FlipThrowDirectionWhenFacingOtherDirection: 1
   DirectionToThrowIn: {x: 1, y: 0.3}
   ForceToThrowWith: 50
+--- !u!114 &114712010539953606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1910174121694888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6451372dbacd74f4095291ae6d6163d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212978841820001890
 SpriteRenderer:
   m_ObjectHideFlags: 1
