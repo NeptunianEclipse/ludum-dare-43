@@ -246,7 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PatrolActive: 1
   MaxSpeed: 5
-  DownDistance: 1
+  DownDistance: 1.5
   RightDistance: 0.1
   Acceleration: 15
   Decelleration: 10

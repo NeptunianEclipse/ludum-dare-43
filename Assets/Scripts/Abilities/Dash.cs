@@ -57,7 +57,6 @@ public class Dash : AbilityBase, IRecoverable
 
 	private void StartDash()
 	{
-		playerMovement.HorizontalMovementAllowed = false;
 		playerRigidbody.velocity = Vector2.right * playerMovement.MovingDirection();
 		dashStartTime = Time.time;
 		dashing = true;
@@ -65,7 +64,6 @@ public class Dash : AbilityBase, IRecoverable
 
 	private void EndDash()
 	{
-		playerMovement.HorizontalMovementAllowed = true;
 		lastDashEndTime = Time.time;
 		dashing = false;
 	}

@@ -14,7 +14,7 @@ public class MovePatrol : MonoBehaviour
 
 	public float MaxSpeed = 1f;
 
-	public float DownDistance = 1f;
+	public float DownDistance = 1.5f;
 	public float RightDistance = 0.1f;
 
 	public float Acceleration = 10f;
