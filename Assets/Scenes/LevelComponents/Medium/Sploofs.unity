@@ -198,6 +198,10 @@ Prefab:
       propertyPath: MaxSpeed
       value: 2.8
       objectReference: {fileID: 0}
+    - target: {fileID: 1223626300076362, guid: a61992594d1f36f4ea596bf3340d90ee, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a61992594d1f36f4ea596bf3340d90ee, type: 2}
   m_IsPrefabAsset: 0
@@ -9367,6 +9371,10 @@ Prefab:
       propertyPath: MaxSpeed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1223626300076362, guid: a61992594d1f36f4ea596bf3340d90ee, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a61992594d1f36f4ea596bf3340d90ee, type: 2}
   m_IsPrefabAsset: 0
@@ -10234,6 +10242,10 @@ Prefab:
       propertyPath: MaxSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1223626300076362, guid: a61992594d1f36f4ea596bf3340d90ee, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a61992594d1f36f4ea596bf3340d90ee, type: 2}
   m_IsPrefabAsset: 0
@@ -10459,6 +10471,10 @@ Prefab:
       propertyPath: MaxSpeed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1223626300076362, guid: a61992594d1f36f4ea596bf3340d90ee, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a61992594d1f36f4ea596bf3340d90ee, type: 2}
   m_IsPrefabAsset: 0
@@ -10553,6 +10569,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 1223626300076362, guid: a61992594d1f36f4ea596bf3340d90ee, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a61992594d1f36f4ea596bf3340d90ee, type: 2}
   m_IsPrefabAsset: 0
@@ -10612,6 +10632,10 @@ Prefab:
         type: 2}
       propertyPath: MaxSpeed
       value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223626300076362, guid: a61992594d1f36f4ea596bf3340d90ee, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a61992594d1f36f4ea596bf3340d90ee, type: 2}

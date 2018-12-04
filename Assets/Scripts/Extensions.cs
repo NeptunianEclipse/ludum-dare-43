@@ -120,15 +120,7 @@ namespace LudumDare43.Extensions
 		public static IEnumerator<WaitForSeconds> InvokeAfter(Action action, float seconds)
 		{
 			yield return new WaitForSeconds(seconds);
-			try
-			{
-				action();
-			}
-			catch (MissingReferenceException mre)
-			{
-				Debug.LogError(mre);
-				// lmao don't throw. fuck there's no time left.
-			}
+			action();
 		}
 	}
 }

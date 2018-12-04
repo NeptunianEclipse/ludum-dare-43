@@ -20,14 +20,22 @@ public class Spikey : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		spikeBodies.ForEach((rigidbody) =>
+		try
 		{
-			var force = KnockbackDirection.normalized * KnockbackMagnitude * (KnockbackAllMassesTheSame ? rigidbody.mass : 5f);
-			rigidbody.AddForce(force, ForceMode2D.Impulse);
-			recentlySpiked.Add(rigidbody);
-			StartCoroutine(Extensions.InvokeAfter(() => recentlySpiked.Remove(rigidbody), KnockbackCooldown));
-		});
-
+			spikeBodies.ForEach((rigidbody) =>
+			{
+				var force = KnockbackDirection.normalized * KnockbackMagnitude * (KnockbackAllMassesTheSame ? rigidbody.mass : 5f);
+				rigidbody.AddForce(force, ForceMode2D.Impulse);
+				recentlySpiked.Add(rigidbody);
+				StartCoroutine(Extensions.InvokeAfter(() => recentlySpiked.Remove(rigidbody), KnockbackCooldown));
+			});
+		}
+		catch (MissingReferenceException mre)
+		{
+			Debug.LogError(mre);
+			
+			// lmao don't throw. fuck there's no time left.
+		}
 		spikeBodies.Clear();
 	}
 

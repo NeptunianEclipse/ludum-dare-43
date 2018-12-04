@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using LudumDare43.Extensions;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class Coins : MonoBehaviour {
 		if (collision.gameObject.GetComponent<Player>() != null)
 		{
 			UI.Instance.WinMesssage.gameObject.SetActive(true);
+			StartCoroutine(Extensions.InvokeAfter(() => UI.Instance.WinMesssage.gameObject.SetActive(false), 15));
 		}
 	}
 

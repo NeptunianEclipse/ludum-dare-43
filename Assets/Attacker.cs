@@ -20,18 +20,18 @@ public class Attacker : MonoBehaviour
 	// All spikey things share the same list of recently damage objects.
 	private readonly List<Damageable> recentlyDamaged = new List<Damageable>();
 
-	private void FixedUpdate()
-	{
-		spikeBodies.ForEach((rigidbody) =>
-		{
-			var force = KnockbackDirection.normalized * KnockbackMagnitude * (KnockbackAllMassesTheSame ? rigidbody.mass : 5f);
-			rigidbody.AddForce(force, ForceMode2D.Impulse);
-			recentlySpiked.Add(rigidbody);
-			StartCoroutine(Extensions.InvokeAfter(() => recentlySpiked.Remove(rigidbody), KnockbackCooldown));
-		});
+	//private void FixedUpdate()
+	//{
+	//	spikeBodies.ForEach((rigidbody) =>
+	//	{
+	//		var force = KnockbackDirection.normalized * KnockbackMagnitude * (KnockbackAllMassesTheSame ? rigidbody.mass : 5f);
+	//		rigidbody.AddForce(force, ForceMode2D.Impulse);
+	//		recentlySpiked.Add(rigidbody);
+	//		StartCoroutine(Extensions.InvokeAfter(() => recentlySpiked.Remove(rigidbody), KnockbackCooldown));
+	//	});
 
-		spikeBodies.Clear();
-	}
+	//	spikeBodies.Clear();
+	//}
 
 	private void OnTriggerStay2D(Collider2D collider)
 	{

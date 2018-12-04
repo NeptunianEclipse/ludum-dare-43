@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 114679216611027744}
   - component: {fileID: 114893541597364008}
   - component: {fileID: 114733767210545184}
+  - component: {fileID: 61261597192862608}
+  - component: {fileID: 114807533570755706}
   m_Layer: 9
   m_Name: Sploof
   m_TagString: Untagged
@@ -143,6 +145,31 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
   m_Radius: 0.6
+--- !u!61 &61261597192862608
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1223626300076362}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!61 &61697554227016820
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -225,6 +252,17 @@ MonoBehaviour:
   HeightToDamageIfBelow: -10
   DamageAmount: 10
   DamagePeriod: 1
+--- !u!114 &114807533570755706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1223626300076362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9619919c98ea0844f9857cc30e6fb6aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114814139128454302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,7 +291,7 @@ MonoBehaviour:
   PatrolActive: 1
   MaxSpeed: 3
   DownDistance: 1.5
-  RightDistance: 0.1
+  RightDistance: -0.078
   RightBoxToleranceReduction: 0.5
   Acceleration: 8
   Decelleration: 10

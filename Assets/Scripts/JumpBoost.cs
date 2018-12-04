@@ -18,14 +18,22 @@ public class JumpBoost : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		boostItems.ForEach((rigidbody) =>
+		try
 		{
-			var force = BoostDirection.normalized * BoostMagnitude * (BoostAllMassesTheSame ? rigidbody.mass : 5f);
-			rigidbody.AddForce(force, ForceMode2D.Impulse);
-			recentlyBoosted.Add(rigidbody);
-			StartCoroutine(Extensions.InvokeAfter(() => recentlyBoosted.Remove(rigidbody), BoostTimeout));
-		});
+			boostItems.ForEach((rigidbody) =>
+			{
+				var force = BoostDirection.normalized * BoostMagnitude * (BoostAllMassesTheSame ? rigidbody.mass : 5f);
+				rigidbody.AddForce(force, ForceMode2D.Impulse);
+				recentlyBoosted.Add(rigidbody);
+				StartCoroutine(Extensions.InvokeAfter(() => recentlyBoosted.Remove(rigidbody), BoostTimeout));
+			});
 
+		}
+		catch (MissingReferenceException mre)
+		{
+			Debug.LogError(mre);
+			// lmao don't throw. fuck there's no time left.
+		}
 		boostItems.Clear();
 
 		//// Gives an about 1% chance of getting double boost (for 5 frames of contact).
@@ -59,5 +67,5 @@ public class JumpBoost : MonoBehaviour
 	//	public Rigidbody2D rigidbody;
 	//	public Vector2 forceToAdd;
 	//}
-	
+
 }
