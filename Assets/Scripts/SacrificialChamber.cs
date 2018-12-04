@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum SacrificialChamberState
 {
@@ -36,6 +37,8 @@ public class SacrificialChamber : MonoBehaviour
 
 		LeftBarrier.SetActive(false);
 		RightBarrier.SetActive(true);
+
+		UI.Instance.SacrificeMessage.gameObject.SetActive(false);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -58,6 +61,8 @@ public class SacrificialChamber : MonoBehaviour
 
 	private void PlayerEnteredChamber()
 	{
+		UI.Instance.SacrificeMessage.gameObject.SetActive(true);
+
 		State = SacrificialChamberState.Dispensing;
 		LeftBarrier.SetActive(true);
 
@@ -99,11 +104,15 @@ public class SacrificialChamber : MonoBehaviour
 			yield return coroutine;
 		}
 
+		UI.Instance.SacrificeMessage.gameObject.SetActive(false);
+
 		yield return Bestow();
 	}
 
 	private IEnumerator Bestow()
 	{
+
+
 		List<AbilityBase> giftOptions = playerAbilityController.AbilityPool.GetRandomAbilities(abilityPedestals.Count);
 		for(int i = 0; i < giftOptions.Count; i++)
 		{

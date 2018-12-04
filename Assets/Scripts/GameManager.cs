@@ -96,7 +96,7 @@ public class GameManager : Singleton<GameManager>
 	private void Update()
 	{
 		// We're in game, load levels ahead of us and remove them behind us
-		if(GameState == GameState.Levels)
+		if(GameState == GameState.Levels && !done)
 		{
 			if(Player.Instance != null)
 			{
@@ -115,6 +115,7 @@ public class GameManager : Singleton<GameManager>
 
 	public void StartNewGame()
 	{
+		UI.Instance.StoryDialogue.SetActive(true);
 		if(MainMenuScene.HasValue)
 		{
 			SceneManager.UnloadSceneAsync(MainMenuScene.Value);
@@ -128,6 +129,8 @@ public class GameManager : Singleton<GameManager>
 		levelsUntilNextChamber = LevelsInbetweenChambers;
 	}
 
+	bool done;
+
 	public SceneReference NextLevelSceneToLoad()
 	{
 		if(levelsUntilNextChamber == 0)
@@ -140,6 +143,7 @@ public class GameManager : Singleton<GameManager>
 				Difficulty++;
 				if(Difficulty >= LevelsByDifficulty.Count)
 				{
+					done = true;
 					return FinalLevel;
 				}
 			}
