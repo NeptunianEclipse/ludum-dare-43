@@ -9,6 +9,8 @@ public class Dash : AbilityBase, IRecoverable
 
 	public float TimeBetweenDashes;
 
+	public override bool IsPassive => false;
+
 	private PlayerMovement playerMovement;
 	private Rigidbody2D playerRigidbody;
 	private bool dashing;

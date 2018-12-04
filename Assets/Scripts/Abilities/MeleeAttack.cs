@@ -8,6 +8,8 @@ public class MeleeAttack : AbilityBase, IRecoverable
 
 	public GameObject WeaponPrefab;
 
+	public override bool IsPassive => false;
+
 	private MeleeWeaponController weaponController;
 
 	protected override void OnEquip()

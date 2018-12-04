@@ -21,7 +21,13 @@ public class AbilityUI : MonoBehaviour
 			{
 				KeyText.text = "[ ]";
 			}
-			KeyGroup.alpha = 1;
+			if(AbilitySlot.Ability != null && AbilitySlot.Ability.IsPassive)
+			{
+				KeyGroup.alpha = 0.2f;
+			} else
+			{
+				KeyGroup.alpha = 1;
+			}
 		} else
 		{
 			KeyText.text = "";
@@ -40,7 +46,7 @@ public class AbilityUI : MonoBehaviour
 
 	private void Update()
 	{
-		if (AbilitySlot.Ability != null && AbilitySlot.Ability is IRecoverable)
+		if (AbilitySlot?.Ability != null && AbilitySlot.Ability is IRecoverable)
 		{
 			IRecoverable recoverable = (IRecoverable)AbilitySlot.Ability;
 			float y = (1 - recoverable.RecoveryPercent) * IconImage.rectTransform.sizeDelta.y;

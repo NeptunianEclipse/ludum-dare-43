@@ -9,7 +9,8 @@ public enum SacrificialChamberState
 	WaitingForSacrifice,
 	Sacrificing,
 	Bestowing,
-	WaitingForChoice
+	WaitingForChoice,
+	CleaningUp
 }
 
 public class SacrificialChamber : MonoBehaviour 
@@ -19,6 +20,8 @@ public class SacrificialChamber : MonoBehaviour
 	public GameObject RightBarrier;
 
 	public SacrificialChamberState State = SacrificialChamberState.Inactive;
+
+	private bool activated = false;
 
 	private PlayerAbilityController playerAbilityController;
 
@@ -37,8 +40,9 @@ public class SacrificialChamber : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if(collision.CompareTag(Tags.Player))
+		if(collision.CompareTag(Tags.Player) && !activated)
 		{
+			activated = true;
 			playerAbilityController = collision.GetComponent<PlayerAbilityController>();
 			PlayerEnteredChamber();
 		}
@@ -120,6 +124,8 @@ public class SacrificialChamber : MonoBehaviour
 
 	public IEnumerator GiftSelected(AbilityBase ability)
 	{
+		RightBarrier.SetActive(false);
+
 		playerAbilityController.EquipAbility(ability, currentSlot);
 
 		var coroutines = new List<Coroutine>();

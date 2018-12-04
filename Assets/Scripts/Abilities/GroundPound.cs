@@ -9,6 +9,8 @@ public class GroundPound : AbilityBase, IRecoverable
 	public float TimeBetweenPounds;
 	public float Damage;
 
+	public override bool IsPassive => false;
+
 	private PlayerMovement playerMovement;
 	private Rigidbody2D playerRigidbody;
 	private bool pounding;

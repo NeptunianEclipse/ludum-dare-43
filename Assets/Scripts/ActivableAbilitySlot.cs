@@ -15,7 +15,6 @@ public class ActivableAbilitySlot : AbilitySlot
 	public override AbilityBase SwapInAbility(AbilityBase newAbility)
 	{
 		AbilityBase oldAbility = base.SwapInAbility(newAbility);
-		newAbility.Mode = AbilityMode.Active;
 		return oldAbility;
 	}
 }

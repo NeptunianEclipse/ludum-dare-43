@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2230f65ab20ac49845d89ddd51be93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Melee Attack
   Sprite: {fileID: 21300000, guid: 95bc056206e41b044ac2ca947b584290, type: 3}
   WeaponPrefab: {fileID: 1211913782736138, guid: 9a0cbbddd3ae7e845a53beec9eb7d149,
     type: 2}

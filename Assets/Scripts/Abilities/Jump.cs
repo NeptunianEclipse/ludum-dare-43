@@ -6,6 +6,8 @@ public class Jump : AbilityBase
 {
 	public float JumpPower;
 
+	public override bool IsPassive => false;
+
 	private PlayerMovement movement;
 
 	private bool didJump;

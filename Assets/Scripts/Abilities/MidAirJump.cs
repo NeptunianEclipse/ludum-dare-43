@@ -7,6 +7,8 @@ public class MidAirJump : AbilityBase
 	public float JumpPower;
 	public int NumJumps = 1;
 
+	public override bool IsPassive => false;
+
 	private int jumpCount;
 	private PlayerMovement movement;
 

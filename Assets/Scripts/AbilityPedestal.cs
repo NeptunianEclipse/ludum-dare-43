@@ -106,6 +106,8 @@ public class AbilityPedestal : MonoBehaviour
 		{
 			floaterTarget = SelectedPosition;
 			selected = true;
+			Tooltip.Instance.Text.text = SacrificeSlot.Ability.Name;
+			Tooltip.Instance.Visible = true;
 		}
 	}
 
@@ -115,6 +117,8 @@ public class AbilityPedestal : MonoBehaviour
 		{
 			floaterTarget = InactivePosition;
 			selected = false;
+			Tooltip.Instance.Text.text = "";
+			Tooltip.Instance.Visible = false;
 		}
 		
 	}
@@ -175,6 +179,9 @@ public class AbilityPedestal : MonoBehaviour
 
 	public IEnumerator PlayerSelectedGift(AbilityBase ability)
 	{
+		gameObject.SetActive(false);
+		yield break;
+
 		if(ability = GiftAbility)
 		{
 			yield return FlyToPlayer();
@@ -186,6 +193,8 @@ public class AbilityPedestal : MonoBehaviour
 			State = AbilityPedestalState.Inactive;
 			UnsetGiftAbility();
 		}
+
+		gameObject.SetActive(false);
 
 		yield return null;
 	}
