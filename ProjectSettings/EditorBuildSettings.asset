@@ -35,4 +35,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestLevel.unity
     guid: 293d09dbdc32b934084ed419035759c3
+  - enabled: 1
+    path: Assets/Scenes/LevelComponents/FinalLevel.unity
+    guid: 0fc99bcb04397324b8056dd9ecdee501
+  - enabled: 1
+    path: Assets/Scenes/LevelComponents/Easy/Slope.unity
+    guid: 358da01ea4e12fb46803bb3af8d40d0e
+  - enabled: 1
+    path: Assets/Scenes/LevelComponents/Easy/Something.unity
+    guid: 31b91e9fd746a8741892cf5b273e1008
+  - enabled: 1
+    path: Assets/Scenes/LevelComponents/Medium/Bouncey.unity
+    guid: b3a85a5b2d9622246bd490298cdd60a2
   m_configObjects: {}
