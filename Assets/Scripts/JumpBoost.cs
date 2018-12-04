@@ -20,7 +20,7 @@ public class JumpBoost : MonoBehaviour
 	{
 		boostItems.ForEach((rigidbody) =>
 		{
-			var force = BoostDirection * BoostMagnitude * (BoostAllMassesTheSame ? rigidbody.mass : 5f);
+			var force = BoostDirection.normalized * BoostMagnitude * (BoostAllMassesTheSame ? rigidbody.mass : 5f);
 			rigidbody.AddForce(force, ForceMode2D.Impulse);
 			recentlyBoosted.Add(rigidbody);
 			StartCoroutine(Extensions.InvokeAfter(() => recentlyBoosted.Remove(rigidbody), BoostTimeout));
@@ -36,7 +36,7 @@ public class JumpBoost : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
-		var rigidbody = collision.rigidbody;
+		Rigidbody2D rigidbody = collision.rigidbody;
 		if (rigidbody != null)
 		{
 			if (!recentlyBoosted.Contains(rigidbody))
