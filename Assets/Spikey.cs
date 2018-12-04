@@ -15,7 +15,8 @@ public class Spikey : MonoBehaviour
 	private readonly List<Rigidbody2D> spikeBodies = new List<Rigidbody2D>();
 	private readonly List<Rigidbody2D> recentlySpiked = new List<Rigidbody2D>();
 
-	private readonly List<Damageable> recentlyDamaged = new List<Damageable>();
+	// All spikey things share the same list of recently damage objects.
+	private static readonly List<Damageable> recentlyDamaged = new List<Damageable>();
 
 	private void FixedUpdate()
 	{

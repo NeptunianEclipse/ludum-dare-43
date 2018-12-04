@@ -998,8 +998,8 @@ MonoBehaviour:
   LevelsInbetweenChambers: 5
   DoGameSequence: 0
   LoadOnStart:
-  - sceneAsset: {fileID: 102900000, guid: b3a85a5b2d9622246bd490298cdd60a2, type: 3}
-    scenePath: Assets/Scenes/LevelComponents/Medium/Bouncey.unity
+  - sceneAsset: {fileID: 102900000, guid: a01a844d341a05c478153f1fa7751545, type: 3}
+    scenePath: Assets/Scenes/LevelComponents/Medium/MedMed.unity
 --- !u!4 &1900830557
 Transform:
   m_ObjectHideFlags: 0
