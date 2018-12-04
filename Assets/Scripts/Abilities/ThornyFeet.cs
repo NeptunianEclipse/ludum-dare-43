@@ -7,8 +7,6 @@ public class ThornyFeet : AbilityBase
 	public float DamageAmount = 1;
 	public bool RequireFalling = true;
 
-	public override string Name => "Thorny Feet";
-
 	private PlayerMovement playerMovement;
 
 	protected override void OnEquip()

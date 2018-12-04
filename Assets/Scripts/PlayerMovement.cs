@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 	public GameObject Feet;
 
 	public event Action Grounded;
+	public event Action<Collision2D> CollisionEnter;
 	public event Action<Collider2D, Vector2> FeetTriggerEnter;
 
 	public Rigidbody2D Rigidbody2d { get; private set; }
@@ -38,6 +39,11 @@ public class PlayerMovement : MonoBehaviour
 	private void OnDisable()
 	{
 		feetCollisions.TriggerEnter -= OnFeetTriggerEnter;
+	}
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		CollisionEnter?.Invoke(collision);
 	}
 
 	private static readonly KeyCode[] developerSecretKeys = new KeyCode[] { KeyCode.Z, KeyCode.B };

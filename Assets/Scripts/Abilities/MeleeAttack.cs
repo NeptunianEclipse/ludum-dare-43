@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MeleeAttack : AbilityBase, IRecoverable
 {
-	public override string Name => "Melee Attack";
-
 	public float RecoveryPercent => weaponController.RecoveryPercent;
 
 	public GameObject WeaponPrefab;

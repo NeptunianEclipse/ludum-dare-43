@@ -10,16 +10,16 @@ public class Thrower : MonoBehaviour
 
 	private ICollection<GameObject> projectileInstances = new List<GameObject>();
 
-	private Collider2D myCollider;
+	private List<Collider2D> myColliders;
 	private Rigidbody2D myRigidbody;
 
 	void Awake()
 	{
-		myCollider = GetComponent<Collider2D>();
+		myColliders = GetComponents<Collider2D>().Concat(GetComponentsInChildren<Collider2D>()).ToList();
 		myRigidbody = GetComponent<Rigidbody2D>();
 	}
 
-	public void ThrowProjectile(Vector2 force)
+	public Throwable ThrowProjectile(Vector2 force)
 	{
 		GameObject newProjectile = Instantiate(original: ProjectilePrefab, position: transform.position, rotation: Quaternion.identity);
 		Throwable projectilesThrowable = newProjectile.GetComponent<Throwable>();
@@ -27,7 +27,7 @@ public class Thrower : MonoBehaviour
 		{
 			Debug.LogError($"A {gameObject.name} tried to throw a {newProjectile.name} but it did not have a {nameof(Throwable)} compnent.");
 			Destroy(newProjectile);
-			return;
+			return null;
 		}
 		// Throwable requires a Rigidbody2D
 		Rigidbody2D projectilesRigidbody = newProjectile.GetComponent<Rigidbody2D>();
@@ -37,15 +37,21 @@ public class Thrower : MonoBehaviour
 		StartCoroutine(projectilesRigidbody.ApplyForce(forcePerUpdate, forceDuration));
 		StartCoroutine(myRigidbody.ApplyForce(-forcePerUpdate, forceDuration));
 
-		if (myCollider != null)
+		if (myColliders.Count > 0)
 		{
 			Collider2D projectilesCollider = newProjectile.GetComponent<Collider2D>();
-			Physics2D.IgnoreCollision(myCollider, projectilesCollider);
+
+			foreach(var collider in myColliders)
+			{
+				Physics2D.IgnoreCollision(collider, projectilesCollider);
+			}
 		}
 		
 		projectilesThrowable.Expired += ThrowableComponent_Expired;
 		
 		projectileInstances.Add(newProjectile);
+
+		return projectilesThrowable;
 	}
 
 	private void ThrowableComponent_Expired(object sender, System.EventArgs e)

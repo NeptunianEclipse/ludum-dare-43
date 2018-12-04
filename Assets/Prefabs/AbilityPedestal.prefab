@@ -352,78 +352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21bceb79ab2412d418152f6d0f429380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Inactive:
-    IconTargetPosition: {fileID: 4717673230622306}
-    IconMoveRate: 0
-    IconMaxSpeed: 0
-    TargetRaysColor: {r: 1, g: 1, b: 1, a: 0.08235294}
-    LineAlpha: 0
-    IconVisible: 0
-    SpinnyAmplitude: {x: 0, y: 0}
-    SpinnyFrequency: 0
-  Dispensing:
-    IconTargetPosition: {fileID: 4717673230622306}
-    IconMoveRate: 2
-    IconMaxSpeed: 10
-    TargetRaysColor: {r: 1, g: 0, b: 0, a: 0.4}
-    LineAlpha: 1
-    IconVisible: 1
-    SpinnyAmplitude: {x: 1.2, y: 1.2}
-    SpinnyFrequency: 4
-  WaitingForSacrificeUnselected:
-    IconTargetPosition: {fileID: 4717673230622306}
-    IconMoveRate: 2
-    IconMaxSpeed: 10
-    TargetRaysColor: {r: 1, g: 0, b: 0, a: 0.4}
-    LineAlpha: 1
-    IconVisible: 1
-    SpinnyAmplitude: {x: 0, y: 0}
-    SpinnyFrequency: 0
-  WaitingForSacrificeSelected:
-    IconTargetPosition: {fileID: 4411970508453504}
-    IconMoveRate: 2
-    IconMaxSpeed: 10
-    TargetRaysColor: {r: 1, g: 0, b: 0, a: 1}
-    LineAlpha: 1
-    IconVisible: 1
-    SpinnyAmplitude: {x: 0, y: 0}
-    SpinnyFrequency: 0
-  Sacrificing:
-    IconTargetPosition: {fileID: 4903907947858972}
-    IconMoveRate: 2
-    IconMaxSpeed: 10
-    TargetRaysColor: {r: 1, g: 0, b: 0, a: 1}
-    LineAlpha: 0
-    IconVisible: 1
-    SpinnyAmplitude: {x: 0, y: 0}
-    SpinnyFrequency: 0
-  Bestowing:
-    IconTargetPosition: {fileID: 4717673230622306}
-    IconMoveRate: 2
-    IconMaxSpeed: 10
-    TargetRaysColor: {r: 1, g: 1, b: 1, a: 0.4}
-    LineAlpha: 0
-    IconVisible: 1
-    SpinnyAmplitude: {x: 0, y: 0}
-    SpinnyFrequency: 0
-  WaitingForChoiceUnselected:
-    IconTargetPosition: {fileID: 4717673230622306}
-    IconMoveRate: 2
-    IconMaxSpeed: 10
-    TargetRaysColor: {r: 1, g: 1, b: 1, a: 0.40392157}
-    LineAlpha: 0
-    IconVisible: 1
-    SpinnyAmplitude: {x: 0, y: 0}
-    SpinnyFrequency: 0
-  WaitingForChoiceSelected:
-    IconTargetPosition: {fileID: 4411970508453504}
-    IconMoveRate: 2
-    IconMaxSpeed: 10
-    TargetRaysColor: {r: 1, g: 1, b: 1, a: 1}
-    LineAlpha: 0
-    IconVisible: 1
-    SpinnyAmplitude: {x: 0, y: 0}
-    SpinnyFrequency: 0
   PlayerAbilityController: {fileID: 0}
   SacrificialChamber: {fileID: 0}
   State: 0
@@ -469,6 +397,10 @@ MonoBehaviour:
   SelectRate: 5
   OtherFlyingRate: 4
   AnimationFinishDistance: 0.1
+  SpookyRaysColor: {r: 1, g: 0, b: 0, a: 1}
+  GiftRaysColor: {r: 1, g: 1, b: 1, a: 1}
+  SelectedRayAlpha: 1
+  UnselectedRayAlpha: 0.5
 --- !u!114 &114629178353473950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -531,7 +463,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -979214987
-  m_SortingLayer: -1
+  m_SortingLayer: -5
   m_SortingOrder: 0
   m_Positions:
   - {x: 6.9208755, y: -0.09733778, z: 0}
@@ -693,11 +625,11 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1529371349
-  m_SortingLayer: -2
+  m_SortingLayer: -6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4ebbbd28298fbee46b2ea6551d15ba23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39999995}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.96, y: 2.56}

@@ -15,6 +15,8 @@ public enum SacrificialChamberState
 public class SacrificialChamber : MonoBehaviour 
 {
 	public List<AbilityPedestal> abilityPedestals;
+	public GameObject LeftBarrier;
+	public GameObject RightBarrier;
 
 	public SacrificialChamberState State = SacrificialChamberState.Inactive;
 
@@ -28,6 +30,9 @@ public class SacrificialChamber : MonoBehaviour
 		{
 			pedestal.SacrificialChamber = this;
 		}
+
+		LeftBarrier.SetActive(false);
+		RightBarrier.SetActive(true);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -50,6 +55,7 @@ public class SacrificialChamber : MonoBehaviour
 	private void PlayerEnteredChamber()
 	{
 		State = SacrificialChamberState.Dispensing;
+		LeftBarrier.SetActive(true);
 
 		List<AbilitySlot> sacrificeOptions = playerAbilityController.GetRandomFullSlots(abilityPedestals.Count);
 		for(int i = 0; i < sacrificeOptions.Count; i++)
@@ -116,9 +122,15 @@ public class SacrificialChamber : MonoBehaviour
 	{
 		playerAbilityController.EquipAbility(ability, currentSlot);
 
-		foreach(AbilityPedestal pedestal in abilityPedestals)
+		var coroutines = new List<Coroutine>();
+		foreach (AbilityPedestal pedestal in abilityPedestals)
 		{
-			yield return pedestal.PlayerSelectedGift(ability);
+			coroutines.Add(StartCoroutine(pedestal.PlayerSelectedGift(ability)));
+		}
+
+		foreach(Coroutine coroutine in coroutines)
+		{
+			yield return coroutine;
 		}
 
 		yield return EndSequence();
@@ -127,6 +139,7 @@ public class SacrificialChamber : MonoBehaviour
 	private IEnumerator EndSequence()
 	{
 		yield return null;
+		RightBarrier.SetActive(false);
 	}
 
 }

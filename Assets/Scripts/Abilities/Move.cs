@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Move : AbilityBase
 {
-	public override string Name => "Move";
-
 	public MoveSettings MoveSettings;
 	public int Direction;
 

@@ -12,18 +12,6 @@ public enum AbilityPedestalState {
 [RequireComponent(typeof(Collider2D))]
 public class AbilityPedestal : MonoBehaviour 
 {
-	
-	
-
-	public PedestalStateInfo Inactive;
-	public PedestalStateInfo Dispensing;
-	public PedestalStateInfo WaitingForSacrificeUnselected;
-	public PedestalStateInfo WaitingForSacrificeSelected;
-	public PedestalStateInfo Sacrificing;
-	public PedestalStateInfo Bestowing;
-	public PedestalStateInfo WaitingForChoiceUnselected;
-	public PedestalStateInfo WaitingForChoiceSelected;
-
 	[HideInInspector]
 	public PlayerAbilityController PlayerAbilityController;
 	[HideInInspector]
@@ -33,13 +21,6 @@ public class AbilityPedestal : MonoBehaviour
 	public AbilityBase GiftAbility { get; private set; }
 	public AbilityPedestalState State;
 	public SacrificialChamberState ChamberState => SacrificialChamber.State;
-
-	
-
-
-
-
-
 
 	public KeyCode SelectKey;
 
@@ -60,13 +41,18 @@ public class AbilityPedestal : MonoBehaviour
 	public float OtherFlyingRate;
 	public float AnimationFinishDistance;
 
+	public Color SpookyRaysColor;
+	public Color GiftRaysColor;
+	public float SelectedRayAlpha;
+	public float UnselectedRayAlpha;
+
+	private float targetRaysAlpha;
+	private Color targetRaysColor;
+
 	private float baseRaysAlpha;
 	private bool selected;
 
 	private Transform floaterTarget;
-
-
-
 
 	private void Awake()
 	{
@@ -78,6 +64,7 @@ public class AbilityPedestal : MonoBehaviour
 	{
 		if (State == AbilityPedestalState.WaitingForChoice || State == AbilityPedestalState.WaitingForSacrifice)
 		{
+			targetRaysAlpha = selected ? SelectedRayAlpha : UnselectedRayAlpha;
 			Floater.position = Vector3.Lerp(Floater.position, floaterTarget.position, SelectRate * Time.deltaTime);
 		}
 
@@ -107,6 +94,9 @@ public class AbilityPedestal : MonoBehaviour
 			}
 		}
 
+		targetRaysColor.a = targetRaysAlpha;
+		Rays.color = Color.Lerp(Rays.color, targetRaysColor, RayAlphaRate);
+
 	}
 
 
@@ -129,8 +119,6 @@ public class AbilityPedestal : MonoBehaviour
 		
 	}
 
-	
-
 	public void SetAbilitySlot(AbilitySlot slot)
 	{
 		SacrificeSlot = slot;
@@ -147,6 +135,12 @@ public class AbilityPedestal : MonoBehaviour
 	{
 		GiftAbility = ability;
 		IconRenderer.sprite = ability.Sprite;
+	}
+
+	public void UnsetGiftAbility()
+	{
+		GiftAbility = null;
+		IconRenderer.sprite = null;
 	}
 
 
@@ -181,11 +175,25 @@ public class AbilityPedestal : MonoBehaviour
 
 	public IEnumerator PlayerSelectedGift(AbilityBase ability)
 	{
+		if(ability = GiftAbility)
+		{
+			yield return FlyToPlayer();
+		}
+		else
+		{
+			State = AbilityPedestalState.Animating;
+			yield return FlyTo(OffscreenPosition.position, OtherFlyingRate);
+			State = AbilityPedestalState.Inactive;
+			UnsetGiftAbility();
+		}
+
 		yield return null;
 	}
 
 	private IEnumerator LeavePlayer()
 	{
+		targetRaysColor = SpookyRaysColor;
+		targetRaysAlpha = UnselectedRayAlpha;
 		State = AbilityPedestalState.Animating;
 		Floater.position = PlayerAbilityController.transform.position;
 		yield return FlyToPedestal();
@@ -203,6 +211,7 @@ public class AbilityPedestal : MonoBehaviour
 		yield return FlyTo(OffscreenPosition.position, OtherFlyingRate);
 		State = AbilityPedestalState.Inactive;
 		UnsetAbilitySlot();
+		UnsetGiftAbility();
 	}
 
 	private IEnumerator ReturnToPlayer()
@@ -211,6 +220,7 @@ public class AbilityPedestal : MonoBehaviour
 		yield return FlyToPlayer();
 		State = AbilityPedestalState.Inactive;
 		UnsetAbilitySlot();
+		UnsetGiftAbility();
 	}
 
 	private IEnumerator DescendFromAbove()
