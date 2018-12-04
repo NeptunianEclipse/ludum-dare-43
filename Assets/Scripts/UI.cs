@@ -10,6 +10,7 @@ public class UI : Singleton<UI> {
 	public Text WinMesssage;
 	public GameObject StoryDialogue;
 	public Text HealthText;
+	public Text Gameover;
 
 	public void SetText(object sender, System.EventArgs args)
 	{

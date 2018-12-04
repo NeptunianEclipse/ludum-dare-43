@@ -7,7 +7,17 @@ public class Player : Singleton<Player>
 
 	private void Awake()
 	{
-		GetComponent<Damageable>().Damaged += UI.Instance.SetText;
+
+
+		var d = GetComponent<Damageable>();
+		d.Damaged += UI.Instance.SetText;
+		d.Destroyed += UI.Instance.SetText;
+		d.Destroyed += eventnsdlkfjas;
+	}
+
+	void eventnsdlkfjas(object sender, System.EventArgs args)
+	{
+		UI.Instance.Gameover.gameObject.SetActive(true);
 	}
 
 }
