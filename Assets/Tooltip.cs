@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Tooltip : MonoBehaviour 
+public class Tooltip : Singleton<Tooltip>
 {
+
+
 	public Text Text;
 	public GameObject Body;
 

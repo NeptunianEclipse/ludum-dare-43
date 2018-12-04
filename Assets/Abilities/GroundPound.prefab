@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Ground Pound
-  Sprite: {fileID: 0}
-  Mode: 0
+  Sprite: {fileID: 21300000, guid: 56738915b85e689469a2d2d28336280f, type: 3}
   Duration: 1
   Speed: 0.3
-  TimeBetweenPounds: 0
+  TimeBetweenPounds: 0.5
+  Damage: 20

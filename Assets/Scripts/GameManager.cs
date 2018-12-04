@@ -14,19 +14,32 @@ public enum GameState
 	Paused
 }
 
+[System.Serializable]
+public class Difficulty
+{
+	public List<SceneReference> Levels;
+}
+
 public class GameManager : Singleton<GameManager> 
 {
 	public SceneReference MainMenuSceneReference; 
 	public SceneReference PlayerSceneReference;
 
 	public SceneReference InitialLevelComponentReference;
+	public SceneReference FinalLevel;
 	public SceneReference SacrificeChamberReference;
 	public List<SceneReference> LevelSceneReferences;
+
+	public List<Difficulty> LevelsByDifficulty;
+
 	public float LoadDistance;
 	public int LevelsInbetweenChambers;
+	public int ChambersPerDifficulty;
 
 	public bool DoGameSequence;
 	public bool DebugSpawnPlayer;
+
+	public int Difficulty = 0;
 
 	[Header("Editor only")]
 	public List<SceneReference> LoadOnStart;
@@ -50,6 +63,7 @@ public class GameManager : Singleton<GameManager>
 	private Dictionary<string, Level> ScenePathLoadedLevels = new Dictionary<string, Level>(); 
 	private Transform rightmostConnector;
 	private int levelsUntilNextChamber;
+	private int chambersHadThisDifficulty;
 
 	private void Awake()
 	{
@@ -82,7 +96,7 @@ public class GameManager : Singleton<GameManager>
 	private void Update()
 	{
 		// We're in game, load levels ahead of us and remove them behind us
-		if(GameState == GameState.Levels)
+		if(GameState == GameState.Levels && !done)
 		{
 			if(Player.Instance != null)
 			{
@@ -101,6 +115,7 @@ public class GameManager : Singleton<GameManager>
 
 	public void StartNewGame()
 	{
+		UI.Instance.StoryDialogue.SetActive(true);
 		if(MainMenuScene.HasValue)
 		{
 			SceneManager.UnloadSceneAsync(MainMenuScene.Value);
@@ -114,15 +129,29 @@ public class GameManager : Singleton<GameManager>
 		levelsUntilNextChamber = LevelsInbetweenChambers;
 	}
 
+	bool done;
+
 	public SceneReference NextLevelSceneToLoad()
 	{
 		if(levelsUntilNextChamber == 0)
 		{
+			levelsUntilNextChamber = LevelsInbetweenChambers;
+			chambersHadThisDifficulty++;
+			if(chambersHadThisDifficulty >= ChambersPerDifficulty)
+			{
+				chambersHadThisDifficulty = 0;
+				Difficulty++;
+				if(Difficulty >= LevelsByDifficulty.Count)
+				{
+					done = true;
+					return FinalLevel;
+				}
+			}
 			return SacrificeChamberReference;
 		}
 		else
 		{
-			return LevelSceneReferences[UnityEngine.Random.Range(0, LevelSceneReferences.Count)];
+			return LevelsByDifficulty[Difficulty].Levels[UnityEngine.Random.Range(0, LevelsByDifficulty[Difficulty].Levels.Count)];
 		}
 	}
 

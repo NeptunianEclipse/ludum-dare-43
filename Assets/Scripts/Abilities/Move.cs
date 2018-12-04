@@ -8,6 +8,8 @@ public class Move : AbilityBase
 	public MoveSettings MoveSettings;
 	public int Direction;
 
+	public override bool IsPassive => false;
+
 	private PlayerMovement playerMovement;
 	private Rigidbody2D playerRigidbody;
 	private ITurnable maybeTurnable = null;

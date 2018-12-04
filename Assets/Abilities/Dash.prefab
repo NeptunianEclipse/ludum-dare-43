@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79ec1182a5eb3e4409d659bf3aa46e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Dash
   Sprite: {fileID: 21300000, guid: 6f3c365ab9b3b4e43a9f29f874c71f55, type: 3}
   Duration: 0.25
   Speed: 0.2

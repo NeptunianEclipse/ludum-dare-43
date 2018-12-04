@@ -15,7 +15,6 @@ public class AbilitySlot : MonoBehaviour
 	public virtual AbilityBase SwapInAbility(AbilityBase newAbility)
 	{
 		newAbility.transform.SetParent(transform);
-		newAbility.Mode = AbilityMode.Passive;
 
 		if(Ability == null)
 		{

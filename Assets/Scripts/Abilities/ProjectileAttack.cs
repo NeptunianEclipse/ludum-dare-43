@@ -10,6 +10,8 @@ public class ProjectileAttack : AbilityBase, IRecoverable
 	public Vector2 ThrowForce;
 	public float TimeBetweenThrows;
 
+	public override bool IsPassive => false;
+
 	private Thrower thrower;
 	private float lastThrowTime;
 

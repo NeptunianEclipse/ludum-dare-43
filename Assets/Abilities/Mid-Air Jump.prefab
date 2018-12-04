@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b336b84087a8a04d8e5de33ca8af833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Mid Air Jump
   Sprite: {fileID: 21300000, guid: e9623cf31f087b446a5bc02c51561829, type: 3}
   JumpPower: 5
   NumJumps: 1

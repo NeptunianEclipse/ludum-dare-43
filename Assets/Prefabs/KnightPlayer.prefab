@@ -894,9 +894,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8faba0692c432ac4facd6006ab1c8d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Jump
   Sprite: {fileID: 21300000, guid: 5e4eade6d245ba4498f7c749dd086f80, type: 3}
-  Mode: 0
   JumpPower: 5
 --- !u!114 &114066118421115122
 MonoBehaviour:
@@ -953,12 +952,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Ground Pound
-  Sprite: {fileID: 0}
-  Mode: 0
+  Sprite: {fileID: 21300000, guid: 56738915b85e689469a2d2d28336280f, type: 3}
   Duration: 1
   Speed: 0.3
-  TimeBetweenPounds: 0
-  Damage: 0
+  TimeBetweenPounds: 0.5
+  Damage: 20
 --- !u!114 &114169354872990572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1009,9 +1007,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79ec1182a5eb3e4409d659bf3aa46e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Dash
   Sprite: {fileID: 21300000, guid: 6f3c365ab9b3b4e43a9f29f874c71f55, type: 3}
-  Mode: 0
   Duration: 0.25
   Speed: 0.2
   TimeBetweenDashes: 1
@@ -1027,8 +1024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Shoot Gloop
-  Sprite: {fileID: 0}
-  Mode: 0
+  Sprite: {fileID: 21300000, guid: 432d296e9f1affa4faea2016c64d387f, type: 3}
   ProjectilePrefab: {fileID: 114782504241482770, guid: 960beecf3b976284e91290f6fa7165b9,
     type: 2}
   ThrowForce: {x: 40, y: 10}
@@ -1056,9 +1052,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab0b057741ffd2049b4ed5bc2975906e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Move Left
   Sprite: {fileID: 21300000, guid: aa56d34ba16ab094cb86ec5fefdf1896, type: 3}
-  Mode: 0
   MoveSettings: {fileID: 11400000, guid: c33855686d85e8f469ae85dac2ed1817, type: 2}
   Direction: -1
 --- !u!114 &114520858079822978
@@ -1074,7 +1069,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   Sprite: {fileID: 21300000, guid: 95bc056206e41b044ac2ca947b584290, type: 3}
-  Mode: 0
   WeaponPrefab: {fileID: 1211913782736138, guid: 9a0cbbddd3ae7e845a53beec9eb7d149,
     type: 2}
 --- !u!114 &114556889085903446
@@ -1154,7 +1148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   Sprite: {fileID: 21300000, guid: 47b8deb8b961e6e41bedd9e587f7baf4, type: 3}
-  Mode: 0
   DamageAmount: 20
   RequireFalling: 1
 --- !u!114 &114858679519388894
@@ -1168,9 +1161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab0b057741ffd2049b4ed5bc2975906e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Move Right
   Sprite: {fileID: 21300000, guid: 2421f1d009d476a43b6aec5ccea54e54, type: 3}
-  Mode: 0
   MoveSettings: {fileID: 11400000, guid: c33855686d85e8f469ae85dac2ed1817, type: 2}
   Direction: 1
 --- !u!114 &114931859483965040

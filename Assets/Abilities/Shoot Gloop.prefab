@@ -52,9 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Shoot Gloop
-  Sprite: {fileID: 0}
-  Mode: 0
+  Sprite: {fileID: 21300000, guid: 432d296e9f1affa4faea2016c64d387f, type: 3}
   ProjectilePrefab: {fileID: 114724655090759280, guid: d875c11338c23cf4aba4e4dc30a0bbd6,
     type: 2}
-  ThrowForce: {x: 1, y: 0}
+  ThrowForce: {x: 40, y: 10}
   TimeBetweenThrows: 1

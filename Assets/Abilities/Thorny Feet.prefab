@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd8e87fabd531f48bacbc60a3e3f2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Thorny Feet
   Sprite: {fileID: 21300000, guid: 47b8deb8b961e6e41bedd9e587f7baf4, type: 3}
   DamageAmount: 20
   RequireFalling: 1

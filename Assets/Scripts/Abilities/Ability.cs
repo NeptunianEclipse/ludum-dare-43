@@ -7,16 +7,11 @@ public interface IAbilityController
 {
 	GameObject GameObject { get; }
 }
-
-public enum AbilityMode
-{
-	Active,
-	Passive
-}
-
 public abstract class AbilityBase : MonoBehaviour
 {
 	public IAbilityController Controller { get; protected set; }
+
+	public abstract bool IsPassive { get;  }
 
 	public string Name;
 	public Sprite Sprite;
@@ -24,8 +19,6 @@ public abstract class AbilityBase : MonoBehaviour
 	public float TotalUsageTime { get; protected set; } = 0;
 	public bool IsEquipped { get; private set; } = false;
 	public bool Activated { get; private set; } = false;
-
-	public AbilityMode Mode;
 
 	protected void Update()
 	{
