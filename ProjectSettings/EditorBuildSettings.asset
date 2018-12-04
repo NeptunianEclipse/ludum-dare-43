@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelComponents/Easy/Basic1.unity
     guid: 1fbfc37e576a3084db9f993e8b40fa29
   - enabled: 1
-    path: Assets/Scenes/LevelComponents/Easy/Basic2.unity
+    path: 
     guid: 6c75b8f3776ee6242866cfbf46d8ee5a
   - enabled: 1
     path: Assets/Scenes/LevelComponents/Hard/SnowBouncy.unity
@@ -47,4 +47,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelComponents/Medium/Bouncey.unity
     guid: b3a85a5b2d9622246bd490298cdd60a2
+  - enabled: 1
+    path: Assets/Scenes/LevelComponents/Hard/SnowBouncy 1.unity
+    guid: bebd824ccb8a1404d93fd64798ed7c25
+  - enabled: 1
+    path: Assets/Scenes/LevelComponents/Medium/Fireballs.unity
+    guid: 99dd332a72a879f478f4562a47be624e
+  - enabled: 1
+    path: Assets/Scenes/LevelComponents/Medium/MedMed.unity
+    guid: a01a844d341a05c478153f1fa7751545
+  - enabled: 1
+    path: Assets/Scenes/LevelComponents/Medium/Sploofs.unity
+    guid: 932d4b61d4e393b499eb5b7b321aa045
   m_configObjects: {}
