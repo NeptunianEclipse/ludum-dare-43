@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4729808822187998}
   - component: {fileID: 212831452288410698}
-  - component: {fileID: 95310412537276412}
+  - component: {fileID: 95651679143561180}
   m_Layer: 9
   m_Name: SploofSprite
   m_TagString: Untagged
@@ -36,9 +36,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4035269953478974}
-  - component: {fileID: 60376905591426162}
   - component: {fileID: 58223479235854850}
-  - component: {fileID: 58921730314593220}
   - component: {fileID: 50318803285502422}
   - component: {fileID: 114814139128454302}
   - component: {fileID: 114804320336033926}
@@ -58,8 +56,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1223626300076362}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.0281067, y: 5.697197, z: 0.15234375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4729808822187998}
@@ -111,61 +109,10 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1842041, y: -0.6032156}
+  m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
-  m_Radius: 0.05
---- !u!58 &58921730314593220
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1223626300076362}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.3125029, y: -0.5689533}
-  serializedVersion: 2
-  m_Radius: 0.05
---- !u!60 &60376905591426162
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1223626300076362}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.375, y: 1.375}
-    newSize: {x: 0.44, y: 0.44}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.4931574, y: 0.6683125}
-      - {x: 0.24943686, y: 0.4428602}
-      - {x: -0.33937526, y: 0.3969379}
-      - {x: -0.6573458, y: 0.044702232}
-      - {x: -0.49510264, y: -0.3588145}
-      - {x: -0.31250286, y: -0.5689533}
-      - {x: -0.020513535, y: -0.45725083}
-      - {x: 0.1842041, y: -0.6032156}
-      - {x: 0.5170002, y: -0.3103128}
-      - {x: 0.4044857, y: -0.026312351}
-      - {x: 0.606514, y: 0.34490985}
-      - {x: 0.6107507, y: 0.5864844}
---- !u!95 &95310412537276412
+  m_Radius: 0.6
+--- !u!95 &95651679143561180
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -174,7 +121,7 @@ Animator:
   m_GameObject: {fileID: 1095202815103538}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f47c9d50c240fa14580436e3402cd73f, type: 2}
+  m_Controller: {fileID: 9100000, guid: c17adaace71c88f43830fd828c2d4588, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -194,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e017cfcfa413d940a98575590af1684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TurnDuration: 0.7
+  TurnDuration: 0.5
   Debug_LogTurning: 0
 --- !u!114 &114733767210545184
 MonoBehaviour:
@@ -251,10 +198,11 @@ MonoBehaviour:
   MaxSpeed: 3
   DownDistance: 0.75
   RightDistance: 0.1
+  RightBoxToleranceReduction: 0.5
   Acceleration: 8
   Decelleration: 10
   Debug_LogTurning: 0
-  Debug_DrawDetectionBox: 1
+  Debug_DrawDetectionBox: 0
   Notices:
     serializedVersion: 2
     m_Bits: 6912
@@ -293,7 +241,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 692dfeb80733c7f488e73af97adec1ec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 741ee1ea5697774408c8311572f0db83, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
