@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Dash : AbilityBase, IRecoverable
 {
-	public override string Name => "Dash";
-
 	public float Duration;
 	public float Speed;
 

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Jump : AbilityBase
 {
-	public override string Name => "Jump";
-
 	public float JumpPower;
 
 	private PlayerMovement movement;

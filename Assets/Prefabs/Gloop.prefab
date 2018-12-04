@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50438904177789008}
   - component: {fileID: 114724655090759280}
   - component: {fileID: 114622172120455620}
+  - component: {fileID: 114137749831140842}
   m_Layer: 0
   m_Name: Gloop
   m_TagString: Untagged
@@ -127,6 +128,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114137749831140842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1156714421201252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d7752709fd2f240a8989b383c0f1c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 5
 --- !u!114 &114622172120455620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImpactsWith:
     serializedVersion: 2
-    m_Bits: 4864
+    m_Bits: 37632
   MaxTimeAlive: 8
 --- !u!212 &212992080533238424
 SpriteRenderer:
@@ -190,7 +203,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1098253207
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 40117977f81131c48842902bfaee818a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

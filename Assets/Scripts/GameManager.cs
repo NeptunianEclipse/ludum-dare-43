@@ -26,6 +26,7 @@ public class GameManager : Singleton<GameManager>
 	public int LevelsInbetweenChambers;
 
 	public bool DoGameSequence;
+	public bool DebugSpawnPlayer;
 
 	[Header("Editor only")]
 	public List<SceneReference> LoadOnStart;
@@ -71,6 +72,10 @@ public class GameManager : Singleton<GameManager>
 		else
 		{
 			GameState = GameState.Levels;
+			if(DebugSpawnPlayer)
+			{
+				SceneManager.LoadScene(PlayerSceneReference.ScenePath, LoadSceneMode.Additive);
+			}
 		}
 	}
 
@@ -117,7 +122,7 @@ public class GameManager : Singleton<GameManager>
 		}
 		else
 		{
-			return LevelSceneReferences[UnityEngine.Random.Range(0, LevelSceneReferences.Count - 1)];
+			return LevelSceneReferences[UnityEngine.Random.Range(0, LevelSceneReferences.Count)];
 		}
 	}
 

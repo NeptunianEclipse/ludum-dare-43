@@ -18,7 +18,7 @@ public abstract class AbilityBase : MonoBehaviour
 {
 	public IAbilityController Controller { get; protected set; }
 
-	public abstract string Name { get; }
+	public string Name;
 	public Sprite Sprite;
 
 	public float TotalUsageTime { get; protected set; } = 0;

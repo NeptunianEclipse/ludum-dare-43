@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MidAirJump : AbilityBase
 {
-	public override string Name => "Mid-Air Jump";
-
 	public float JumpPower;
 	public int NumJumps = 1;
 

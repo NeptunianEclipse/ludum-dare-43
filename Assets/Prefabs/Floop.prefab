@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114821012182540826}
   - component: {fileID: 114034624437426240}
   - component: {fileID: 114639620804468036}
+  - component: {fileID: 114988071710420630}
   m_Layer: 0
   m_Name: Floop
   m_TagString: Untagged
@@ -186,6 +187,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startScale: {x: 0.01, y: 0.01}
   endScale: {x: 1, y: 1}
+--- !u!114 &114988071710420630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1047064670539128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d7752709fd2f240a8989b383c0f1c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 10
 --- !u!212 &212963795062031468
 SpriteRenderer:
   m_ObjectHideFlags: 1

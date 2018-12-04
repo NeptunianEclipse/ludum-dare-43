@@ -442,3 +442,6 @@ ASALocalRun/
 .localhistory/
 
 # End of https://www.gitignore.io/api/unity,macos,windows,visualstudio,visualstudiocode
+
+
+.collabignore

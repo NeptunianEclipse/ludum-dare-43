@@ -22,19 +22,17 @@ public class Throwable : MonoBehaviour
 	/// <summary>
 	/// Raised when this collides with a valid object.
 	/// </summary>
-	public event System.EventHandler Impacted;
+	public event System.Action<Collision2D> Impacted;
 
 	void Awake()
 	{
-		//myCollider = GetComponent<Collider2D>();
-
 		if (ImpactsWith == default(LayerMask)) Debug.LogWarning($"A {gameObject.name} has no layer mask set in the {nameof(Throwable)} component.");
 
 	}
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
-		if (collision.collider.IsTouchingLayers(ImpactsWith.value)) OnImpacted(new System.EventArgs());
+		if (collision.collider.IsTouchingLayers(ImpactsWith.value)) OnImpacted(collision);
 	}
 
 	void Update()
@@ -51,9 +49,9 @@ public class Throwable : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	private void OnImpacted(System.EventArgs eventArgs)
+	private void OnImpacted(Collision2D collision)
 	{
-		Impacted?.Invoke(this, eventArgs);
+		Impacted?.Invoke(collision);
 	}
 
 	private void OnExpired(System.EventArgs e)

@@ -17,6 +17,10 @@ public class AbilityUI : MonoBehaviour
 		if(AbilitySlot is ActivableAbilitySlot)
 		{
 			KeyText.text = ((ActivableAbilitySlot)AbilitySlot).ActivateKey.ToString();
+			if(KeyText.text == " ")
+			{
+				KeyText.text = "[ ]";
+			}
 			KeyGroup.alpha = 1;
 		} else
 		{
