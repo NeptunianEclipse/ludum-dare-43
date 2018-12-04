@@ -59,6 +59,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1152862161769248
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4644089438143780}
+  - component: {fileID: 114334528629844416}
+  m_Layer: 0
+  m_Name: Mid-Air Jump
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1238803189870614
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,6 +510,7 @@ Transform:
   m_Children:
   - {fileID: 4910048378026160}
   - {fileID: 4377535078291366}
+  - {fileID: 4644089438143780}
   m_Father: {fileID: 4982213988412996}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -510,6 +527,19 @@ Transform:
   - {fileID: 4352757497195472}
   m_Father: {fileID: 4694964144761834}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4644089438143780
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152862161769248}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.40277994, y: -2.055664, z: -0.0703125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4529372730260162}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4674830489849696
 Transform:
@@ -644,7 +674,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1972990378464232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.26, y: 3.06, z: 0}
+  m_LocalPosition: {x: 20.4, y: 1.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4065572005588878}
@@ -996,6 +1026,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActivateKey: 113
+--- !u!114 &114334528629844416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152862161769248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b336b84087a8a04d8e5de33ca8af833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Mid Air Jump
+  Sprite: {fileID: 21300000, guid: e9623cf31f087b446a5bc02c51561829, type: 3}
+  JumpPower: 5
+  NumJumps: 1
 --- !u!114 &114421943285270044
 MonoBehaviour:
   m_ObjectHideFlags: 1

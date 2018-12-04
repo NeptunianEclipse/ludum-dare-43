@@ -52,7 +52,7 @@ public class Dash : AbilityBase, IRecoverable
 			EndDash();
 		}
 
-		playerMovement.transform.position += Vector3.right * playerMovement.MovingDirection() * Speed;
+		playerMovement.transform.position += Vector3.right * playerMovement.MovingDirection() * Speed * Time.deltaTime * 60 ;
 	}
 
 	private void StartDash()
