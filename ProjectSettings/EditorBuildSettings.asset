@@ -26,9 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelComponents/Easy/Basic1.unity
     guid: 1fbfc37e576a3084db9f993e8b40fa29
-  - enabled: 1
+  - enabled: 0
     path: 
-    guid: 6c75b8f3776ee6242866cfbf46d8ee5a
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/LevelComponents/Hard/SnowBouncy.unity
     guid: b96912518b9922f499bba42ec422e613

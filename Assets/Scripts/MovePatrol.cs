@@ -128,7 +128,16 @@ public class MovePatrol : MonoBehaviour
 
 				Collider2D[] thingsInFrontOfMe = Physics2D.OverlapBoxAll(point: boxCentre, size: boxSize, angle: 0, layerMask: Notices.value);
 
-				if (thingsInFrontOfMe.Any(collider => collider.gameObject != gameObject))
+				if (thingsInFrontOfMe.Any(collider => {
+					foreach (Transform child in transform)
+					{
+						if(child.gameObject == collider.gameObject)
+						{
+							return false;
+						}
+					}
+					return collider.gameObject != gameObject;
+				}))
 				{
 					myTurnable.StartTurning();
 					StopDrawing();

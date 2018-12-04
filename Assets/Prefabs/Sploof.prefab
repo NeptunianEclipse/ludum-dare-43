@@ -152,7 +152,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PatrolActive: 1
   MaxSpeed: 3
-  DownDistance: 0.75
+  DownDistance: 1.5
   RightDistance: 0.1
   RightBoxToleranceReduction: 0.5
   Acceleration: 8
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8d1387c2d6bb04abd6c98077b1de16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 5
+  Damage: 6
   DamageCooldown: 0.5
   KnockbackDirection: {x: 1, y: 0}
   KnockbackMagnitude: 3

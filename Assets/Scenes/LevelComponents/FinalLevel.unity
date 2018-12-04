@@ -58062,6 +58062,11 @@ Prefab:
       propertyPath: BoostDirection.y
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 114971438819461732, guid: e95085557c250444a8155f7bf3aa623f,
+        type: 2}
+      propertyPath: BoostMagnitude
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e95085557c250444a8155f7bf3aa623f, type: 2}
   m_IsPrefabAsset: 0
